@@ -69,9 +69,7 @@ public class Game implements Runnable {
         window.getWindow().addKeyListener(keyInput);
         window.getWindow().addMouseListener(mInput);
         window.getWindow().addMouseMotionListener(mInput);
-        System.out.println("Buttons 1:" + MouseEvent.BUTTON1);
-        System.out.println("Buttons 2:" + MouseEvent.BUTTON2);
-        System.out.println("Buttons 3:" + MouseEvent.BUTTON3);
+
         
         WorldSprite.init();
         PlayerSprite.init();
