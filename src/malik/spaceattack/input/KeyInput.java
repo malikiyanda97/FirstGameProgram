@@ -18,6 +18,7 @@ public class KeyInput extends KeyAdapter {
     
     private boolean[] keys;
     public boolean up, down, left, right;
+    public boolean shoot;
     
     public KeyInput(){
         keys = new boolean[256];
@@ -28,6 +29,9 @@ public class KeyInput extends KeyAdapter {
         down = keys[KeyEvent.VK_DOWN];
         right = keys[KeyEvent.VK_RIGHT];
         left = keys[KeyEvent.VK_LEFT];
+        shoot = keys[KeyEvent.VK_SPACE];
+        
+        
     }
 
     @Override

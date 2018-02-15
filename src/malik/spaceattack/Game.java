@@ -6,14 +6,13 @@
 package malik.spaceattack;
 
 import java.awt.Graphics;
-import java.awt.event.MouseEvent;
 import java.awt.image.BufferStrategy;
 import java.awt.image.BufferedImage;
+import malik.spaceattack.entities.Controller;
 import malik.spaceattack.input.KeyInput;
 import malik.spaceattack.input.MouseInput;
 import malik.spaceattack.spritesheets.ImageLoader;
-import malik.spaceattack.spritesheets.PlayerSprite;
-import malik.spaceattack.spritesheets.WorldSprite;
+import malik.spaceattack.spritesheets.SpriteSheets;
 import malik.spaceattack.states.GameState;
 import malik.spaceattack.states.MenuState;
 import malik.spaceattack.states.StateManager;
@@ -31,15 +30,10 @@ public class Game implements Runnable {
     private boolean running = false;
     private final double UPDATE_CAP = 1.0/60.0;
     
-    
     private Thread thread;
     
     private BufferStrategy bs;
     private Graphics g;
-    
-    private BufferedImage testimage;
-    private ImageLoader image;
-    
     
     //INPUT
     private KeyInput keyInput;
@@ -50,9 +44,7 @@ public class Game implements Runnable {
     private StateManager gameState;
     private StateManager menuState;
     
-    
-    
-    
+   
 
     public Game(String title, int width, int height){
 	this.width = width;
@@ -69,12 +61,13 @@ public class Game implements Runnable {
         window.getWindow().addKeyListener(keyInput);
         window.getWindow().addMouseListener(mInput);
         window.getWindow().addMouseMotionListener(mInput);
-
         
-        WorldSprite.init();
-        PlayerSprite.init();
-//           testimage = ImageLoader.loadImage("/test/test_sheet.png");
-//           image = new ImageLoader(testimage);
+        //SpriteSheets
+        SpriteSheets.playerInit();
+        SpriteSheets.bulletInit();
+        SpriteSheets.worldInit();
+
+       
             
         gameState = new GameState(this);
         menuState = new MenuState(this);
@@ -85,12 +78,10 @@ public class Game implements Runnable {
        
     private void Update(){
         keyInput.update();
-        
         if(StateManager.getState() != null){
             StateManager.getState().Update();
-        }
-        
-        
+        }              
+
     }
 	
     private void Render(){
@@ -106,10 +97,7 @@ public class Game implements Runnable {
         if(StateManager.getState() != null){
             StateManager.getState().Render(g);
         }
-            
-           
-            
-
+        
             
         //END
         bs.show();

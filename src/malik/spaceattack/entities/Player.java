@@ -7,7 +7,8 @@ package malik.spaceattack.entities;
 
 import java.awt.Graphics;
 import malik.spaceattack.Game;
-import malik.spaceattack.spritesheets.PlayerSprite;
+import static malik.spaceattack.entities.Controller.addBullet;
+import malik.spaceattack.spritesheets.SpriteSheets;
 
 /**
  *
@@ -16,10 +17,13 @@ import malik.spaceattack.spritesheets.PlayerSprite;
 public class Player extends Bodies {
     
     private Game game; 
+    private Controller c;
     
     public Player(Game game, float x, float y) {
         super(x, y, 32, 64);
         this.game = game;
+        
+        c = new Controller(game);
     }
 
     
@@ -35,19 +39,23 @@ public class Player extends Bodies {
         
         if(game.getKeyInput().up)
             yAxis = -velocity;
-        if(game.getKeyInput().down)
+        else if(game.getKeyInput().down)
             yAxis = velocity;
-        if(game.getKeyInput().right)
+        else if(game.getKeyInput().right)
             xAxis = velocity;
-        if(game.getKeyInput().left)
+        else if(game.getKeyInput().left)
             xAxis = -velocity;
+        else if(game.getKeyInput().shoot)
+            Controller.addBullet(new Bullet(game, (int) x, (int) y));
+            
 
 
+//addBullet(new Bullet(game, 32, 64));
     }
     
     @Override
     public void render(Graphics g){
-        g.drawImage(PlayerSprite.nudePlayer, (int) x, (int) y, width, height, null);
+        g.drawImage(SpriteSheets.nudePlayer, (int) x, (int) y, width, height, null);
     }
     
     

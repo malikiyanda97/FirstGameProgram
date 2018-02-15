@@ -7,7 +7,9 @@ package malik.spaceattack.states;
 
 import java.awt.Graphics;
 import malik.spaceattack.Game;
+import malik.spaceattack.entities.Controller;
 import malik.spaceattack.entities.Player;
+import malik.spaceattack.spritesheets.SpriteSheets;
 
 /**
  *
@@ -17,23 +19,26 @@ public class GameState extends StateManager {
     
     
     private Player player;
+    private Controller c;
     
     public GameState(Game game){
         super(game);
         player = new Player(game, 100,100);
+        c = new Controller(game);
         
     }
 
     @Override
     public void Update(){
         player.update();
+        c.update();
     }
 
     @Override
     public void Render(Graphics g) {
         player.render(g);
-        //g.drawImage(WorldSprite.grass, 0, 0, null);
-       // g.drawImage(WorldSprite.stone, 100, 100, null);
+        c.render(g);
+
     }
     
 }
