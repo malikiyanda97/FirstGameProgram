@@ -7,6 +7,9 @@ package malik.spaceattack.input;
 
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import malik.spaceattack.entities.Entity;
+import malik.spaceattack.entities.EntityHandler;
+import malik.spaceattack.entities.ID;
 
 /**
  *
@@ -15,38 +18,75 @@ import java.awt.event.KeyEvent;
 
 public class KeyInput extends KeyAdapter {
 
-    
-    private boolean[] keys;
-    public boolean up, down, left, right;
+   
     public boolean shoot;
     
-    public KeyInput(){
-        keys = new boolean[256];
+    EntityHandler handler;
+    
+    public KeyInput(EntityHandler handler){
+        this.handler = handler;
     }
     
-    public void update(){
-        up = keys[KeyEvent.VK_UP];
-        down = keys[KeyEvent.VK_DOWN];
-        right = keys[KeyEvent.VK_RIGHT];
-        left = keys[KeyEvent.VK_LEFT];
-        shoot = keys[KeyEvent.VK_SPACE];
-        
-        
-    }
-
     @Override
     public void keyPressed(KeyEvent e) {
-        keys[e.getKeyCode()]= true;
-        System.out.println("pressed");
+        int key = e.getKeyCode();
+        
+        for (int i = 0; i < handler.entities.size(); i++) {
+            Entity tempEntity = handler.entities.get(i);
+            
+            if(tempEntity.getId() == ID.Player){
+                if(key == KeyEvent.VK_W) handler.setUp(true);
+                if(key == KeyEvent.VK_A) handler.setLeft(true);
+                if(key == KeyEvent.VK_S) handler.setDown(true);        
+                if(key == KeyEvent.VK_D) handler.setRight(true);
+            }
+     
+        }
+
     }
 
     @Override
     public void keyReleased(KeyEvent e) {
-        keys[e.getKeyCode()] = false;
+        int key = e.getKeyCode();
+        
+        for (int i = 0; i < handler.entities.size(); i++) {
+            Entity tempEntity = handler.entities.get(i);
+            
+            if(tempEntity.getId() == ID.Player){
+                if(key == KeyEvent.VK_W) handler.setUp(false);
+                if(key == KeyEvent.VK_A) handler.setLeft(false);
+                if(key == KeyEvent.VK_S) handler.setDown(false);        
+                if(key == KeyEvent.VK_D) handler.setRight(false);
+            }
+     
+        }
     }
     
-    public boolean isKeyDown(int keycode){
-        return keys[keycode];
-    }
+
     
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+//    public KeyInput(){
+//        keys = new boolean[256];
+//    }
+//    
+//    public void update(){
+//        up = keys[KeyEvent.VK_UP];
+//        down = keys[KeyEvent.VK_DOWN];
+//        right = keys[KeyEvent.VK_RIGHT];
+//        left = keys[KeyEvent.VK_LEFT];
+//        shoot = keys[KeyEvent.VK_SPACE];
+//        
+//    }

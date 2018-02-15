@@ -6,58 +6,64 @@
 package malik.spaceattack.entities;
 
 import java.awt.Graphics;
-import malik.spaceattack.Game;
-import static malik.spaceattack.entities.Controller.addBullet;
+import java.awt.Rectangle;
 import malik.spaceattack.spritesheets.SpriteSheets;
 
 /**
  *
  * @author miyan
  */
-public class Player extends Bodies {
+public class Player extends Entity {
     
-    private Game game; 
-    private Controller c;
+    private EntityHandler handler; 
     
-    public Player(Game game, float x, float y) {
-        super(x, y, 32, 64);
-        this.game = game;
+    public Player(int x, int y, ID id, EntityHandler handler) {
+        super(x, y, id);
+        this.handler = handler;
         
-        c = new Controller(game);
     }
 
     
     @Override
     public void update(){
-        getInput();
-        move();
-    }
-    
-    private void getInput(){
-        xAxis = 0;
-        yAxis = 0;
+        x += velX;
+        y += velY;
         
-        if(game.getKeyInput().up)
-            yAxis = -velocity;
-        else if(game.getKeyInput().down)
-            yAxis = velocity;
-        else if(game.getKeyInput().right)
-            xAxis = velocity;
-        else if(game.getKeyInput().left)
-            xAxis = -velocity;
-        else if(game.getKeyInput().shoot)
-            Controller.addBullet(new Bullet(game, (int) x, (int) y));
-            
-
-
-//addBullet(new Bullet(game, 32, 64));
+        getInput();
+        
     }
     
     @Override
     public void render(Graphics g){
-        g.drawImage(SpriteSheets.nudePlayer, (int) x, (int) y, width, height, null);
+        g.drawImage(SpriteSheets.nudePlayer, (int)x, (int)y, null);
+//        g.setColor(Color.blue);
+//        g.fillRect(x, y, 32, 48);
+    
     }
+
+    @Override
+    public Rectangle getBounds() {
+        return new Rectangle(x, y, 32, 48);
+    }
+    
+    private void getInput(){
+        
+        //Moving
+        if(handler.isDown()) velY = 5;
+        else if(!handler.isUp()) velY = 0;
+      
+        if(handler.isUp()) velY = -5;
+        else if(!handler.isDown()) velY = 0;
+        
+        if(handler.isRight()) velX = 5;
+        else if(!handler.isLeft()) velX = 0;
+        
+        if(handler.isLeft()) velX = -5;
+        else if(!handler.isRight()) velX = 0;        
+    }
+
     
     
     
 }
+

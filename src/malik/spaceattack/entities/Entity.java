@@ -6,6 +6,7 @@
 package malik.spaceattack.entities;
 
 import java.awt.Graphics;
+import java.awt.Rectangle;
 
 /**
  *
@@ -13,16 +14,23 @@ import java.awt.Graphics;
  */
 public abstract class Entity {
     
-    protected float x, y;
-    protected int width, height;
+    public static final int DEFAULT_HEALTH = 10;
+    public static final float DEFAULT_VELOCITY = 3.0f;   
+    public static final int DEFAULT_CREATURE_WIDTH = 64,
+                            DEFAULT_CREATURE_HEIGHT = 64;
+    
+    protected int x, y;
+    protected int velX = 0, velY = 0;
+    //protected int width, height;
+    protected ID id;
     
     
-    public Entity(float x, float y, int width, int height){
+    public Entity(int x, int y, ID id){
         this.x = x;
         this.y = y;
- 
-        this.width = width;
-        this.height = height;
+        this.id = id;
+//        this.width = DEFAULT_CREATURE_WIDTH;
+//        this.height = DEFAULT_CREATURE_HEIGHT;
         
         
     }
@@ -30,16 +38,16 @@ public abstract class Entity {
     
     public abstract void update();
     public abstract void render(Graphics g);
+    public abstract Rectangle getBounds();
 
     
     //GETTERS AND SETTERS 
-    
-    
+
     public float getX() {
         return x;
     }
 
-    public void setX(float x) {
+    public void setX(int x) {
         this.x = x;
     }
 
@@ -47,31 +55,33 @@ public abstract class Entity {
         return y;
     }
 
-    public void setY(float y) {
+    public void setY(int y) {
         this.y = y;
     }
 
-    public int getWidth() {
-        return width;
+    public float getVelX() {
+        return velX;
     }
 
-    public void setWidth(int width) {
-        this.width = width;
+    public void setVelX(int velX) {
+        this.velX = velX;
     }
 
-    public int getHeight() {
-        return height;
+    public float getVelY() {
+        return velY;
     }
 
-    public void setHeight(int height) {
-        this.height = height;
+    public void setVelY(int velY) {
+        this.velY = velY;
     }
-    
-    
-    
-    
-    
-    
+
+    public ID getId() {
+        return id;
+    }
+
+    public void setId(ID id) {
+        this.id = id;
+    }
     
     
     

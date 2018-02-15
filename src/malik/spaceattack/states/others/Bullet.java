@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package malik.spaceattack.entities;
+package malik.spaceattack.states.others;
 
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
@@ -40,6 +40,7 @@ public class Bullet{
     public void render(Graphics g) {
         g.drawImage(image,(int) x, (int) y, null);
     }
+    
     
     
     
