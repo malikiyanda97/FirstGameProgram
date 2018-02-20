@@ -5,23 +5,23 @@
  */
 package malik.spaceattack;
 
-import java.awt.Canvas;
-import java.awt.Color;
 import java.awt.Graphics;
-import java.awt.Graphics2D;
 import java.awt.image.BufferStrategy;
-import malik.spaceattack.entities.EntityHandler;
-import malik.spaceattack.entities.ID;
-import malik.spaceattack.entities.Player;
+import java.awt.image.BufferedImage;
+import malik.spaceattack.entities.Controller;
 import malik.spaceattack.input.KeyInput;
+import malik.spaceattack.input.MouseInput;
+import malik.spaceattack.spritesheets.ImageLoader;
 import malik.spaceattack.spritesheets.SpriteSheets;
-
+import malik.spaceattack.states.GameState;
+import malik.spaceattack.states.MenuState;
+import malik.spaceattack.states.StateManager;
 
 /**
  *
  * @author miyan
  */
-public class Game extends Canvas implements Runnable {
+public class Game implements Runnable {
     
     private Window window;
     public int width, height;
@@ -31,20 +31,18 @@ public class Game extends Canvas implements Runnable {
     private final double UPDATE_CAP = 1.0/60.0;
     
     private Thread thread;
-    private EntityHandler handler;
-    private Camera camera;
     
     private BufferStrategy bs;
     private Graphics g;
     
     //INPUT
     private KeyInput keyInput;
-   
+    private MouseInput mInput;
     
     
     //STATES 
-//    private StateManager gameState;
-//    private StateManager menuState;
+    private StateManager gameState;
+    private StateManager menuState;
     
    
 
@@ -53,18 +51,16 @@ public class Game extends Canvas implements Runnable {
 	this.height = height;
         this.title = title;
         
-
-
+	
+	keyInput = new KeyInput();
+        mInput = new MouseInput();
     }
     
     private void init(){
         window = new Window(title, width, height);
-        camera = new Camera(0,0);
-        
-        handler = new EntityHandler();
-        this.addKeyListener(new KeyInput(handler));
-        
-        handler.addEntity(new Player(100, 100, ID.Player, handler));
+        window.getWindow().addKeyListener(keyInput);
+        window.getWindow().addMouseListener(mInput);
+        window.getWindow().addMouseMotionListener(mInput);
         
         //SpriteSheets
         SpriteSheets.playerInit();
@@ -73,25 +69,18 @@ public class Game extends Canvas implements Runnable {
 
        
             
-//        gameState = new GameState(this);
-//        menuState = new MenuState(this);
-//        StateManager.setState(gameState); 
+        gameState = new GameState(this);
+        menuState = new MenuState(this);
+        StateManager.setState(gameState); 
   
            
     }
        
     private void Update(){
-        for (int i = 0; i < handler.entities.size(); i++) {
-            if(handler.entities.get(i).getId() == ID.Player){
-                camera.tick(handler.entities.get(i));
-            }
-        }
-        handler.update();
-        
-       
-//        if(StateManager.getState() != null){
-//            StateManager.getState().Update();
-//        }              
+        keyInput.update();
+        if(StateManager.getState() != null){
+            StateManager.getState().Update();
+        }              
 
     }
 	
@@ -102,26 +91,15 @@ public class Game extends Canvas implements Runnable {
             return;
         }
         g = bs.getDrawGraphics();
-        Graphics2D g2d = (Graphics2D) g;
         g.clearRect(0, 0, width, height);
-        //////////////////BIGINNING////////////////////////
-        
-        g.setColor(Color.red);
-        g.fillRect(0, 0, 1100, 800);
-        
-        
-        g2d.translate(camera.getX(), camera.getY());
-        
-        handler.render(g);
-        
-        g2d.translate(camera.getX(), camera.getY());
+        //BIGINNING
             
-//        if(StateManager.getState() != null){
-//            StateManager.getState().Render(g);
-//        }
+        if(StateManager.getState() != null){
+            StateManager.getState().Render(g);
+        }
         
             
-        ////////////////// //END////////////////////////////
+        //END
         bs.show();
         g.dispose();           
 		

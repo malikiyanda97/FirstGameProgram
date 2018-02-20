@@ -3,9 +3,8 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package malik.spaceattack.states.others;
+package malik.spaceattack.entities;
 
-import malik.spaceattack.states.others.Bullet;
 import java.awt.Graphics;
 import java.util.LinkedList;
 import malik.spaceattack.Game;

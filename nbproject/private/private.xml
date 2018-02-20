@@ -3,24 +3,21 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/miyan/OneDrive/3.3rd%20Year%20Modules/0.Final%20Year%20Project/2.Final%20Year%20Project%20Game/SpaceAttack/src/malik/spaceattack/spritesheets/SpriteSheets.java</file>
-            <file>file:/C:/Users/miyan/OneDrive/3.3rd%20Year%20Modules/0.Final%20Year%20Project/2.Final%20Year%20Project%20Game/SpaceAttack/src/malik/spaceattack/entities/EntityHandler.java</file>
-            <file>file:/C:/Users/miyan/OneDrive/3.3rd%20Year%20Modules/0.Final%20Year%20Project/2.Final%20Year%20Project%20Game/SpaceAttack/res/util_Images/fireball.png</file>
-            <file>file:/C:/Users/miyan/OneDrive/3.3rd%20Year%20Modules/0.Final%20Year%20Project/2.Final%20Year%20Project%20Game/SpaceAttack/src/malik/spaceattack/states/others/Controller.java</file>
-            <file>file:/C:/Users/miyan/OneDrive/3.3rd%20Year%20Modules/0.Final%20Year%20Project/2.Final%20Year%20Project%20Game/SpaceAttack/src/malik/spaceattack/Launcher.java</file>
-            <file>file:/C:/Users/miyan/OneDrive/3.3rd%20Year%20Modules/0.Final%20Year%20Project/2.Final%20Year%20Project%20Game/SpaceAttack/src/malik/spaceattack/spritesheets/ImageLoader.java</file>
-            <file>file:/C:/Users/miyan/OneDrive/3.3rd%20Year%20Modules/0.Final%20Year%20Project/2.Final%20Year%20Project%20Game/SpaceAttack/src/malik/spaceattack/states/MenuState.java</file>
-            <file>file:/C:/Users/miyan/OneDrive/3.3rd%20Year%20Modules/0.Final%20Year%20Project/2.Final%20Year%20Project%20Game/SpaceAttack/src/malik/spaceattack/entities/ID.java</file>
-            <file>file:/C:/Users/miyan/OneDrive/3.3rd%20Year%20Modules/0.Final%20Year%20Project/2.Final%20Year%20Project%20Game/SpaceAttack/src/malik/spaceattack/entities/Player.java</file>
-            <file>file:/C:/Users/miyan/OneDrive/3.3rd%20Year%20Modules/0.Final%20Year%20Project/2.Final%20Year%20Project%20Game/SpaceAttack/src/malik/spaceattack/states/others/Bullet.java</file>
-            <file>file:/C:/Users/miyan/OneDrive/3.3rd%20Year%20Modules/0.Final%20Year%20Project/2.Final%20Year%20Project%20Game/SpaceAttack/src/malik/spaceattack/input/MouseInput.java</file>
-            <file>file:/C:/Users/miyan/OneDrive/3.3rd%20Year%20Modules/0.Final%20Year%20Project/2.Final%20Year%20Project%20Game/SpaceAttack/src/malik/spaceattack/input/KeyInput.java</file>
-            <file>file:/C:/Users/miyan/OneDrive/3.3rd%20Year%20Modules/0.Final%20Year%20Project/2.Final%20Year%20Project%20Game/SpaceAttack/src/malik/spaceattack/states/GameState.java</file>
-            <file>file:/C:/Users/miyan/OneDrive/3.3rd%20Year%20Modules/0.Final%20Year%20Project/2.Final%20Year%20Project%20Game/SpaceAttack/src/malik/spaceattack/Game.java</file>
-            <file>file:/C:/Users/miyan/OneDrive/3.3rd%20Year%20Modules/0.Final%20Year%20Project/2.Final%20Year%20Project%20Game/SpaceAttack/src/malik/spaceattack/entities/Entity.java</file>
-            <file>file:/C:/Users/miyan/OneDrive/3.3rd%20Year%20Modules/0.Final%20Year%20Project/2.Final%20Year%20Project%20Game/SpaceAttack/src/malik/spaceattack/Window.java</file>
-            <file>file:/C:/Users/miyan/OneDrive/3.3rd%20Year%20Modules/0.Final%20Year%20Project/2.Final%20Year%20Project%20Game/SpaceAttack/src/malik/spaceattack/Camera.java</file>
-            <file>file:/C:/Users/miyan/OneDrive/3.3rd%20Year%20Modules/0.Final%20Year%20Project/2.Final%20Year%20Project%20Game/SpaceAttack/src/malik/spaceattack/states/StateManager.java</file>
+            <file>file:/C:/Users/miyan/Desktop/SpaceAttack/src/malik/spaceattack/entities/Entity.java</file>
+            <file>file:/C:/Users/miyan/Desktop/SpaceAttack/res/player_Images/naked.png</file>
+            <file>file:/C:/Users/miyan/Desktop/SpaceAttack/src/malik/spaceattack/states/GameState.java</file>
+            <file>file:/C:/Users/miyan/Desktop/SpaceAttack/src/malik/spaceattack/spritesheets/PlayerSprite.java</file>
+            <file>file:/C:/Users/miyan/Desktop/SpaceAttack/src/malik/spaceattack/Game.java</file>
+            <file>file:/C:/Users/miyan/Desktop/SpaceAttack/res/Test/test_sheet.png</file>
+            <file>file:/C:/Users/miyan/Desktop/SpaceAttack/src/malik/spaceattack/entities/Bodies.java</file>
+            <file>file:/C:/Users/miyan/Desktop/SpaceAttack/src/malik/spaceattack/Launcher.java</file>
+            <file>file:/C:/Users/miyan/Desktop/SpaceAttack/src/malik/spaceattack/states/StateManager.java</file>
+            <file>file:/C:/Users/miyan/Desktop/SpaceAttack/src/malik/spaceattack/states/MenuState.java</file>
+            <file>file:/C:/Users/miyan/Desktop/SpaceAttack/src/malik/spaceattack/spritesheets/ImageLoader.java</file>
+            <file>file:/C:/Users/miyan/Desktop/SpaceAttack/src/malik/spaceattack/spritesheets/WorldSprite.java</file>
+            <file>file:/C:/Users/miyan/Desktop/SpaceAttack/src/malik/spaceattack/entities/Player.java</file>
+            <file>file:/C:/Users/miyan/Desktop/SpaceAttack/res/world_Images/WorldSpriteSheet.png</file>
+            <file>file:/C:/Users/miyan/Desktop/SpaceAttack/src/malik/spaceattack/input/KeyInput.java</file>
         </group>
     </open-files>
 </project-private>
