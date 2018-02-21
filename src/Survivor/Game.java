@@ -3,13 +3,13 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package malik.survivo;
+package Survivor;
 
+import Survivor.entitiesManager.EntityHandler;
 import java.awt.Canvas;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.image.BufferStrategy;
-import malik.survivor.entitiesManager.EntityHandler;
 
 
 /**

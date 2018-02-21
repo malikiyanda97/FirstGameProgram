@@ -3,10 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package malik.survivor.entitiesManager;
+package Survivor.entitiesManager;
 
 import java.awt.Graphics;
-import java.util.LinkedList;
+import java.util.*;
 
 /**
  *

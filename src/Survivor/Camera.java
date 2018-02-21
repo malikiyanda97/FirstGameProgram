@@ -1,4 +1,6 @@
-package malik.survivo;
+package Survivor;
+
+import Survivor.entitiesManager.Entities;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -7,7 +9,6 @@ package malik.survivo;
  */
 
 
-import malik.survivor.entitiesManager.Entities;
 
 /**
  *

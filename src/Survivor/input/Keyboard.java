@@ -3,13 +3,14 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package malik.survivor.input;
+package Survivor.input;
 
+import Survivor.entitiesManager.Entities;
+import Survivor.entitiesManager.EntityEnums;
+import Survivor.entitiesManager.EntityHandler;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
-import malik.survivor.entitiesManager.Entities;
-import malik.survivor.entitiesManager.EntityEnums;
-import malik.survivor.entitiesManager.EntityHandler;
+
 
 
 /**
