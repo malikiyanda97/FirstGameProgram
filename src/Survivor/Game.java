@@ -5,7 +5,10 @@
  */
 package Survivor;
 
+import Survivor.entities.Player;
+import Survivor.entitiesManager.EntityEnums;
 import Survivor.entitiesManager.EntityHandler;
+import Survivor.input.Keyboard;
 import java.awt.Canvas;
 import java.awt.Color;
 import java.awt.Graphics;
@@ -38,6 +41,9 @@ public class Game extends Canvas implements Runnable {
     public void initialise(){
         window = new Window(title, width, height, this); 
         handler = new EntityHandler();
+        this.addKeyListener(new Keyboard(handler));
+        
+        handler.addEntity(new Player(100,100,EntityEnums.Player,handler));
     }
     
     @Override
@@ -47,6 +53,7 @@ public class Game extends Canvas implements Runnable {
     
     public void update(){
         handler.update();
+        
     }
     
     public void render(){
