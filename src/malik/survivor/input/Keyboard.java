@@ -3,13 +3,13 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package malik.spaceattack.input;
+package malik.survivor.input;
 
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
-import malik.spaceattack.entitiesManager.Entities;
-import malik.spaceattack.entitiesManager.EntityEnums;
-import malik.spaceattack.entitiesManager.EntityHandler;
+import malik.survivor.entitiesManager.Entities;
+import malik.survivor.entitiesManager.EntityEnums;
+import malik.survivor.entitiesManager.EntityHandler;
 
 
 /**

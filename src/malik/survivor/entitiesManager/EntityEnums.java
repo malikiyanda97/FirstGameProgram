@@ -3,18 +3,18 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package malik.survivor;
+package malik.survivor.entitiesManager;
 
 /**
  *
  * @author miyan
  */
-public class MainLauncher {
+public enum EntityEnums {
     
     
-    public static void main(String args[]){
-        Game game = new Game("Surviver", 1000, 563);
-        game.start();
-    }
+    Player(),
+    Block(),
+    Crate(),
+    Bulllet();
     
 }
