@@ -1,4 +1,4 @@
-package Survivor;
+package Survivor.images;
 
 import Survivor.entitiesManager.Entities;
 
@@ -7,9 +7,6 @@ import Survivor.entitiesManager.Entities;
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
-
-
 /**
  *
  * @author miyan
@@ -23,14 +20,16 @@ public class Camera {
         this.y = y;
     }
     
-    public void tick(Entities entity){
-        x += ((entity.getX() -x ) -  1110/2)*0.05f;
-        x += ((entity.getY() -y ) -  800/2)*0.05f;
+    public void update(Entities entity){
+        x += ((entity.getX() -x ) -  1200/2)*0.05f;
+        y += ((entity.getY() -y ) -  800/2)*0.05f;
         
+        
+        //LOCK CAMERA
         if(x <= 0 ) x = 0;
-        if(x >= 1032) x = 1032;
+        if(x >= 1200) x = 1200+30;
         if(y <= 0) y = 0;
-        if(y >= 800) y = 800;
+        if(y >= 800+16) y = 800+16;
     }
     
     
