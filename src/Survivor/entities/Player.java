@@ -5,10 +5,11 @@
  */
 package Survivor.entities;
 
+import Survivor.GameHandler;
 import Survivor.entitiesManager.Entities;
-import Survivor.entitiesManager.EntityEnums;
 import Survivor.entitiesManager.EntityHandler;
-import java.awt.Color;
+import Survivor.entitiesManager.ID;
+import Survivor.images.Images;
 import java.awt.Graphics;
 import java.awt.Rectangle;
 
@@ -18,11 +19,15 @@ import java.awt.Rectangle;
  */
 public class Player extends Entities {
 
-    private EntityHandler handler; 
-
-    public Player(int x, int y, EntityEnums id, EntityHandler handler) {
-        super(x, y, id);
-        this.handler = handler;
+    private EntityHandler EH;
+    private GameHandler GH;
+    
+    public Player(int x, int y, ID ID, GameHandler GH, EntityHandler EH) {
+        super(ID, x, y, GH);
+        
+        this.EH = EH;
+        this.GH = GH;
+        
     }
 
     @Override
@@ -30,14 +35,16 @@ public class Player extends Entities {
         x += velX;
         y += velY;
         
+        
+        
         getInput();        
         
     }
 
     @Override
     public void render(Graphics g) {
-        g.setColor(Color.blue);
-        g.fillRect(x, y, 32, 48);        
+        g.drawImage(Images.nakedPlayer, x, y, null);
+       
     }
 
     @Override
@@ -48,19 +55,20 @@ public class Player extends Entities {
     private void getInput(){
         
         //Movement Actions
-        if(handler.isDown()) velY = 5;
-        else if(!handler.isUp()) velY = 0;
-      
-        if(handler.isUp()) velY = -5;
-        else if(!handler.isDown()) velY = 0;
+        if(EH.isDown()) velY = 5;
+        else if(!EH.isUp()) velY = 0;
         
-        if(handler.isRight()) velX = 5;
-        else if(!handler.isLeft()) velX = 0;
+        if(EH.isUp()) velY = -5;
+        else if(!EH.isDown()) velY = 0;
         
-        if(handler.isLeft()) velX = -5;
-        else if(!handler.isRight()) velX = 0;         
+        if(EH.isRight()) velX = 5;
+        else if(!EH.isLeft()) velX = 0;
         
-       
+        if(EH.isLeft()) velX = -5;
+        else if(!EH.isRight()) velX = 0;         
+    
     }
     
+    
 }
+

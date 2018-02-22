@@ -5,6 +5,8 @@
  */
 package Survivor;
 
+import Survivor.entitiesManager.EntityHandler;
+
 /**
  *
  * @author miyan
@@ -19,6 +21,13 @@ public class GameHandler {
 
     
     //Getters and Setters 
+    
+    public EntityHandler getGameEH(){
+        return game.getEH();
+    }
+    
+    
+
     public void setGame(Game game) {
         this.game = game;
     }

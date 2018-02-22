@@ -5,11 +5,8 @@
  */
 package Survivor;
 
-import Survivor.entities.Player;
-import Survivor.entitiesManager.EntityEnums;
 import Survivor.entitiesManager.EntityHandler;
 import Survivor.images.Images;
-import Survivor.images.SpriteSheet;
 import Survivor.input.Keyboard;
 import Survivor.input.Mouse;
 import Survivor.states.GameState;
@@ -17,9 +14,7 @@ import Survivor.states.MenuState;
 import Survivor.states.StateManager;
 import java.awt.Canvas;
 import java.awt.Graphics;
-import java.awt.Image;
 import java.awt.image.BufferStrategy;
-import java.awt.image.BufferedImage;
 
 
 /**
@@ -31,78 +26,72 @@ public class Game extends Canvas implements Runnable {
     private boolean running = false;
     private Window window;
     private Thread thread;
-    private static EntityHandler entityHandler;
     
    
     public int width, height;
     private final String title;
           
     //STATES
-    public  StateManager menuState;
-    public GameState gamestate;
-    public MenuState menustate;
+    public  StateManager State;
+    public GameState gameState;
+    public MenuState menuState;
     
     //INPUT
+    private Keyboard keyboard;
     private Mouse mouse;
     
-    
-    //IMAGES
-    private BufferedImage sheet = null;
-    private SpriteSheet s;
+    //ENTITY HANDLER
+    private EntityHandler EH;
+        
+    //GAME HANDLER 
+    private GameHandler GH;
     
     
     public Game(String title, int width, int height){
         this.title = title;
         this.width = width;
         this.height = height;
-       
-        
-        mouse = new Mouse(); 
     }
     
-    public void initialise(){
+    public void init(){
         window = new Window(title, width, height, this);
-        Images.init();
         
-        //Entities 
-        entityHandler = new  EntityHandler();
-        
-        //Mouse and Keyboard Listeners 
-        this.addKeyListener(new Keyboard(entityHandler));
+        //MOUSE INPUT
+        mouse = new Mouse();
         this.addMouseListener(mouse);
         this.addMouseMotionListener(mouse);
         
-        //Sprite sheet
-        sheet = Images.loadImage("/player_Images/naked.png");
-        s = new SpriteSheet(sheet);
+        //IMAGES
+        Images.init();
         
-  
-        //Player Entity 
-        entityHandler.addEntity(new Player(100,100,EntityEnums.Player,entityHandler, s));
+        //ENTITY HANDLER 
+        EH = new EntityHandler();
         
-        //states      
-        menuState = new MenuState(mouse);
-        StateManager.setState(menuState);
+        //GAME HANDLER
+        GH = new GameHandler(this);  
         
-        menuState.stateInit();
-   
+        //KEYBOARD INPUT 
+        this.addKeyListener(new Keyboard(EH));
+       
+        //STATES
+        gameState = new GameState(GH,EH);
+        menuState = new MenuState(mouse,GH);
+        StateManager.setState(menuState);        
+        
+        
         
     }
 
-    public static EntityHandler getEntityHandler() {
-        return entityHandler;
-    }
-    
     @Override
     public void run(){
         gameLoop();
     }
     
     public void update(){
-        entityHandler.update();
+      
+     
         if(StateManager.getState() != null){
             StateManager.getState().update();
-        
         }
          
     }
@@ -121,8 +110,6 @@ public class Game extends Canvas implements Runnable {
        if(StateManager.getState() != null){
            StateManager.getState().render(g);
        }
-       
-       entityHandler.render(g);
         
         ///////////////END DRAW AREA///////////////////////////
         bs.show();
@@ -147,7 +134,7 @@ public class Game extends Canvas implements Runnable {
     
     
    public void gameLoop(){
-       initialise();
+       init();
        this.requestFocus();
        long lastTime = System.nanoTime();
        double amountofTicks = 60.0;
@@ -181,5 +168,7 @@ public class Game extends Canvas implements Runnable {
        return mouse;
    }
 
-
+   public EntityHandler getEH() {
+        return EH;
+   }
 }

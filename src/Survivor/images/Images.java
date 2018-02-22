@@ -15,12 +15,28 @@ import javax.imageio.ImageIO;
  */
 public class Images {
     
-        //private static BufferedImage nakedPlayerSheet;
+    public static BufferedImage nakedPlayer, nakedPlayerSheet;
     
     public static void init(){
-        //nakedPlayerSheet = Images.loadImage("/player_Images/naked.png");
+        
+        //PLAYER SPRITESHEETS AND IMAGES
+        Sheets SS = new Sheets(Images.loadImage("/player_Images/naked.png"));
+        nakedPlayer = SS.cropImage(0, 0, 30, 60);
+    
     }
     
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    //IMAGE LOADER 
     public static BufferedImage loadImage(String path){
         try {
             return ImageIO.read(Images.class.getResource(path));

@@ -5,9 +5,10 @@
  */
 package Survivor.input;
 
+import Survivor.GameHandler;
 import Survivor.entitiesManager.Entities;
-import Survivor.entitiesManager.EntityEnums;
 import Survivor.entitiesManager.EntityHandler;
+import Survivor.entitiesManager.ID;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 
@@ -23,24 +24,24 @@ public class Keyboard extends KeyAdapter {
    
     public boolean shoot;
     
-    EntityHandler handler;
+    private EntityHandler EH;
     
-    public Keyboard(EntityHandler handler){
-        this.handler = handler;
+    public Keyboard(EntityHandler EH){
+        this.EH = EH;
     }
     
     @Override
     public void keyPressed(KeyEvent e) {
         int key = e.getKeyCode();
         
-        for (int i = 0; i < handler.entities.size(); i++) {
-            Entities tempEntity = handler.entities.get(i);
+        for (int i = 0; i < EH.entities.size(); i++) {
+            Entities tempEntity = EH.entities.get(i);
             
-            if(tempEntity.getId() == EntityEnums.Player){
-                if(key == KeyEvent.VK_W) handler.setUp(true);
-                if(key == KeyEvent.VK_A) handler.setLeft(true);
-                if(key == KeyEvent.VK_S) handler.setDown(true);        
-                if(key == KeyEvent.VK_D) handler.setRight(true);
+            if(tempEntity.getId() == ID.Player){
+                if(key == KeyEvent.VK_W) EH.setUp(true);
+                if(key == KeyEvent.VK_A) EH.setLeft(true);
+                if(key == KeyEvent.VK_S) EH.setDown(true);        
+                if(key == KeyEvent.VK_D) EH.setRight(true);
             }
      
         }
@@ -51,14 +52,14 @@ public class Keyboard extends KeyAdapter {
     public void keyReleased(KeyEvent e) {
         int key = e.getKeyCode();
         
-        for (int i = 0; i < handler.entities.size(); i++) {
-            Entities tempEntity = handler.entities.get(i);
+        for (int i = 0; i < EH.entities.size(); i++) {
+            Entities tempEntity = EH.entities.get(i);
             
-            if(tempEntity.getId() == EntityEnums.Player){
-                if(key == KeyEvent.VK_W) handler.setUp(false);
-                if(key == KeyEvent.VK_A) handler.setLeft(false);
-                if(key == KeyEvent.VK_S) handler.setDown(false);        
-                if(key == KeyEvent.VK_D) handler.setRight(false);
+            if(tempEntity.getId() == ID.Player){
+                if(key == KeyEvent.VK_W) EH.setUp(false);
+                if(key == KeyEvent.VK_A) EH.setLeft(false);
+                if(key == KeyEvent.VK_S) EH.setDown(false);        
+                if(key == KeyEvent.VK_D) EH.setRight(false);
             }
      
         }

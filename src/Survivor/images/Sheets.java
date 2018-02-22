@@ -11,11 +11,11 @@ import java.awt.image.BufferedImage;
  *
  * @author miyan
  */
-public class SpriteSheet {
+public class Sheets {
     
     private BufferedImage sheet;
     
-    public SpriteSheet(BufferedImage sheet){
+    public Sheets(BufferedImage sheet){
         this.sheet = sheet;
         
     }

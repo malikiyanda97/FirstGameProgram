@@ -9,7 +9,7 @@ package Survivor.entitiesManager;
  *
  * @author miyan
  */
-public enum EntityEnums {
+public enum ID {
     
     
     Player(),

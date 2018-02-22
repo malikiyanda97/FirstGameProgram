@@ -5,6 +5,10 @@
  */
 package Survivor.states;
 
+import Survivor.GameHandler;
+import Survivor.entities.Player;
+import Survivor.entitiesManager.EntityHandler;
+import Survivor.entitiesManager.ID;
 import java.awt.Color;
 import java.awt.Graphics;
 
@@ -14,16 +18,27 @@ import java.awt.Graphics;
  */
 public class GameState extends StateManager {
     
-    public GameState(){
-        
+    
+    private Player player;
+    private EntityHandler EH; //only for keyboard use 
+    
+    
+    public GameState(GameHandler GH, EntityHandler EH){
+        super(GH);
+        this.EH = EH;
+        init();   
+    
     }
-
-    
-    
-    
+ 
+    @Override
+    public void init(){
+        GH.getGameEH().addEntity(new Player(100,100, ID.Player, GH, EH));
+    }
     
     @Override
     public void update() {
+        GH.getGameEH().update();
+
        
     }
 
@@ -31,6 +46,9 @@ public class GameState extends StateManager {
     public void render(Graphics g) {
         g.setColor(Color.red);
         g.fillRect(0, 0, 1000, 800);
+        
+        GH.getGameEH().render(g);
+        
     }
     
 }

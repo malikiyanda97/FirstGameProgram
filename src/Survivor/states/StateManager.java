@@ -5,6 +5,8 @@
  */
 package Survivor.states;
 
+import Survivor.GameHandler;
+import Survivor.entitiesManager.EntityHandler;
 import java.awt.Graphics;
 
 /**
@@ -14,11 +16,14 @@ import java.awt.Graphics;
 public abstract class StateManager {
     
  
+    protected GameHandler GH;
+    protected EntityHandler EH;
     
     
-    public StateManager(){
-        
+    public StateManager(GameHandler GH){
+        this.GH = GH;
     }
+    
     
     
     private static StateManager currentState = null;
@@ -35,7 +40,7 @@ public abstract class StateManager {
     }
     
     
-    
+    public abstract void init();
     public abstract void update();
     public abstract void render(Graphics g);
     

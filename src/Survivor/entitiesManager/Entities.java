@@ -5,6 +5,8 @@
  */
 package Survivor.entitiesManager;
 
+import Survivor.GameHandler;
+import Survivor.images.Sheets;
 import java.awt.Graphics;
 import java.awt.Rectangle;
 
@@ -16,13 +18,14 @@ public abstract class Entities {
    
     protected int x, y;
     protected int velX = 0, velY = 0;
-    protected EntityEnums id;
+    protected ID id;
+    protected GameHandler GH;
     
-    
-    public Entities(int x, int y, EntityEnums id){
+    public Entities(ID id, int x, int y, GameHandler GH){
         this.x = x;
         this.y = y;
         this.id = id;
+        this.GH = GH;
         
         
     }
@@ -67,11 +70,11 @@ public abstract class Entities {
         this.velY = velY;
     }
 
-    public EntityEnums getId() {
+    public ID getId() {
         return id;
     }
 
-    public void setId(EntityEnums id) {
+    public void setId(ID id) {
         this.id = id;
     }
     
