@@ -13,7 +13,7 @@ public class MainLauncher {
     
     
     public static void main(String args[]){
-        Game game = new Game("Surviver", 1000, 563);
+        Game game = new Game("Surviver", 1200, 800);
         game.start();
     }
     

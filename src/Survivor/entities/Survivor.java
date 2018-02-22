@@ -17,12 +17,12 @@ import java.awt.Rectangle;
  *
  * @author miyan
  */
-public class Player extends Entities {
+public class Survivor extends Entities {
 
     private EntityHandler EH;
     private GameHandler GH;
     
-    public Player(int x, int y, ID ID, GameHandler GH, EntityHandler EH) {
+    public Survivor(ID ID, int x, int y, GameHandler GH, EntityHandler EH) {
         super(ID, x, y, GH);
         
         this.EH = EH;

@@ -2,27 +2,6 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group>
-            <file>file:/C:/Users/miyan/OneDrive/3.3rd%20Year%20Modules/0.Final%20Year%20Project/2.Final%20Year%20Project%20Game/Survivor/src/Survivor/Game.java</file>
-            <file>file:/C:/Users/miyan/OneDrive/3.3rd%20Year%20Modules/0.Final%20Year%20Project/2.Final%20Year%20Project%20Game/Survivor/src/Survivor/states/MenuItem.java</file>
-            <file>file:/C:/Users/miyan/OneDrive/3.3rd%20Year%20Modules/0.Final%20Year%20Project/2.Final%20Year%20Project%20Game/Survivor/src/Survivor/entitiesManager/ID.java</file>
-            <file>file:/C:/Users/miyan/OneDrive/3.3rd%20Year%20Modules/0.Final%20Year%20Project/2.Final%20Year%20Project%20Game/Survivor/src/Survivor/menu/Menu.java</file>
-            <file>file:/C:/Users/miyan/OneDrive/3.3rd%20Year%20Modules/0.Final%20Year%20Project/2.Final%20Year%20Project%20Game/Survivor/src/Survivor/states/StateManager.java</file>
-            <file>file:/C:/Users/miyan/OneDrive/3.3rd%20Year%20Modules/0.Final%20Year%20Project/2.Final%20Year%20Project%20Game/Survivor/src/Survivor/input/Keyboard.java</file>
-            <file>file:/C:/Users/miyan/OneDrive/3.3rd%20Year%20Modules/0.Final%20Year%20Project/2.Final%20Year%20Project%20Game/Survivor/src/Survivor/states/MenuState.java</file>
-            <file>file:/C:/Users/miyan/OneDrive/3.3rd%20Year%20Modules/0.Final%20Year%20Project/2.Final%20Year%20Project%20Game/Survivor/src/Survivor/images/Sheets.java</file>
-            <file>file:/C:/Users/miyan/OneDrive/3.3rd%20Year%20Modules/0.Final%20Year%20Project/2.Final%20Year%20Project%20Game/Survivor/src/Survivor/images/Camera.java</file>
-            <file>file:/C:/Users/miyan/OneDrive/3.3rd%20Year%20Modules/0.Final%20Year%20Project/2.Final%20Year%20Project%20Game/Survivor/src/Survivor/Window.java</file>
-            <file>file:/C:/Users/miyan/OneDrive/3.3rd%20Year%20Modules/0.Final%20Year%20Project/2.Final%20Year%20Project%20Game/Survivor/res/player_Images/naked.png</file>
-            <file>file:/C:/Users/miyan/OneDrive/3.3rd%20Year%20Modules/0.Final%20Year%20Project/2.Final%20Year%20Project%20Game/Survivor/src/Survivor/entitiesManager/EntityHandler.java</file>
-            <file>file:/C:/Users/miyan/OneDrive/3.3rd%20Year%20Modules/0.Final%20Year%20Project/2.Final%20Year%20Project%20Game/Survivor/src/Survivor/MainLauncher.java</file>
-            <file>file:/C:/Users/miyan/OneDrive/3.3rd%20Year%20Modules/0.Final%20Year%20Project/2.Final%20Year%20Project%20Game/Survivor/src/Survivor/input/Mouse.java</file>
-            <file>file:/C:/Users/miyan/OneDrive/3.3rd%20Year%20Modules/0.Final%20Year%20Project/2.Final%20Year%20Project%20Game/Survivor/src/Survivor/GameHandler.java</file>
-            <file>file:/C:/Users/miyan/OneDrive/3.3rd%20Year%20Modules/0.Final%20Year%20Project/2.Final%20Year%20Project%20Game/Survivor/src/Survivor/entities/Player.java</file>
-            <file>file:/C:/Users/miyan/OneDrive/3.3rd%20Year%20Modules/0.Final%20Year%20Project/2.Final%20Year%20Project%20Game/Survivor/src/Survivor/entitiesManager/Entities.java</file>
-            <file>file:/C:/Users/miyan/OneDrive/3.3rd%20Year%20Modules/0.Final%20Year%20Project/2.Final%20Year%20Project%20Game/Survivor/res/world_Images/worldSheet.png</file>
-            <file>file:/C:/Users/miyan/OneDrive/3.3rd%20Year%20Modules/0.Final%20Year%20Project/2.Final%20Year%20Project%20Game/Survivor/src/Survivor/states/GameState.java</file>
-            <file>file:/C:/Users/miyan/OneDrive/3.3rd%20Year%20Modules/0.Final%20Year%20Project/2.Final%20Year%20Project%20Game/Survivor/src/Survivor/images/Images.java</file>
-        </group>
+        <group/>
     </open-files>
 </project-private>

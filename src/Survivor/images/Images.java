@@ -15,24 +15,23 @@ import javax.imageio.ImageIO;
  */
 public class Images {
     
-    public static BufferedImage nakedPlayer, nakedPlayerSheet;
+    public static BufferedImage nakedPlayer;
+    public static BufferedImage levelOne;
     
     public static void init(){
         
         //PLAYER SPRITESHEETS AND IMAGES
-        Sheets SS = new Sheets(Images.loadImage("/player_Images/naked.png"));
-        nakedPlayer = SS.cropImage(0, 0, 30, 60);
+        Sheets nakedPlaySheet = new Sheets(Images.loadImage("/player_Images/naked.png"));
+        nakedPlayer = nakedPlaySheet.cropImage(0, 0, 30, 60);
+        
+        //LEVEL 1 IMAGE
+        //Sheets levelOneSheet = new Sheets(Images.loadImage("/world_Images/level1.0.png"));
+        //levelOne = levelOneSheet.cropImage(0, 0, 64, 64);
+        levelOne = Images.loadImage("/world_Images/level1.0.png");
+        
     
     }
-    
-    
-    
-    
-    
-    
-    
-    
-    
+ 
     
     
     

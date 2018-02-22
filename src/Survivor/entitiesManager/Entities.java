@@ -18,13 +18,13 @@ public abstract class Entities {
    
     protected int x, y;
     protected int velX = 0, velY = 0;
-    protected ID id;
+    protected ID ID;
     protected GameHandler GH;
     
     public Entities(ID id, int x, int y, GameHandler GH){
         this.x = x;
         this.y = y;
-        this.id = id;
+        this.ID = id;
         this.GH = GH;
         
         
@@ -71,11 +71,11 @@ public abstract class Entities {
     }
 
     public ID getId() {
-        return id;
+        return ID;
     }
 
     public void setId(ID id) {
-        this.id = id;
+        this.ID = id;
     }
     
     

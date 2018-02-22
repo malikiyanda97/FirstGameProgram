@@ -37,7 +37,7 @@ public class Keyboard extends KeyAdapter {
         for (int i = 0; i < EH.entities.size(); i++) {
             Entities tempEntity = EH.entities.get(i);
             
-            if(tempEntity.getId() == ID.Player){
+            if(tempEntity.getId() == ID.Survivor){
                 if(key == KeyEvent.VK_W) EH.setUp(true);
                 if(key == KeyEvent.VK_A) EH.setLeft(true);
                 if(key == KeyEvent.VK_S) EH.setDown(true);        
@@ -55,7 +55,7 @@ public class Keyboard extends KeyAdapter {
         for (int i = 0; i < EH.entities.size(); i++) {
             Entities tempEntity = EH.entities.get(i);
             
-            if(tempEntity.getId() == ID.Player){
+            if(tempEntity.getId() == ID.Survivor){
                 if(key == KeyEvent.VK_W) EH.setUp(false);
                 if(key == KeyEvent.VK_A) EH.setLeft(false);
                 if(key == KeyEvent.VK_S) EH.setDown(false);        

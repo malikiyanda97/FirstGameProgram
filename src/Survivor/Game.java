@@ -14,6 +14,7 @@ import Survivor.states.MenuState;
 import Survivor.states.StateManager;
 import java.awt.Canvas;
 import java.awt.Graphics;
+import java.awt.Graphics2D;
 import java.awt.image.BufferStrategy;
 
 
@@ -103,10 +104,10 @@ public class Game extends Canvas implements Runnable {
             return;
         }
         Graphics g = bs.getDrawGraphics();
-        g.clearRect(0, 0, 1000, 563);
+        Graphics2D g2d = (Graphics2D) g;
+        //g.clearRect(0, 0, 1200, 800);
         //////////////START DRAW AREA////////////////////////////
         
-             
        if(StateManager.getState() != null){
            StateManager.getState().render(g);
        }
@@ -115,6 +116,8 @@ public class Game extends Canvas implements Runnable {
         bs.show();
         g.dispose();
     }
+    
+    
 
     public synchronized void start(){
         running = true;

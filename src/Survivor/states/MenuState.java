@@ -39,7 +39,7 @@ public class MenuState extends StateManager {
     @Override
     public void render(Graphics g) {
         g.setColor(Color.blue);
-        g.fillRect(0, 0, 1000, 800);
+        g.fillRect(0, 0, 1200, 800);
         g.setColor(Color.red);
         g.fillRect(mouse.getXMouse(), mouse.getYMouse(), 8, 8);
     }

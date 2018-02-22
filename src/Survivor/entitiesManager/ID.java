@@ -12,7 +12,7 @@ package Survivor.entitiesManager;
 public enum ID {
     
     
-    Player(),
+    Survivor(),
     Block(),
     Crate(),
     Bulllet();
