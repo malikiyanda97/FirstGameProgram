@@ -25,9 +25,9 @@ public class Images {
         nakedPlayer = nakedPlaySheet.cropImage(0, 0, 30, 60);
         
         //LEVEL 1 IMAGE
-        //Sheets levelOneSheet = new Sheets(Images.loadImage("/world_Images/level1.0.png"));
-        //levelOne = levelOneSheet.cropImage(0, 0, 64, 64);
-        levelOne = Images.loadImage("/world_Images/level1.0.png");
+        Sheets levelOneSheet = new Sheets(Images.loadImage("/world_Images/level1.0.png"));
+        levelOne = levelOneSheet.cropImage(0, 0, 64, 64);
+        //levelOne = Images.loadImage("/world_Images/level1.0.png");
         
     
     }

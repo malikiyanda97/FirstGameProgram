@@ -12,6 +12,7 @@ import Survivor.entitiesManager.EntityHandler;
 import Survivor.entitiesManager.ID;
 import Survivor.images.Camera;
 import Survivor.images.Images;
+import Survivor.input.Mouse;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
@@ -26,12 +27,14 @@ public class GameState extends StateManager {
     
     private Survivor player;
     public Camera camera;
+    public Mouse mouse;
     private EntityHandler EH; //only for keyboard use 
     
     
     public GameState(GameHandler GH, EntityHandler EH){
         super(GH);
         this.EH = EH;
+       // this.mouse = gsMouse;
         init();   
     
     }
@@ -53,8 +56,12 @@ public class GameState extends StateManager {
             }
         }
         
+//        System.out.println(mouse.getXMouse() + "    " + mouse.getYMouse());
+//        if(mouse.isLeftPressed())
+//            StateManager.setState(GH.getGame().gameState);
+        
         GH.getGameEH().update();
-
+        
        
     }
 

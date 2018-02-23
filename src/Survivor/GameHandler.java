@@ -6,6 +6,7 @@
 package Survivor;
 
 import Survivor.entitiesManager.EntityHandler;
+import Survivor.input.Mouse;
 
 /**
  *
@@ -24,6 +25,10 @@ public class GameHandler {
     
     public EntityHandler getGameEH(){
         return game.getEH();
+    }
+    
+    public Mouse getMouse(){
+        return game.getMouse();
     }
     
     
