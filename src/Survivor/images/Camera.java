@@ -27,7 +27,7 @@ public class Camera {
         
         //LOCK CAMERA
         if(x <= 0 ) x = 0;
-        if(x >= 925) x = 925;
+        if(x >= 885) x = 885;
         
         
         if(y <= 0) y = 0;
