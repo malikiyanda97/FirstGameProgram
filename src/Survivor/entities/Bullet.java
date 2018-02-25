@@ -30,8 +30,14 @@ public class Bullet extends Entities {
 
     @Override
     public void update() {
-        x-= velX;
-        x-= velY;
+        
+        // if facing Right Shoot Right  
+        x+= velX;
+        x+= velY;
+        
+//        //if facing left shoot Left
+//        x-= velX;
+//        x-= velY;
     }
 
     @Override

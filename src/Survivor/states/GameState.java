@@ -8,10 +8,12 @@ package Survivor.states;
 import Survivor.GameHandler;
 import Survivor.entities.Block;
 import Survivor.entities.Bullet;
+import Survivor.entities.Enemy;
 import Survivor.entities.Survivor;
 import Survivor.entitiesManager.Entities;
 import Survivor.entitiesManager.EntityHandler;
 import Survivor.entitiesManager.ID;
+import static Survivor.entitiesManager.ID.Enemy;
 import Survivor.images.Camera;
 import Survivor.images.Images;
 import Survivor.input.Mouse;
@@ -92,11 +94,13 @@ public class GameState extends StateManager {
                 int blue = (pixel) & 0xff;
                 
                 if(red == 255)
-                    GH.getGameEH().addEntity(new Block(ID.Block,xx*32, yy*32,GH));
+                    GH.getGameEH().addEntity(new Block(ID.Wall,xx*32, yy*32,GH));
                 
                 if(blue == 255)
                     GH.getGameEH().addEntity(new Survivor(ID.Survivor, xx*32, yy*32,GH,EH));
                 
+                if(green == 255)
+                    GH.getGameEH().addEntity(new Enemy(ID.Enemy,  xx*32, yy*32, GH));
                 
             }
            

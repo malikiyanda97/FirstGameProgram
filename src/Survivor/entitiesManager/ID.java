@@ -13,8 +13,8 @@ public enum ID {
     
     
     Survivor(),
-    Block(),
-    Crate(),
+    Wall(),
+    Enemy(),
     Bulllet();
     
 }

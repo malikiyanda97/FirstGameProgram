@@ -55,7 +55,7 @@ public class Survivor extends Entities {
             
             Entities tempObject = GH.getGameEH().entities.get(i);
             
-            if(tempObject.getId() == ID.Block){
+            if(tempObject.getId() == ID.Wall){
                 if(getBounds().intersects(tempObject.getBounds())){
                     x += velX * -1;
                     y += velY *  -1;
@@ -71,8 +71,8 @@ public class Survivor extends Entities {
     }
 
     @Override
-    public Rectangle getBounds() { //like around the character
-        return new Rectangle(x, y, 32, 48);
+    public Rectangle getBounds() { // around the character
+        return new Rectangle(x+5, y+5, 25, 50)  ;
     }
     
     private void getInput(){
