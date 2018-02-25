@@ -18,14 +18,20 @@ import java.awt.Rectangle;
  */
 public class Bullet extends Entities {
 
-    public Bullet(ID id, int x, int y, GameHandler GH) {
+    private int bulletSpeed = 50;
+    
+    public Bullet(ID id, int x, int y, GameHandler GH){
         super(id, x, y, GH);
+    
+    
+     velX = (x) / bulletSpeed;
+     velY = (y) / bulletSpeed;
     }
 
     @Override
     public void update() {
-        x+= velX;
-        x+= velY;
+        x-= velX;
+        x-= velY;
     }
 
     @Override

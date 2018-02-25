@@ -22,6 +22,7 @@ public class Survivor extends Entities {
     private EntityHandler EH;
     private GameHandler GH;
     
+    
     public Survivor(ID ID, int x, int y, GameHandler GH, EntityHandler EH) {
         super(ID, x, y, GH);
         
@@ -29,16 +30,38 @@ public class Survivor extends Entities {
         this.GH = GH;
         
     }
+    
+    public int getSurviorX(){
+        return x;
+    }
+    
+    public int getSurvivorY(){
+        return y;
+    }
 
     @Override
     public void update() {
         x += velX;
         y += velY;
         
-        
+        collision();
         
         getInput();        
         
+    }
+    
+    private void collision(){
+        for (int i = 0; i < GH.getGameEH().entities.size(); i++) {
+            
+            Entities tempObject = GH.getGameEH().entities.get(i);
+            
+            if(tempObject.getId() == ID.Block){
+                if(getBounds().intersects(tempObject.getBounds())){
+                    x += velX * -1;
+                    y += velY *  -1;
+                }
+            }   
+         }   
     }
 
     @Override
@@ -48,7 +71,7 @@ public class Survivor extends Entities {
     }
 
     @Override
-    public Rectangle getBounds() {
+    public Rectangle getBounds() { //like around the character
         return new Rectangle(x, y, 32, 48);
     }
     

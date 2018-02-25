@@ -6,6 +6,7 @@
 package Survivor;
 
 import Survivor.entitiesManager.EntityHandler;
+import Survivor.images.Camera;
 import Survivor.input.Mouse;
 
 /**
@@ -30,7 +31,7 @@ public class GameHandler {
     public Mouse getMouse(){
         return game.getMouse();
     }
-    
+ 
     
 
     public void setGame(Game game) {

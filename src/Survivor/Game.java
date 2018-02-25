@@ -6,6 +6,7 @@
 package Survivor;
 
 import Survivor.entitiesManager.EntityHandler;
+import Survivor.images.Camera;
 import Survivor.images.Images;
 import Survivor.input.Keyboard;
 import Survivor.input.Mouse;
@@ -58,7 +59,7 @@ public class Game extends Canvas implements Runnable {
         window = new Window(title, width, height, this);
         
         //MOUSE INPUT
-        mouse = new Mouse();
+        mouse = new Mouse(GH);
         this.addMouseListener(mouse);
         this.addMouseMotionListener(mouse);
         
@@ -72,7 +73,7 @@ public class Game extends Canvas implements Runnable {
         GH = new GameHandler(this);  
         
         //KEYBOARD INPUT 
-        this.addKeyListener(new Keyboard(EH));
+        this.addKeyListener(new Keyboard(EH,GH));
        
         //STATES
         gameState = new GameState(GH,EH);

@@ -7,7 +7,9 @@ package Survivor.states;
 
 import Survivor.GameHandler;
 import Survivor.entities.Block;
+import Survivor.entities.Bullet;
 import Survivor.entities.Survivor;
+import Survivor.entitiesManager.Entities;
 import Survivor.entitiesManager.EntityHandler;
 import Survivor.entitiesManager.ID;
 import Survivor.images.Camera;
@@ -27,14 +29,14 @@ public class GameState extends StateManager {
     
     private Survivor player;
     public Camera camera;
-    public Mouse mouse;
+    public Mouse gsMouse;
     private EntityHandler EH; //only for keyboard use 
     
     
     public GameState(GameHandler GH, EntityHandler EH){
         super(GH);
         this.EH = EH;
-       // this.mouse = gsMouse;
+
         init();   
     
     }
@@ -55,10 +57,7 @@ public class GameState extends StateManager {
                 
             }
         }
-        
-//        System.out.println(mouse.getXMouse() + "    " + mouse.getYMouse());
-//        if(mouse.isLeftPressed())
-//            StateManager.setState(GH.getGame().gameState);
+ 
         
         GH.getGameEH().update();
         
@@ -80,6 +79,7 @@ public class GameState extends StateManager {
         
     }
     
+    
     private void loadLevelOne(BufferedImage image){
         int w = image.getWidth();
         int h = image.getHeight();
@@ -99,7 +99,34 @@ public class GameState extends StateManager {
                 
                 
             }
+           
         }
     }
+    
+    
+    
+    
+    
+    
+    
+//        private boolean isShooting(){
+//       return false; 
+//    }
+//    
+//    private void shooting(){
+//       int mX = (int)(gsMouse.getXMouse() + camera.getX());
+//       int mY = (int)(gsMouse.getYMouse() + camera.getY());
+//       
+//        for (int i = 0; i < GH.getGameEH().entities.size(); i++) {
+//            Entities tempEntity = GH.getGameEH().entities.get(i);
+//            
+//            if(tempEntity.getId() == ID.Survivor && gsMouse.isLeftPressed()){
+//                GH.getGameEH().addEntity(new Bullet(ID.Bulllet, (int) tempEntity.getX(), (int)tempEntity.getY(), GH, mX, mY));
+//            }
+//        }
+//    }
+    
+    
+  
     
 }

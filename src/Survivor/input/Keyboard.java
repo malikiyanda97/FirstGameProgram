@@ -6,6 +6,7 @@
 package Survivor.input;
 
 import Survivor.GameHandler;
+import Survivor.entities.Bullet;
 import Survivor.entitiesManager.Entities;
 import Survivor.entitiesManager.EntityHandler;
 import Survivor.entitiesManager.ID;
@@ -25,9 +26,11 @@ public class Keyboard extends KeyAdapter {
     public boolean shoot;
     
     private EntityHandler EH;
+    private GameHandler GH;
     
-    public Keyboard(EntityHandler EH){
+    public Keyboard(EntityHandler EH, GameHandler GH){
         this.EH = EH;
+        this.GH = GH;
     }
     
     @Override
@@ -37,11 +40,26 @@ public class Keyboard extends KeyAdapter {
         for (int i = 0; i < EH.entities.size(); i++) {
             Entities tempEntity = EH.entities.get(i);
             
+            //right shooting
+             int x = (int) tempEntity.getX() + 18;
+             int y = (int) tempEntity.getY() + 20;
+              
+            //left shooting 
+//             int x = (int) tempEntity.getX() + 18;
+//             int y = (int) tempEntity.getY() + 20
+             
             if(tempEntity.getId() == ID.Survivor){
                 if(key == KeyEvent.VK_W) EH.setUp(true);
                 if(key == KeyEvent.VK_A) EH.setLeft(true);
                 if(key == KeyEvent.VK_S) EH.setDown(true);        
                 if(key == KeyEvent.VK_D) EH.setRight(true);
+                
+
+                //                
+//                
+                //shoot
+                if(key == KeyEvent.VK_SPACE) EH.addEntity(new Bullet(ID.Bulllet, x, y, GH));
+//                if(key == KeyEvent.VK_SPACE && EH.isRight())
             }
      
         }
