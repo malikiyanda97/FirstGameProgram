@@ -99,8 +99,8 @@ public class GameState extends StateManager {
                 if(blue == 255)
                     GH.getGameEH().addEntity(new Survivor(ID.Survivor, xx*32, yy*32,GH,EH));
                 
-                if(green == 255)
-                    GH.getGameEH().addEntity(new Enemy(ID.Enemy,  xx*32, yy*32, GH));
+                //if(green == 255)
+                    ///todo - add homes/base
                 
             }
            
