@@ -15,6 +15,7 @@ public enum ID {
     Survivor(),
     Wall(),
     Enemy(),
+    Base,
     Bulllet();
     
 }

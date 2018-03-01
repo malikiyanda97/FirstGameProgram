@@ -15,7 +15,9 @@ import java.util.*;
 public class EntityHandler {
     
     private boolean up=false, down = false, right = false, left = false; 
+    private boolean isShooting=false;
 
+  
 
     public LinkedList<Entities> entities = new LinkedList<Entities>();
     
@@ -82,6 +84,15 @@ public class EntityHandler {
         this.left = left;
     }
     
+    
+    public boolean isIsShooting() {
+        return isShooting;
+    }
+
+    public void setIsShooting(boolean isShooting) {
+        this.isShooting = isShooting;
+    }
+
     
     
     

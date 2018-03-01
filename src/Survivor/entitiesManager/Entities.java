@@ -30,7 +30,7 @@ public abstract class Entities {
         
     }
 
-    
+    public abstract void collision();
     public abstract void update();
     public abstract void render(Graphics g);
     public abstract Rectangle getBounds();

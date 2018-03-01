@@ -10,7 +10,9 @@ import Survivor.entitiesManager.Entities;
 import Survivor.entitiesManager.EntityHandler;
 import Survivor.entitiesManager.ID;
 import Survivor.images.Images;
+import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.Graphics2D;
 import java.awt.Rectangle;
 
 /**
@@ -30,14 +32,7 @@ public class Survivor extends Entities {
         this.GH = GH;
         
     }
-    
-    public int getSurviorX(){
-        return x;
-    }
-    
-    public int getSurvivorY(){
-        return y;
-    }
+   
 
     @Override
     public void update() {
@@ -50,29 +45,44 @@ public class Survivor extends Entities {
         
     }
     
-    private void collision(){
+    @Override
+    public void collision(){
         for (int i = 0; i < GH.getGameEH().entities.size(); i++) {
             
-            Entities tempObject = GH.getGameEH().entities.get(i);
+            Entities tempEntity = GH.getGameEH().entities.get(i);
             
-            if(tempObject.getId() == ID.Wall){
-                if(getBounds().intersects(tempObject.getBounds())){
+            if(tempEntity.getId() == ID.Wall){
+                if(getBounds().intersects(tempEntity.getBounds())){
+                    System.out.println("wall in the way");
                     x += velX * -1;
                     y += velY *  -1;
                 }
-            }   
+            }
+            
+            
+            if(tempEntity.getId() == ID.Wall){
+                if(getBounds().intersects(tempEntity.getBounds())){
+                    System.out.println("Enemy in the way");
+                }
+            }
          }   
     }
 
     @Override
     public void render(Graphics g) {
         g.drawImage(Images.nakedPlayer, x, y, null);
+        System.out.println("player co-ords "+ x + " , " + y);
+        
+        
+        Graphics2D g2d = (Graphics2D) g;
+        g.setColor(Color.white);
+        g2d.draw(getBounds());
        
     }
 
     @Override
     public Rectangle getBounds() { // around the character
-        return new Rectangle(x+5, y+5, 25, 50)  ;
+        return new Rectangle(x+5, y+5, 25, 52)  ;
     }
     
     private void getInput(){
@@ -88,10 +98,15 @@ public class Survivor extends Entities {
         else if(!EH.isLeft()) velX = 0;
         
         if(EH.isLeft()) velX = -5;
-        else if(!EH.isRight()) velX = 0;         
+        else if(!EH.isRight()) velX = 0;  
+        
+//        if(EH.isIsShooting()){
+//            GH.getGameEH().addEntity(new Bullet(ID, x, y, GH));
+//            }
+        }
     
     }
     
     
-}
+
 

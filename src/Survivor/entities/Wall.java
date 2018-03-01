@@ -10,15 +10,16 @@ import Survivor.entitiesManager.Entities;
 import Survivor.entitiesManager.ID;
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.Graphics2D;
 import java.awt.Rectangle;
 
 /**
  *
  * @author miyan
  */
-public class Block extends Entities {
+public class Wall extends Entities {
 
-    public Block(ID id, int x, int y, GameHandler GH) {
+    public Wall(ID id, int x, int y, GameHandler GH) {
         super(id, x, y, GH);
     }
 
@@ -29,12 +30,22 @@ public class Block extends Entities {
     @Override
     public void render(Graphics g) {
         g.setColor(Color.black);
-        g.fillRect(x, y, 64, 64);
+        g.fillRect(x, y, 32, 32);
+        
+        Graphics2D g2d = (Graphics2D) g;
+        g.setColor(Color.red);
+        
+        
+        g2d.draw(getBounds());
     }
 
     @Override
     public Rectangle getBounds() {
-        return new Rectangle(x,y,64,64);
+        return new Rectangle(x,y,32,32);
+    }
+
+    @Override
+    public void collision() {
     }
     
 }

@@ -8,6 +8,7 @@ package Survivor;
 import Survivor.entitiesManager.EntityHandler;
 import Survivor.images.Camera;
 import Survivor.input.Mouse;
+import Survivor.states.GameState;
 
 /**
  *
@@ -16,9 +17,11 @@ import Survivor.input.Mouse;
 public class GameHandler {
     
     private Game game;
+    private GameState gameState;
 
-    public GameHandler(Game game){
+    public GameHandler(Game game, GameState gameState){
         this.game = game;  
+        this.gameState = gameState;
     }
 
     
@@ -31,8 +34,7 @@ public class GameHandler {
     public Mouse getMouse(){
         return game.getMouse();
     }
- 
-    
+     
 
     public void setGame(Game game) {
         this.game = game;

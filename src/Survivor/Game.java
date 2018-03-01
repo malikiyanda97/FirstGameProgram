@@ -32,6 +32,8 @@ public class Game extends Canvas implements Runnable {
    
     public int width, height;
     private final String title;
+    
+    public Camera camera;
           
     //STATES
     public  StateManager State;
@@ -59,10 +61,10 @@ public class Game extends Canvas implements Runnable {
         window = new Window(title, width, height, this);
         
         //MOUSE INPUT
-        mouse = new Mouse(GH);
-        this.addMouseListener(mouse);
+        mouse = new Mouse(GH, camera);
+        this.addMouseListener(mouse);       
         this.addMouseMotionListener(mouse);
-        
+      
         //IMAGES
         Images.init();
         
@@ -70,15 +72,15 @@ public class Game extends Canvas implements Runnable {
         EH = new EntityHandler();
         
         //GAME HANDLER
-        GH = new GameHandler(this);  
+        GH = new GameHandler(this, gameState);  
         
         //KEYBOARD INPUT 
-        this.addKeyListener(new Keyboard(EH,GH));
+        this.addKeyListener(new Keyboard(EH,GH,camera));
        
         //STATES
         gameState = new GameState(GH,EH);
         menuState = new MenuState(mouse,GH);
-        StateManager.setState(menuState);        
+        StateManager.setState(gameState);        
         
         
         

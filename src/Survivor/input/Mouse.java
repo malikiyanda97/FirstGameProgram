@@ -6,6 +6,7 @@
 package Survivor.input;
 
 import Survivor.GameHandler;
+import Survivor.images.Camera;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
@@ -19,10 +20,17 @@ public class Mouse implements MouseListener, MouseMotionListener{
     private boolean leftPressed, rightPressed;
     private int mX, mY;
     
+    private Camera camera;
+    
     private GameHandler GH;
     
-    public Mouse(GameHandler GH){
+    public Mouse(GameHandler GH, Camera camera){
         this.GH = GH;
+        this.camera = camera;
+        
+        
+        
+        
     }
     
     
@@ -33,6 +41,7 @@ public class Mouse implements MouseListener, MouseMotionListener{
 
     @Override
     public void mousePressed(MouseEvent e) {
+       
         if(e.getButton() ==  MouseEvent.BUTTON1)
             leftPressed = true;
         else if(e.getButton() == MouseEvent.BUTTON3)

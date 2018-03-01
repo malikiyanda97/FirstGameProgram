@@ -22,7 +22,7 @@ public class Images {
         
         //PLAYER SPRITESHEETS AND IMAGES
         Sheets nakedPlaySheet = new Sheets(Images.loadImage("/player_Images/naked.png"));
-        nakedPlayer = nakedPlaySheet.cropImage(0, 0, 30, 60);
+        nakedPlayer = nakedPlaySheet.cropImage(0, 60*3, 30, 60);
         
         //LEVEL 1 IMAGE
         Sheets levelOneSheet = new Sheets(Images.loadImage("/world_Images/Wave1.png"));
