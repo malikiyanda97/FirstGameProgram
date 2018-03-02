@@ -7,6 +7,7 @@
             <file>file:/C:/Users/miyan/OneDrive/3.3rd%20Year%20Modules/0.Final%20Year%20Project/2.Final%20Year%20Project%20Game/Survivor/src/Survivor/states/MenuItem.java</file>
             <file>file:/C:/Users/miyan/OneDrive/3.3rd%20Year%20Modules/0.Final%20Year%20Project/2.Final%20Year%20Project%20Game/Survivor/src/Survivor/entitiesManager/ID.java</file>
             <file>file:/C:/Users/miyan/OneDrive/3.3rd%20Year%20Modules/0.Final%20Year%20Project/2.Final%20Year%20Project%20Game/Survivor/src/Survivor/entities/Survivor.java</file>
+            <file>file:/C:/Users/miyan/OneDrive/3.3rd%20Year%20Modules/0.Final%20Year%20Project/2.Final%20Year%20Project%20Game/Survivor/res/player_Images/enemyDrone.png</file>
             <file>file:/C:/Users/miyan/OneDrive/3.3rd%20Year%20Modules/0.Final%20Year%20Project/2.Final%20Year%20Project%20Game/Survivor/src/Survivor/states/StateManager.java</file>
             <file>file:/C:/Users/miyan/OneDrive/3.3rd%20Year%20Modules/0.Final%20Year%20Project/2.Final%20Year%20Project%20Game/Survivor/src/Survivor/input/Keyboard.java</file>
             <file>file:/C:/Users/miyan/OneDrive/3.3rd%20Year%20Modules/0.Final%20Year%20Project/2.Final%20Year%20Project%20Game/Survivor/src/Survivor/states/MenuState.java</file>
@@ -19,12 +20,13 @@
             <file>file:/C:/Users/miyan/OneDrive/3.3rd%20Year%20Modules/0.Final%20Year%20Project/2.Final%20Year%20Project%20Game/Survivor/src/Survivor/MainLauncher.java</file>
             <file>file:/C:/Users/miyan/OneDrive/3.3rd%20Year%20Modules/0.Final%20Year%20Project/2.Final%20Year%20Project%20Game/Survivor/src/Survivor/entities/Wall.java</file>
             <file>file:/C:/Users/miyan/OneDrive/3.3rd%20Year%20Modules/0.Final%20Year%20Project/2.Final%20Year%20Project%20Game/Survivor/src/Survivor/input/Mouse.java</file>
-            <file>file:/C:/Users/miyan/OneDrive/3.3rd%20Year%20Modules/0.Final%20Year%20Project/2.Final%20Year%20Project%20Game/Survivor/src/Survivor/entities/Enemy.java</file>
             <file>file:/C:/Users/miyan/OneDrive/3.3rd%20Year%20Modules/0.Final%20Year%20Project/2.Final%20Year%20Project%20Game/Survivor/src/Survivor/GameHandler.java</file>
             <file>file:/C:/Users/miyan/OneDrive/3.3rd%20Year%20Modules/0.Final%20Year%20Project/2.Final%20Year%20Project%20Game/Survivor/src/Survivor/entitiesManager/Entities.java</file>
             <file>file:/C:/Users/miyan/OneDrive/3.3rd%20Year%20Modules/0.Final%20Year%20Project/2.Final%20Year%20Project%20Game/Survivor/res/world_Images/Wave1.png</file>
+            <file>file:/C:/Users/miyan/OneDrive/3.3rd%20Year%20Modules/0.Final%20Year%20Project/2.Final%20Year%20Project%20Game/Survivor/src/Survivor/entities/Drone.java</file>
             <file>file:/C:/Users/miyan/OneDrive/3.3rd%20Year%20Modules/0.Final%20Year%20Project/2.Final%20Year%20Project%20Game/Survivor/src/Survivor/states/GameState.java</file>
             <file>file:/C:/Users/miyan/OneDrive/3.3rd%20Year%20Modules/0.Final%20Year%20Project/2.Final%20Year%20Project%20Game/Survivor/src/Survivor/images/Images.java</file>
+            <file>file:/C:/Users/miyan/OneDrive/3.3rd%20Year%20Modules/0.Final%20Year%20Project/2.Final%20Year%20Project%20Game/Survivor/res/player_Images/playerTank.png</file>
         </group>
     </open-files>
 </project-private>

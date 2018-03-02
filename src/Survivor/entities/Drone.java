@@ -8,6 +8,7 @@ package Survivor.entities;
 import Survivor.GameHandler;
 import Survivor.entitiesManager.Entities;
 import Survivor.entitiesManager.ID;
+import Survivor.images.Images;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
@@ -17,11 +18,11 @@ import java.awt.Rectangle;
  *
  * @author miyan
  */
-public class Enemy extends Entities {
+public class Drone extends Entities {
     
-    int health = 100;
+    int health = 200;
     
-    public Enemy(ID id, int x, int y, GameHandler GH) {
+    public Drone(ID id, int x, int y, GameHandler GH) {
         super(id, x, y, GH);
     }
 
@@ -40,8 +41,11 @@ public class Enemy extends Entities {
 
     @Override
     public void render(Graphics g) {
-        g.setColor(Color.YELLOW);
-        g.fillRect(x, y, 32, 32);
+        
+        g.drawImage(Images.droneEnemy, x, y, null);
+//        g.setColor(Color.YELLOW);
+//        g.fillRect(x, y, 32, 32);
+
         
         g.setColor(Color.red);
         Graphics2D g2d = (Graphics2D) g;
@@ -50,7 +54,7 @@ public class Enemy extends Entities {
 
     @Override
     public Rectangle getBounds() {
-        return new Rectangle(x,y,32,32);
+        return new Rectangle(x+5,y,48,50);
     }  
 
     @Override

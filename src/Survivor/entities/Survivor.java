@@ -100,9 +100,7 @@ public class Survivor extends Entities {
         if(EH.isLeft()) velX = -5;
         else if(!EH.isRight()) velX = 0;  
         
-//        if(EH.isIsShooting()){
-//            GH.getGameEH().addEntity(new Bullet(ID, x, y, GH));
-//            }
+
         }
     
     }

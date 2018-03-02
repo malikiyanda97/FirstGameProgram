@@ -8,7 +8,7 @@ package Survivor.states;
 import Survivor.GameHandler;
 import Survivor.entities.Base;
 import Survivor.entities.Wall;
-import Survivor.entities.Enemy;
+import Survivor.entities.Drone;
 import Survivor.entities.Survivor;
 import Survivor.entitiesManager.Entities;
 import Survivor.entitiesManager.EntityHandler;
@@ -104,7 +104,7 @@ public class GameState extends StateManager {
                     GH.getGameEH().addEntity(new Survivor(ID.Survivor, xx*32, yy*32,GH,EH));
                 
                 if(green == 255 & blue == 0)
-                    GH.getGameEH().addEntity(new Enemy(ID.Enemy, xx*32, yy*32,GH));
+                    GH.getGameEH().addEntity(new Drone(ID.Enemy, xx*32, yy*32,GH));
                                 
                 if(green == 255 & blue == 255)
                     GH.getGameEH().addEntity(new Base((ID.Base), xx*32, yy*32, GH));

@@ -16,6 +16,8 @@ import javax.imageio.ImageIO;
 public class Images {
     
     public static BufferedImage nakedPlayer;
+    public static BufferedImage demonEnemy;
+    public static BufferedImage droneEnemy;
     public static BufferedImage levelOne;
     
     public static void init(){
@@ -24,10 +26,20 @@ public class Images {
         Sheets nakedPlaySheet = new Sheets(Images.loadImage("/player_Images/naked.png"));
         nakedPlayer = nakedPlaySheet.cropImage(0, 60*3, 30, 60);
         
+        //Enemy Demon Sprite Sheet 
+        Sheets demonSheets = new Sheets(Images.loadImage("/player_Images/enemyDemon.png"));
+        demonEnemy = demonSheets.cropImage(0, 0, 64, 64);
+        
+        
+         //Enemy Demon Sprite Sheet 
+        Sheets droneSheets = new Sheets(Images.loadImage("/player_Images/enemyDrone.png"));
+        droneEnemy = droneSheets.cropImage(0, 0, 55, 50);
+        
         //LEVEL 1 IMAGE
         Sheets levelOneSheet = new Sheets(Images.loadImage("/world_Images/Wave1.png"));
         levelOne = levelOneSheet.cropImage(0, 0, 64, 64);
         //levelOne = Images.loadImage("/world_Images/level1.0.png");
+        
         
     
     }
