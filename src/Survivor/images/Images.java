@@ -19,6 +19,13 @@ public class Images {
     public static BufferedImage demonEnemy;
     public static BufferedImage droneEnemy;
     public static BufferedImage levelOne;
+    public static BufferedImage castleBase;
+    public static BufferedImage Background;
+    public static BufferedImage ground;
+    public static BufferedImage stones;    
+    public static BufferedImage grass;  
+    public static BufferedImage highGrass;
+    public static BufferedImage walls;
     
     public static void init(){
         
@@ -31,9 +38,26 @@ public class Images {
         demonEnemy = demonSheets.cropImage(0, 0, 64, 64);
         
         
-         //Enemy Demon Sprite Sheet 
+         //Enemy Drone Sprite Sheet 
         Sheets droneSheets = new Sheets(Images.loadImage("/player_Images/enemyDrone.png"));
         droneEnemy = droneSheets.cropImage(0, 0, 55, 50);
+
+        //Castle Base Sprite Sheet 
+        Sheets baseSheet = new Sheets(Images.loadImage("/base_Images/base1.PNG"));
+        castleBase = baseSheet.cropImage(0, 0, 252, 190);
+        
+        //background Sprite Sheets 
+        Sheets backSheet = new Sheets(Images.loadImage("/world_Images/background.png"));
+        Sheets wallSheet = new Sheets(Images.loadImage("/world_Images/picwall.png"));
+        Background = backSheet.cropImage(0, 0, 32*4, 64);
+        ground = backSheet.cropImage(0, 64, 90, 86);
+        stones = backSheet.cropImage(64*17, 180, 64, 64);
+        grass = backSheet.cropImage(90, 64*10, 70,90);
+        highGrass = backSheet.cropImage(980, 400, 80,80);
+        
+        walls = wallSheet.cropImage(0, 0, 32, 32);
+       
+        
         
         //LEVEL 1 IMAGE
         Sheets levelOneSheet = new Sheets(Images.loadImage("/world_Images/Wave1.png"));

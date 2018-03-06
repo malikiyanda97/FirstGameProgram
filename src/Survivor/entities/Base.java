@@ -10,7 +10,9 @@ import Survivor.entitiesManager.Entities;
 import Survivor.entitiesManager.ID;
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.Graphics2D;
 import java.awt.Rectangle;
+import Survivor.images.Images;
 
 /**
  *
@@ -54,14 +56,20 @@ public class Base extends Entities {
 
     @Override
     public void render(Graphics g) {
-        g.setColor(Color.green);
-        g.fillRect(x, y, 64, 64);
+        g.drawImage(Images.castleBase, x, y, null);
+//        g.setColor(Color.green);
+//        g.fillRect(x, y, 64*3, 64*3);
+        
+        
+        g.setColor(Color.red);
+        Graphics2D g2d = (Graphics2D) g;
+        g2d.draw(getBounds());
         
     }
 
     @Override
     public Rectangle getBounds() {
-        return new Rectangle(x,y,64,64);
+        return new Rectangle(x,y,Images.castleBase.getWidth(),Images.castleBase.getHeight());
     }
 
     @Override

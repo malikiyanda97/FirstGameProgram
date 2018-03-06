@@ -8,6 +8,7 @@ package Survivor.entities;
 import Survivor.GameHandler;
 import Survivor.entitiesManager.Entities;
 import Survivor.entitiesManager.ID;
+import Survivor.images.Images;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
@@ -29,14 +30,15 @@ public class Wall extends Entities {
 
     @Override
     public void render(Graphics g) {
-        g.setColor(Color.black);
-        g.fillRect(x, y, 32, 32);
+//        g.setColor(Color.black);
+//        g.fillRect(x, y, 32, 32);
+        g.drawImage(Images.walls, x, y, null);
         
         Graphics2D g2d = (Graphics2D) g;
         g.setColor(Color.red);
         
         
-        g2d.draw(getBounds());
+//        g2d.draw(getBounds());
     }
 
     @Override

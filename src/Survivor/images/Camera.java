@@ -21,17 +21,17 @@ public class Camera {
     }
     
     public void update(Entities entities){
-        x += ((entities.getX() -x ) -  1200/2)*0.05f;
-        y += ((entities.getY() -y ) -  800/2)*0.05f;
+        x += ((entities.getX() -x ) -  1400/2)*0.05f;
+        y += ((entities.getY() -y ) -  1000/2)*0.05f;
         
         
         //LOCK CAMERA
         if(x <= 0 ) x = 0;
-        if(x >= 885) x = 885;
+        if(x >=650) x = 650;
         
         
         if(y <= 0) y = 0;
-        if(y >= 295) y = 295;
+        if(y >= 50) y = 50;
         
     }
     

@@ -68,12 +68,19 @@ public class GameState extends StateManager {
 
     @Override
     public void render(Graphics g) {
-        g.setColor(Color.LIGHT_GRAY);
-        g.fillRect(0, 0, 1200, 800);
+//        g.setColor(Color.LIGHT_GRAY);
+//        g.fillRect(0, 0, 1400, 1000);
         
         Graphics2D g2d = (Graphics2D) g;
         
         g2d.translate(-camera.getX(), -camera.getY());
+        
+        for (int xx = 0; xx < 1400 + camera.getX(); xx+=64) {
+            for(int yy = 0; yy< 1000+ camera.getY(); yy+= 64){
+                g.drawImage(Images.grass, xx, yy, null);
+            }
+                
+       }
         
         GH.getGameEH().render(g);
         

@@ -89,6 +89,7 @@ public class Game extends Canvas implements Runnable {
     @Override
     public void run(){
         gameLoop();
+        stop(); //Stops the thread.
     }
     
     public void update(){
@@ -123,14 +124,14 @@ public class Game extends Canvas implements Runnable {
     
 
     public synchronized void start(){
-        running = true;
+        if(!running) running = true; //Start Game
         thread = new Thread(this);
         thread.start();
         
     }
     
     public synchronized void stop(){
-        running = false;
+        if(running) running = false; //Stop Game
         try {
             thread.join();
         } catch (InterruptedException ex) {
