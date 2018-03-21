@@ -7,7 +7,7 @@ package Survivor.entities;
 
 import Survivor.GameHandler;
 import Survivor.entitiesManager.Entities;
-import Survivor.entitiesManager.ID;
+import Survivor.Enums;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
@@ -22,7 +22,7 @@ public class Bullet extends Entities {
     private int bulletSpeed = 50;
     private int x, y;
     
-    public Bullet(ID id, int x, int y, GameHandler GH){
+    public Bullet(Enums id, int x, int y, GameHandler GH){
         super(id, x, y, GH);
         
         this.x = x;

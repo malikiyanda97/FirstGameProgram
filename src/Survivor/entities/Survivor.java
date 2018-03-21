@@ -8,7 +8,7 @@ package Survivor.entities;
 import Survivor.GameHandler;
 import Survivor.entitiesManager.Entities;
 import Survivor.entitiesManager.EntityHandler;
-import Survivor.entitiesManager.ID;
+import Survivor.Enums;
 import Survivor.images.Images;
 import java.awt.Color;
 import java.awt.Graphics;
@@ -24,14 +24,19 @@ public class Survivor extends Entities {
     private EntityHandler EH;
     private GameHandler GH;
     
+    public float x;
+    public float y;
     
-    public Survivor(ID ID, int x, int y, GameHandler GH, EntityHandler EH) {
+    
+    public Survivor(Enums ID, int x, int y, GameHandler GH, EntityHandler EH) {
         super(ID, x, y, GH);
-        
+        this.x = x;
+        this.y = y;
         this.EH = EH;
         this.GH = GH;
         
     }
+
    
 
     @Override
@@ -70,7 +75,7 @@ public class Survivor extends Entities {
 
     @Override
     public void render(Graphics g) {
-        g.drawImage(Images.nakedPlayer, x, y, null);
+        g.drawImage(Images.nakedPlayer, (int)x, (int)y, null);
         System.out.println("player co-ords "+ x + " , " + y);
         
         
@@ -82,7 +87,7 @@ public class Survivor extends Entities {
 
     @Override
     public Rectangle getBounds() { // around the character
-        return new Rectangle(x+5, y+5, 25, 52)  ;
+        return new Rectangle((int)(x+5), (int)(y+5), 25, 52)  ;
     }
     
     private void getInput(){
@@ -102,7 +107,23 @@ public class Survivor extends Entities {
         
 
         }
-    
+//getters and setters
+
+    public float getX() {
+        return x;
+    }
+
+    public void setX(float x) {
+        this.x = x;
+    }
+
+    public float getY() {
+        return y;
+    }
+
+    public void setY(float y) {
+        this.y = y;
+    }    
     }
     
     

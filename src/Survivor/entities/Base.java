@@ -7,7 +7,7 @@ package Survivor.entities;
 
 import Survivor.GameHandler;
 import Survivor.entitiesManager.Entities;
-import Survivor.entitiesManager.ID;
+import Survivor.Enums;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
@@ -22,7 +22,7 @@ public class Base extends Entities {
 
     private int baseStrength = 100;
     
-    public Base(ID id, int x, int y, GameHandler GH) {
+    public Base(Enums id, int x, int y, GameHandler GH) {
         super(id, x, y, GH);
     }
 
@@ -37,12 +37,13 @@ public class Base extends Entities {
             if(tempEntity.getId() == ID.Enemy){
                 if(getBounds().intersects(tempEntity.getBounds())){
                     baseStrength -= 25;
+                    
                 }
             }
         }
         
         if(baseStrength <= 0){
-            GH.getGameEH().entities.remove(this);
+            System.out.println("game over");
         }
      
         
@@ -57,11 +58,12 @@ public class Base extends Entities {
     @Override
     public void render(Graphics g) {
         g.drawImage(Images.castleBase, x, y, null);
+        System.out.println("base co-ords "+ x + " , " + y);
 //        g.setColor(Color.green);
 //        g.fillRect(x, y, 64*3, 64*3);
         
         
-        g.setColor(Color.red);
+        g.setColor(Color.white);
         Graphics2D g2d = (Graphics2D) g;
         g2d.draw(getBounds());
         

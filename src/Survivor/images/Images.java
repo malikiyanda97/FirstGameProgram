@@ -43,7 +43,7 @@ public class Images {
         droneEnemy = droneSheets.cropImage(0, 0, 55, 50);
 
         //Castle Base Sprite Sheet 
-        Sheets baseSheet = new Sheets(Images.loadImage("/base_Images/base1.PNG"));
+        Sheets baseSheet = new Sheets(Images.loadImage("/base_Images/cityBase.jpg"));
         castleBase = baseSheet.cropImage(0, 0, 252, 190);
         
         //background Sprite Sheets 

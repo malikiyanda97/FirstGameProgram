@@ -1,4 +1,4 @@
-/*
+ /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
@@ -12,7 +12,7 @@ import Survivor.entities.Drone;
 import Survivor.entities.Survivor;
 import Survivor.entitiesManager.Entities;
 import Survivor.entitiesManager.EntityHandler;
-import Survivor.entitiesManager.ID;
+import Survivor.Enums;
 import Survivor.images.Camera;
 import Survivor.images.Images;
 import java.awt.Color;
@@ -27,7 +27,7 @@ import java.awt.image.BufferedImage;
 public class GameState extends StateManager {
     
     
-    private Survivor player;
+    public Survivor player;
     public Camera camera;
     private EntityHandler EH; //only for keyboard use 
     
@@ -55,7 +55,7 @@ public class GameState extends StateManager {
         for(int i = 0; i < GH.getGameEH().entities.size(); i++){
             Entities tempEntity = GH.getGameEH().entities.get(i);
             
-            if(GH.getGameEH().entities.get(i).getId() == ID.Survivor){
+            if(GH.getGameEH().entities.get(i).getId() == Enums.Survivor){
                 camera.update(GH.getGameEH().entities.get(i));
                 
             }
@@ -105,23 +105,26 @@ public class GameState extends StateManager {
                
                 
                 if(red == 255)
-                    GH.getGameEH().addEntity(new Wall(ID.Wall,xx*32, yy*32,GH));
+                    GH.getGameEH().addEntity(new Wall(Enums.Wall,xx*32, yy*32,GH));
                 
                 if(blue == 255 & green == 0)
-                    GH.getGameEH().addEntity(new Survivor(ID.Survivor, xx*32, yy*32,GH,EH));
+                    GH.getGameEH().addEntity(new Survivor(Enums.Survivor, xx*32, yy*32,GH,EH));
                 
                 if(green == 255 & blue == 0)
-                    GH.getGameEH().addEntity(new Drone(ID.Enemy, xx*32, yy*32,GH));
+                    GH.getGameEH().addEntity(new Drone(Enums.Enemy, xx*32, yy*32,GH));
                                 
                 if(green == 255 & blue == 255)
-                    GH.getGameEH().addEntity(new Base((ID.Base), xx*32, yy*32, GH));
+                    GH.getGameEH().addEntity(new Base((Enums.Base), xx*32, yy*32, GH));
                                 
             }
            
         }
     }
     
+    //getters and setters 
     
-
+    public Survivor player(){
+        return player;  
+    }
     
 }

@@ -80,7 +80,7 @@ public class Game extends Canvas implements Runnable {
         //STATES
         gameState = new GameState(GH,EH);
         menuState = new MenuState(mouse,GH);
-        StateManager.setState(gameState);        
+        StateManager.setState(menuState);        
         
         
         
@@ -144,14 +144,17 @@ public class Game extends Canvas implements Runnable {
        init();
        this.requestFocus();
        long lastTime = System.nanoTime();
-       double amountofTicks = 60.0;
-       double ns = 1000000000 / amountofTicks;
+       
+       double FPS = 60.0;
+       double ticksPerSecond = 1000000000 / FPS;
+       
        double delta = 0;
        long timer = System.currentTimeMillis();
        int frames = 0;
+       
        while(running){
            long now  = System.nanoTime();
-            delta += (now - lastTime) / ns;
+            delta += (now - lastTime) / ticksPerSecond;
             lastTime = now;
             while(delta >= 1){
                 update();

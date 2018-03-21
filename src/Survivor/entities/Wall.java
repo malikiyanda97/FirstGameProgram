@@ -7,7 +7,7 @@ package Survivor.entities;
 
 import Survivor.GameHandler;
 import Survivor.entitiesManager.Entities;
-import Survivor.entitiesManager.ID;
+import Survivor.Enums;
 import Survivor.images.Images;
 import java.awt.Color;
 import java.awt.Graphics;
@@ -20,7 +20,7 @@ import java.awt.Rectangle;
  */
 public class Wall extends Entities {
 
-    public Wall(ID id, int x, int y, GameHandler GH) {
+    public Wall(Enums id, int x, int y, GameHandler GH) {
         super(id, x, y, GH);
     }
 

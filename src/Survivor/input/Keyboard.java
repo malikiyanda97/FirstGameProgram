@@ -9,7 +9,7 @@ import Survivor.GameHandler;
 import Survivor.entities.Bullet;
 import Survivor.entitiesManager.Entities;
 import Survivor.entitiesManager.EntityHandler;
-import Survivor.entitiesManager.ID;
+import Survivor.Enums;
 import Survivor.images.Camera;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
@@ -44,7 +44,7 @@ public class Keyboard extends KeyAdapter{
             
  
              
-            if(tempEntity.getId() == ID.Survivor){
+            if(tempEntity.getId() == Enums.Survivor){
                 
                 if(key == KeyEvent.VK_W) EH.setUp(true);
                 if(key == KeyEvent.VK_A) EH.setLeft(true);
@@ -60,7 +60,7 @@ public class Keyboard extends KeyAdapter{
                 int x = (int) ((int) tempEntity.getX()+ 18);
                 int y = (int) ((int) tempEntity.getY()+ 20);   
                 if(key == KeyEvent.VK_SPACE) 
-                    GH.getGameEH().addEntity(new Bullet(ID.Bulllet, x, y, GH));
+                    GH.getGameEH().addEntity(new Bullet(Enums.Bulllet, x, y, GH));
             }
      
         }
@@ -74,7 +74,7 @@ public class Keyboard extends KeyAdapter{
         for (int i = 0; i < EH.entities.size(); i++) {
             Entities tempEntity = EH.entities.get(i);
             
-            if(tempEntity.getId() == ID.Survivor){
+            if(tempEntity.getId() == Enums.Survivor){
                 if(key == KeyEvent.VK_W) EH.setUp(false);
                 if(key == KeyEvent.VK_A) EH.setLeft(false);
                 if(key == KeyEvent.VK_S) EH.setDown(false);        
