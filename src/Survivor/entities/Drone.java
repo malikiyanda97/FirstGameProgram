@@ -39,7 +39,7 @@ public class Drone extends Entities {
 //        System.out.println("player "+ playerX + " , " + playerY);
     @Override
     public void update() {
-        
+
         for (int i = 0; i < GH.getGameEH().entities.size(); i++) {
             Entities tempEnttity = GH.getGameEH().entities.get(i);
             
@@ -102,7 +102,7 @@ public class Drone extends Entities {
             }    
             if(tempEntity.getId() == ID.Enemy){
                 if(getBounds().intersects(tempEntity.getBounds())){
-                    
+                    //todo : if enemies collide
                 }
                 
                 

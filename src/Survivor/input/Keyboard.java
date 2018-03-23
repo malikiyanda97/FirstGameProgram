@@ -10,7 +10,6 @@ import Survivor.entities.Bullet;
 import Survivor.entitiesManager.Entities;
 import Survivor.entitiesManager.EntityHandler;
 import Survivor.Enums;
-import Survivor.images.Camera;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 
@@ -26,11 +25,9 @@ public class Keyboard extends KeyAdapter{
     
     private GameHandler GH;
     private EntityHandler EH;
-    private Camera camera;
     
 
-    public Keyboard(EntityHandler EH, GameHandler GH, Camera camera){
-        this.camera = camera;
+    public Keyboard(EntityHandler EH, GameHandler GH){
         this.EH = EH;
         this.GH = GH;
     }

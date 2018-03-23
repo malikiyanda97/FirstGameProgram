@@ -61,7 +61,7 @@ public class Game extends Canvas implements Runnable {
         window = new Window(title, width, height, this);
         
         //MOUSE INPUT
-        mouse = new Mouse(GH, camera);
+        mouse = new Mouse(GH);
         this.addMouseListener(mouse);       
         this.addMouseMotionListener(mouse);
       
@@ -75,7 +75,7 @@ public class Game extends Canvas implements Runnable {
         GH = new GameHandler(this, gameState);  
         
         //KEYBOARD INPUT 
-        this.addKeyListener(new Keyboard(EH,GH,camera));
+        this.addKeyListener(new Keyboard(EH,GH));
        
         //STATES
         gameState = new GameState(GH,EH);

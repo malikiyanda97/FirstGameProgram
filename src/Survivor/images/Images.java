@@ -26,6 +26,7 @@ public class Images {
     public static BufferedImage grass;  
     public static BufferedImage highGrass;
     public static BufferedImage walls;
+    public static BufferedImage menuWallpaper;
     
     public static void init(){
         
@@ -45,6 +46,10 @@ public class Images {
         //Castle Base Sprite Sheet 
         Sheets baseSheet = new Sheets(Images.loadImage("/base_Images/cityBase.jpg"));
         castleBase = baseSheet.cropImage(0, 0, 252, 190);
+        
+        //Menu Wallpaper
+       menuWallpaper = Images.loadImage("/menu_Images/abstract.png");
+        
         
         //background Sprite Sheets 
         Sheets backSheet = new Sheets(Images.loadImage("/world_Images/background.png"));
