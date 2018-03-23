@@ -5,9 +5,10 @@
  */
 package Survivor.menu;
 
+import Survivor.GameHandler;
+import Survivor.images.Images;
 import java.awt.Color;
 import java.awt.Font;
-import java.awt.FontMetrics;
 import java.awt.Graphics;
 
 /**
@@ -16,37 +17,50 @@ import java.awt.Graphics;
  */
 public class Menu {
     
-    private static final int WIDTH = 1400;
-    private static final int HEIGHT = 1000;
+    GameHandler GH;
+    private int RENDERING_GAP = 70;
+    private final MenuButton[] options;
+    private int Selection;
     
-    public static void drawString(Graphics g, Font f, Color c, String text, int x, int y){
-        g.setColor(c);
-        g.setFont(f);
-        g.drawString(text, x,y);
+    
+    public Menu(GameHandler GH){
+        this.GH = GH;   
+        options = new MenuButton[3];
+           
+        //MENU OPTION
+        options[0] = new MenuButton("PLAY", 100, 
+                     new Font("Cambria", Font.PLAIN, 40), new Font("Cambria", Font.BOLD, 40), 
+                     Color.WHITE, Color.GRAY, GH);
+        options[1] = new MenuButton("OPTIONS", 100 + 1* RENDERING_GAP, 
+                     new Font("Cambria", Font.PLAIN, 40), new Font("Cambria", Font.BOLD, 40), 
+                     Color.WHITE, Color.GRAY, GH);        
+        options[2] = new MenuButton("EXIT", 100+ 2*RENDERING_GAP, 
+                     new Font("Cambria", Font.PLAIN, 40), new Font("Cambria", Font.BOLD, 40), 
+                     Color.WHITE, Color.GRAY, GH); 
+
     }
+    
+    public void update(){
         
-    public static void drawString(Graphics g, Font f, Color c, String text){
-        FontMetrics fs =g.getFontMetrics(f);
-        int x = 1400 - fs.stringWidth(text) /2; 
-        int y = 1000 - fs.getHeight() /2 + fs.getAscent();
-        drawString(g,f,c, text,x,y);
+    }
+    
+    public void render(Graphics g){
+        g.drawImage(Images.menuWallpaper, 0, 0, null);
+        //Fonts.drawString(g, new Font("Arial", Font.HANGING_BASELINE, 35), Color.WHITE, "Survivor", 100,400);
+      
+        //RENDERING OPTIONS       
+        for(int i = 0; i<options.length; i++){      
+            if(i == Selection){
+                 options[i].setSelected(true);
+            }else{
+                options[i].setSelected(false);
+            }
+            
+            options[i].render(g);
+                
+        }
         
-    }    
-    
-    public static void drawString(Graphics g, Font f, Color c, String text, double x){
-        FontMetrics fs =g.getFontMetrics(f); 
-        int y = 1000 - fs.getHeight() /2 + fs.getAscent();
-        drawString(g,f,c, text,(int) x,y);   
-    }     
-    
-    public static void drawString(Graphics g, Font f, Color c, String text,int y){
-        FontMetrics fs =g.getFontMetrics(f);
-        int x = 1400 - fs.stringWidth(text) /2; 
-        drawString(g,f,c, text,x,y);
-        
-    }      
-    
-    
+    }
     
     
 }

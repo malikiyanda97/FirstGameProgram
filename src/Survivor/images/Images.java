@@ -27,6 +27,7 @@ public class Images {
     public static BufferedImage highGrass;
     public static BufferedImage walls;
     public static BufferedImage menuWallpaper;
+    public static BufferedImage menuSub;
     
     public static void init(){
         
@@ -48,8 +49,11 @@ public class Images {
         castleBase = baseSheet.cropImage(0, 0, 252, 190);
         
         //Menu Wallpaper
-       menuWallpaper = Images.loadImage("/menu_Images/abstract.png");
-        
+        Sheets menuSheet = new Sheets(Images.loadImage("/menu_Images/battle.png"));
+        menuWallpaper = menuSheet.cropImage(100, 0, 1400, 900);
+        //Menu Sub
+        Sheets subSheet = new Sheets(Images.loadImage("/menu_Images/words.png"));
+//        menuWallpaper = subSheet.cropImage(0, 0, 50, 50);        
         
         //background Sprite Sheets 
         Sheets backSheet = new Sheets(Images.loadImage("/world_Images/background.png"));

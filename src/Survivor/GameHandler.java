@@ -8,6 +8,7 @@ package Survivor;
 import Survivor.entitiesManager.EntityHandler;
 import Survivor.images.Camera;
 import Survivor.input.Mouse;
+import Survivor.menu.Menu;
 import Survivor.states.GameState;
 
 /**
@@ -43,5 +44,9 @@ public class GameHandler {
     public Game getGame() {
         return game;
     }    
+    
+    public Menu getMenu(){
+        return game.getMenu();
+    }
     
 }
