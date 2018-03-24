@@ -7,6 +7,7 @@ package Survivor;
 
 import Survivor.entitiesManager.EntityHandler;
 import Survivor.states.GameState;
+import Survivor.states.MenuState;
 
 /**
  *
@@ -16,10 +17,12 @@ public class GameHandler {
     
     private Game game;
     private GameState gameState;
+    private MenuState menuState;
 
-    public GameHandler(Game game, GameState gameState){
+    public GameHandler(Game game, GameState gameState, MenuState menuState){
         this.game = game;  
         this.gameState = gameState;
+        this.menuState = menuState;
     }
 
     
@@ -32,6 +35,10 @@ public class GameHandler {
     public Game getGame() {
         return game;
     }    
+    
+    public MenuState getMenuState(){
+        return menuState;
+    }
 
 
     

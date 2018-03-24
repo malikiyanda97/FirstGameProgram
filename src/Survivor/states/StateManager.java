@@ -18,9 +18,11 @@ public abstract class StateManager {
  
     protected GameHandler GH;
     protected EntityHandler EH;
+    protected Enum id;
     
     
-    public StateManager(GameHandler GH){
+    public StateManager(Enum id, GameHandler GH){
+        this.id = id;
         this.GH = GH;
     }
     
@@ -44,4 +46,17 @@ public abstract class StateManager {
     public abstract void update();
     public abstract void render(Graphics g);
     
+
+
+
+//Getters and setters 
+    public Enum getId() {
+        return id;
+    }
+
+    public void setId(Enum id) {
+        this.id = id;
+    }
+    
+
 }

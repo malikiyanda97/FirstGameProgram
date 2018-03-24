@@ -12,6 +12,7 @@ import Survivor.input.Keyboard;
 import Survivor.input.Mouse;
 import Survivor.states.GameState;
 import Survivor.states.MenuState;
+import Survivor.states.PauseState;
 import Survivor.states.StateManager;
 import java.awt.Canvas;
 import java.awt.Graphics;
@@ -39,16 +40,20 @@ public class Game extends Canvas implements Runnable {
     public  StateManager State;
     public GameState gameState;
     public MenuState menuState;
+    public PauseState pauseState;
 
     //INPUT
     public Keyboard keyboard;
     public Mouse mouse;
-    
+    private int key;
     //ENTITY HANDLER
     private EntityHandler EH;
         
     //GAME HANDLER 
     private GameHandler GH;
+    
+    //GAME ENUMS
+    private Enums id;
     
     
     public Game(String title, int width, int height){
@@ -73,18 +78,24 @@ public class Game extends Canvas implements Runnable {
         EH = new EntityHandler();
         
         //GAME HANDLER
-        GH = new GameHandler(this, gameState);  
+        GH = new GameHandler(this, gameState, menuState);  
         
         //KEYBOARD INPUT 
-        this.addKeyListener(new Keyboard(EH,GH));
+        
+        this.addKeyListener(new Keyboard(key,menuState,EH,GH));
        
 
         
         //STATES
-        gameState = new GameState(GH,EH);
-        menuState = new MenuState(mouse,GH);
+        gameState = new GameState(Enums.gameState, GH,EH);
+        menuState = new MenuState(Enums.menuState, mouse,keyboard,GH);
+        pauseState = new PauseState(Enums.pauseState,GH);
         StateManager.setState(menuState);        
         
+    }
+
+    public MenuState getMenuState() {
+        return menuState;
     }
 
 

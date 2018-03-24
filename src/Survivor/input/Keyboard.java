@@ -10,6 +10,8 @@ import Survivor.entities.Bullet;
 import Survivor.entitiesManager.Entities;
 import Survivor.entitiesManager.EntityHandler;
 import Survivor.Enums;
+import Survivor.states.MenuState;
+import Survivor.states.StateManager;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 
@@ -25,33 +27,31 @@ public class Keyboard extends KeyAdapter{
     
     private GameHandler GH;
     private EntityHandler EH;
+    private MenuState menuState;
+    
+    private int key;
     
 
-    public Keyboard(EntityHandler EH, GameHandler GH){
+    public Keyboard(int key, MenuState menuState, EntityHandler EH, GameHandler GH){
+        this.menuState = menuState;
         this.EH = EH;
         this.GH = GH;
+        this.key = key;
+        
     }
     
     @Override
     public void keyPressed(KeyEvent e) {
-        int key = e.getKeyCode();
+        key = e.getKeyCode();
         
         for (int i = 0; i < EH.entities.size(); i++) {
             Entities tempEntity = EH.entities.get(i);
-            
- 
-             
-            if(tempEntity.getId() == Enums.Survivor){
-                
+     
+            if(tempEntity.getId() == Enums.Survivor){           
                 if(key == KeyEvent.VK_W) EH.setUp(true);
                 if(key == KeyEvent.VK_A) EH.setLeft(true);
                 if(key == KeyEvent.VK_S) EH.setDown(true);        
                 if(key == KeyEvent.VK_D) EH.setRight(true);
-                
-                
-                             
-
-                //shoot
 
                 //bullets coming from player
                 int x = (int) ((int) tempEntity.getX()+ 18);
@@ -61,6 +61,18 @@ public class Keyboard extends KeyAdapter{
             }
      
         }
+        
+        if(StateManager.getState().getId() == Enums.menuState){
+            MenuState state = GH.getGame().getMenuState();
+            
+            if(key == KeyEvent.VK_W) state.setW(true);
+            if(key == KeyEvent.VK_UP) state.setUp(true);
+            if(key == KeyEvent.VK_DOWN) state.setDown(true);
+            if(key == KeyEvent.VK_S) state.setS(true);
+            
+            if(key == KeyEvent.VK_ENTER) state.setKeyClick(true);
+        }
+       
 
     }
 
@@ -79,6 +91,18 @@ public class Keyboard extends KeyAdapter{
             }
      
         }
+        
+        if(StateManager.getState().getId() == Enums.menuState){
+            MenuState state = GH.getGame().getMenuState();
+            
+            if(key == KeyEvent.VK_W) state.setW(false);
+            if(key == KeyEvent.VK_UP) state.setUp(false);
+            if(key == KeyEvent.VK_DOWN) state.setDown(false);
+            if(key == KeyEvent.VK_S) state.setS(false);
+            
+            if(key == KeyEvent.VK_ENTER) state.setKeyClick(false);
+        }
+        
     }
     
 

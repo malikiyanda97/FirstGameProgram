@@ -29,9 +29,11 @@ public class GameState extends StateManager {
     public Survivor player;
     public Camera camera;
     private EntityHandler EH; //only for keyboard use 
+    private Enum id;
     
-    public GameState(GameHandler GH, EntityHandler EH){
-        super(GH);
+    public GameState(Enum id, GameHandler GH, EntityHandler EH){
+        super(id,GH);
+        this.id = Enums.gameState;
         this.EH = EH;
          
 

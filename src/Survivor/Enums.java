@@ -16,6 +16,10 @@ public enum Enums {
     Wall(),
     Enemy(),
     Base,
-    Bulllet();
+    Bulllet(),
+    
+    gameState(),
+    menuState(),
+    pauseState();
     
 }
