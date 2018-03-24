@@ -6,9 +6,6 @@
 package Survivor;
 
 import Survivor.entitiesManager.EntityHandler;
-import Survivor.images.Camera;
-import Survivor.input.Mouse;
-import Survivor.menu.Menu;
 import Survivor.states.GameState;
 
 /**
@@ -31,22 +28,11 @@ public class GameHandler {
     public EntityHandler getGameEH(){
         return game.getEH();
     }
-    
-    public Mouse getMouse(){
-        return game.getMouse();
-    }
      
-
-    public void setGame(Game game) {
-        this.game = game;
-    }
-    
     public Game getGame() {
         return game;
     }    
-    
-    public Menu getMenu(){
-        return game.getMenu();
-    }
+
+
     
 }

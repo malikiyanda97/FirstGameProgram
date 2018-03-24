@@ -50,11 +50,8 @@ public class Images {
         
         //Menu Wallpaper
         Sheets menuSheet = new Sheets(Images.loadImage("/menu_Images/battle.png"));
-        menuWallpaper = menuSheet.cropImage(100, 0, 1400, 900);
-        //Menu Sub
-        Sheets subSheet = new Sheets(Images.loadImage("/menu_Images/words.png"));
-//        menuWallpaper = subSheet.cropImage(0, 0, 50, 50);        
-        
+        menuWallpaper = menuSheet.cropImage(100, 0, 1400, 1000);
+
         //background Sprite Sheets 
         Sheets backSheet = new Sheets(Images.loadImage("/world_Images/background.png"));
         Sheets wallSheet = new Sheets(Images.loadImage("/world_Images/picwall.png"));

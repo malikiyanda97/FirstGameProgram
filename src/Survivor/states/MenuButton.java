@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Survivor.menu;
+package Survivor.states;
 
 import Survivor.GameHandler;
 import Survivor.util.Fonts;

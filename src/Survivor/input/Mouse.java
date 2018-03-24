@@ -7,6 +7,7 @@ package Survivor.input;
 
 import Survivor.GameHandler;
 import Survivor.states.StateManager;
+import java.awt.Rectangle;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
@@ -25,10 +26,8 @@ public class Mouse implements MouseListener, MouseMotionListener{
     
     public Mouse(GameHandler GH){
         this.GH = GH;
-      
-        
-        
-        
+
+   
         
     }
     
@@ -46,11 +45,8 @@ public class Mouse implements MouseListener, MouseMotionListener{
         else if(e.getButton() == MouseEvent.BUTTON3)
             rightPressed = true;
         
-
-                
         
-                
-   
+ 
         
     }
 
@@ -67,6 +63,11 @@ public class Mouse implements MouseListener, MouseMotionListener{
         mX = e.getX();
         mY = e.getY();
     
+    }
+    
+    public Rectangle mouseRect(Rectangle r){
+        r = new Rectangle(mX, mY, 1, 1);
+        return r;
     }
     
     @Override
@@ -91,11 +92,11 @@ public class Mouse implements MouseListener, MouseMotionListener{
         return rightPressed;
     }
     
-    public int getXMouse(){
+    public int getX(){
         return mX;
     }
     
-    public int getYMouse(){
+    public int getY(){
         return mY;
     }
 

@@ -10,7 +10,6 @@ import Survivor.images.Camera;
 import Survivor.images.Images;
 import Survivor.input.Keyboard;
 import Survivor.input.Mouse;
-import Survivor.menu.Menu;
 import Survivor.states.GameState;
 import Survivor.states.MenuState;
 import Survivor.states.StateManager;
@@ -28,7 +27,7 @@ public class Game extends Canvas implements Runnable {
 
     private boolean running = false;
     private Window window;
-    private Thread thread;
+    public Thread thread;
     
    
     public int width, height;
@@ -40,18 +39,10 @@ public class Game extends Canvas implements Runnable {
     public  StateManager State;
     public GameState gameState;
     public MenuState menuState;
-    
-    //MENU 
-    private Menu menu;
 
-    public Menu getMenu() {
-        return menu;
-    }
-    
-    
     //INPUT
-    private Keyboard keyboard;
-    private Mouse mouse;
+    public Keyboard keyboard;
+    public Mouse mouse;
     
     //ENTITY HANDLER
     private EntityHandler EH;
@@ -64,9 +55,7 @@ public class Game extends Canvas implements Runnable {
         this.title = title;
         this.width = width;
         this.height = height;
-        
-        //MENU
-        menu = new Menu(GH);
+
     }
     
     public void init(){
@@ -96,9 +85,9 @@ public class Game extends Canvas implements Runnable {
         menuState = new MenuState(mouse,GH);
         StateManager.setState(menuState);        
         
-        
-        
     }
+
+
 
     @Override
     public void run(){
@@ -195,4 +184,8 @@ public class Game extends Canvas implements Runnable {
    public EntityHandler getEH() {
         return EH;
    }
+
+ 
+    
+
 }
