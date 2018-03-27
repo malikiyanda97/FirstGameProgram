@@ -98,8 +98,8 @@ public class Game extends Canvas implements Runnable {
         
         //STATES
         sc = new StateController(id);
-        sc.addState(new MenuState(Enums.menuState, mouse,keyboard,GH));
         sc.addState(new GameState(Enums.gameState, GH,EH));
+        sc.addState(new MenuState(Enums.menuState, mouse,keyboard,GH));
         sc.addState(new PauseState(Enums.pauseState,mouse,keyboard,GH));       
        
     }

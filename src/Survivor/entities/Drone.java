@@ -21,18 +21,22 @@ import static java.lang.Math.sqrt;
  */
 public class Drone extends Entities {
     
-    int health = 100;
-    int speed = 2;
+    private int startHealth;
+    private int health;
+    private int speed = 2;
     
     
     private float playerX;
     private float playerY;
     
-    private int x, y;    
+    private int x, y; 
+    private boolean alive;
     
-    public Drone(Enums id, int x, int y, GameHandler GH) {
+    public Drone(Enums id, int x, int y, int health, GameHandler GH) {
         super(id, x, y, GH);
         
+        this.health = 100;
+        this.startHealth = health;  
         this.x = x;
         this.y = y;
     }
@@ -70,11 +74,11 @@ public class Drone extends Entities {
 
     @Override
     public void render(Graphics g) {
-        
+        float healthPercentage = health / startHealth;
         g.drawImage(Images.droneEnemy, x, y, null);
-//        g.setColor(Color.YELLOW);
-//        g.fillRect(x, y, 32, 32);
-
+        g.drawImage(Images.healthB, x+10, y-12, null);
+        g.drawImage(Images.healthEnemy, x+10, y-12, null);
+        g.drawImage(Images.healthBoarder, x+10, y-12, null);
         
         g.setColor(Color.red);
         Graphics2D g2d = (Graphics2D) g;
@@ -96,13 +100,12 @@ public class Drone extends Entities {
             if(tempEntity.getId() == ID.Bulllet){
                 if(getBounds().intersects(tempEntity.getBounds())){
                     GH.getGameEH().removeEntity(tempEntity);
-                    health -= 50;
-                    
+                    damage(50);         
                 }
             }    
             if(tempEntity.getId() == ID.Enemy){
                 if(getBounds().intersects(tempEntity.getBounds())){
-                    //todo : if enemies collide
+                    //TODO: ENEMY COLLISION
                 }
                 
                 
@@ -111,29 +114,14 @@ public class Drone extends Entities {
         
     }
     
-    public void AdvanceWalkPhase(){
-//        int targetX = 1024;
-//        int targetY = 480;
-//        
-//        float dirX = targetX - x;
-//        float dirY = targetY - y;
-//       
-//        float hypotenuse = (float) sqrt((dirX * dirX) + (dirY * dirY));
-//
-//        if(hypotenuse != 0){
-//            y += speed*(dirY/hypotenuse);
-//            x += speed*(dirX/hypotenuse);
-//        }
+    public void die(){
+        alive = false;
+    }
 
-        int a = (int) (playerX - x);
-        int b = (int)(playerY - y);
-
-        double h = (int)Math.sqrt(Math.pow(a, 2) + Math.pow(b, 2));
-            
-        int moveX = (int) (a/h *speed);
-        int moveY = (int) (b/h *speed);
-        
-        x = x+moveX;
-        y = y+moveY;
-    }    
-}
+    private void damage(int amount) {
+        health -= amount;
+        if(health<0){
+            die();
+        }
+    }
+}  

@@ -16,7 +16,6 @@ import javax.imageio.ImageIO;
 public class Images {
     
     public static BufferedImage nakedPlayer;
-    public static BufferedImage demonEnemy;
     public static BufferedImage droneEnemy;
     public static BufferedImage levelOne;
     public static BufferedImage castleBase;
@@ -29,16 +28,17 @@ public class Images {
     public static BufferedImage menuWallpaper;
     public static BufferedImage menuSub;
     
+    //HEAlTH BAR
+    public static BufferedImage healthB;
+    public static BufferedImage healthEnemy;
+    public static BufferedImage healthPlayer;
+    public static BufferedImage healthBoarder;
+    
     public static void init(){
         
-        //PLAYER SPRITESHEETS AND IMAGES
+        //player spritesheet
         Sheets nakedPlaySheet = new Sheets(Images.loadImage("/player_Images/naked.png"));
         nakedPlayer = nakedPlaySheet.cropImage(0, 60*3, 30, 60);
-        
-        //Enemy Demon Sprite Sheet 
-        Sheets demonSheets = new Sheets(Images.loadImage("/player_Images/enemyDemon.png"));
-        demonEnemy = demonSheets.cropImage(0, 0, 64, 64);
-        
         
          //Enemy Drone Sprite Sheet 
         Sheets droneSheets = new Sheets(Images.loadImage("/player_Images/enemyDrone.png"));
@@ -63,15 +63,18 @@ public class Images {
         
         walls = wallSheet.cropImage(0, 0, 32, 32);
        
-        
-        
         //LEVEL 1 IMAGE
         Sheets levelOneSheet = new Sheets(Images.loadImage("/world_Images/Wave1.png"));
         levelOne = levelOneSheet.cropImage(0, 0, 64, 64);
         //levelOne = Images.loadImage("/world_Images/level1.0.png");
         
+        //HEALTH BARS IMAGES 
+        healthB = Images.loadImage("/player_Images/healthBackground.png");
+        healthEnemy = Images.loadImage("/player_Images/healthForeground.png");
+        healthPlayer = Images.loadImage("/player_Images/healthPForeground.png");
+        healthBoarder = Images.loadImage("/player_Images/healthBoarder.png");
         
-    
+        
     }
  
     

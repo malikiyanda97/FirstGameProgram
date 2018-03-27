@@ -21,6 +21,7 @@ public class StateController {
     private Enums id;
     
     private boolean Pause=false;
+    private boolean up=false, W=false, down=false, S=false, keyClick=false;
 
     
     public StateController(Enums id){
@@ -80,4 +81,45 @@ public class StateController {
     public void setPause(boolean Pause) {
         this.Pause = Pause;
     }
+    
+    public boolean isUp() {
+        return up;
+    }
+
+    public void setUp(boolean up) {
+        this.up = up;
+    }
+
+    public boolean isW() {
+        return W;
+    }
+
+    public void setW(boolean W) {
+        this.W = W;
+    }
+
+    public boolean isDown() {
+        return down;
+    }
+
+    public void setDown(boolean down) {
+        this.down = down;
+    }
+
+    public boolean isS() {
+        return S;
+    }
+
+    public void setS(boolean S) {
+        this.S = S;
+    }
+    
+    public boolean isKeyClick() {
+        return keyClick;
+    }
+
+    public void setKeyClick(boolean keyClick) {
+        this.keyClick = keyClick;
+    }
+     
 }

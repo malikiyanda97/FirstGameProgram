@@ -14,10 +14,8 @@ import Survivor.entitiesManager.EntityHandler;
 import Survivor.Enums;
 import Survivor.images.Camera;
 import Survivor.images.Images;
-import Survivor.input.Keyboard;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
-import java.awt.event.KeyEvent;
 import java.awt.image.BufferedImage;
 
 /**
@@ -74,11 +72,11 @@ public class GameState implements State {
         if(sc.isPause()){
             System.out.println("PAUSE WAS PRESSED !");
             sc.setState("pause");
+            sc.setPause(false);
                       
         }
         
-      
-
+  
         GH.getGameEH().update();
                
     }
@@ -125,7 +123,7 @@ public class GameState implements State {
                     GH.getGameEH().addEntity(new Survivor(Enums.Survivor, xx*32, yy*32,GH,EH));
                 
                 if(green == 255 & blue == 0)
-                    GH.getGameEH().addEntity(new Drone(Enums.Enemy, xx*32, yy*32,GH));
+                    GH.getGameEH().addEntity(new Drone(Enums.Enemy, xx*32, yy*32, 100,GH));
                                 
 //                if(green == 255 & blue == 255)
 //                    GH.getGameEH().addEntity(new Base((Enums.Base), xx*32, yy*32, GH));

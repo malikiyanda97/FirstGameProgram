@@ -76,6 +76,9 @@ public class Survivor extends Entities {
     @Override
     public void render(Graphics g) {
         g.drawImage(Images.nakedPlayer, (int)x, (int)y, null);
+        g.drawImage(Images.healthB,(int) x+10, (int) y-12, null);
+        g.drawImage(Images.healthEnemy,(int) x+10,(int) y-12, null);
+        g.drawImage(Images.healthBoarder, (int) x+10,(int) y-12, null);
         System.out.println("player co-ords "+ x + " , " + y);
         
         

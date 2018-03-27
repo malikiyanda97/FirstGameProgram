@@ -30,7 +30,7 @@ public class PauseState implements State {
     private int selection=0;
     private int RENDERING_GAP = 70;
     
-    private boolean up=false,  down=false, keyClick=false;
+    
     
     public PauseState(Enums id,Mouse mouse, Keyboard keybaord, GameHandler GH) {
         this.GH = GH;
@@ -48,10 +48,10 @@ public class PauseState implements State {
         options[1] = new GameButtons("UPGRAGES", 100+ 1*RENDERING_GAP, 
                      new Font("Cambria", Font.PLAIN, 30), new Font("Cambria", Font.BOLD, 50), 
                      Color.WHITE, Color.GRAY, GH);          
-        options[2] = new GameButtons("MAIN MENU", 100 + 2* RENDERING_GAP, 
+        options[2] = new GameButtons("SAVE GAME", 100 + 2* RENDERING_GAP, 
                      new Font("Cambria", Font.PLAIN, 30), new Font("Cambria", Font.BOLD, 50), 
                      Color.WHITE, Color.GRAY, GH);        
-        options[3] = new GameButtons("SAVE & EXIT GAME", 100+ 3*RENDERING_GAP, 
+        options[3] = new GameButtons("RETURN TO MAIN MENU", 100+ 3*RENDERING_GAP, 
                      new Font("Cambria", Font.PLAIN, 30), new Font("Cambria", Font.BOLD, 50), 
                      Color.WHITE, Color.GRAY, GH);      
         
@@ -72,7 +72,7 @@ public class PauseState implements State {
             }
         }
           
-        if(clicked || keyClick) 
+        if(clicked) 
             chooseOption();
 
         
@@ -84,16 +84,18 @@ public class PauseState implements State {
             switch (selection) {
                 case 0:
                     System.out.println("RESUME GAME");
-                    
+                    GH.getSC().setState("game");
                     break OUTER;
                 case 1:
                     System.out.println("UPGRADES");
                     break OUTER;
                 case 2:
-                    System.out.println("MAIN-MENU");
+                    System.out.println("SAVE GAME");
                     break OUTER;
                 case 3:
-                    System.out.println("SAVE AND EXIT");
+                    System.out.println("RETURN TO MAIN MENU");
+                    //TODO : Pop out to warn game wont be saved.
+                    GH.getSC().setState("menu");
                     break OUTER;
                 default:
                     break;
@@ -125,30 +127,6 @@ public class PauseState implements State {
     }
 
 /////GETTERS AND SETTERS     
-    public boolean isUp() {
-        return up;
-    }
-
-    public void setUp(boolean up) {
-        this.up = up;
-    }
-
-    public boolean isDown() {
-        return down;
-    }
-
-    public void setDown(boolean down) {
-        this.down = down;
-    }  
-
-    public boolean isKeyClick() {
-        return keyClick;
-    }
-
-    public void setKeyClick(boolean keyClick) {
-        this.keyClick = keyClick;
-    }    
-
     @Override
     public void enter() {
     }

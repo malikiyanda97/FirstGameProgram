@@ -7,7 +7,6 @@ package Survivor.entitiesManager;
 
 import Survivor.Enums;
 import Survivor.GameHandler;
-import Survivor.images.Sheets;
 import java.awt.Graphics;
 import java.awt.Rectangle;
 
@@ -21,7 +20,7 @@ public abstract class Entities {
     protected int velX = 0, velY = 0;
     protected Enums ID;
     protected GameHandler GH;
-    
+
     public Entities(Enums id, int x, int y, GameHandler GH){
         this.x = x;
         this.y = y;
@@ -31,6 +30,8 @@ public abstract class Entities {
         
     }
 
+    
+    
     public abstract void collision();
     public abstract void update();
     public abstract void render(Graphics g);

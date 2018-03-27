@@ -30,7 +30,7 @@ public class MenuState implements State {
     private int selection=0;
     private int RENDERING_GAP = 70;
     
-    private boolean up=false, W=false, down=false, S=false, keyClick=false;
+
 
     
     
@@ -72,7 +72,6 @@ public class MenuState implements State {
     public void update(StateController sc) {
         System.out.println(mouse.getX() + "    " + mouse.getY());
         
-        
         boolean clicked = false;
         for (int i = 0; i < mOptions.length; i++) {
             if(mOptions[i].intersects(new Rectangle(mouse.getX(), mouse.getY(), 2, 2))){
@@ -82,7 +81,7 @@ public class MenuState implements State {
             }
         }
           
-        if(clicked || keyClick) 
+        if(clicked) 
             chooseOption(sc);
         
 
@@ -142,48 +141,6 @@ public class MenuState implements State {
     }
     
    //GETTERS AND SETTERS 
-    
-    public boolean isUp() {
-        return up;
-    }
-
-    public void setUp(boolean up) {
-        this.up = up;
-    }
-
-    public boolean isW() {
-        return W;
-    }
-
-    public void setW(boolean W) {
-        this.W = W;
-    }
-
-    public boolean isDown() {
-        return down;
-    }
-
-    public void setDown(boolean down) {
-        this.down = down;
-    }
-
-    public boolean isS() {
-        return S;
-    }
-
-    public void setS(boolean S) {
-        this.S = S;
-    }
-    
-    public boolean isKeyClick() {
-        return keyClick;
-    }
-
-    public void setKeyClick(boolean keyClick) {
-        this.keyClick = keyClick;
-    }
-
-
     @Override
     public void enter() {
     }
@@ -202,9 +159,6 @@ public class MenuState implements State {
         return id;
     }
 
-
-    
-    
     
 } 
     
