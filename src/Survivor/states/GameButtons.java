@@ -17,7 +17,7 @@ import java.awt.Rectangle;
  *
  * @author miyan
  */
-public class MenuButton extends Rectangle{
+public class GameButtons extends Rectangle{
     private String text;
     private int textPos;
     private Font font,selectedFont;
@@ -27,7 +27,7 @@ public class MenuButton extends Rectangle{
     private GameHandler GH;
             
     
-    public MenuButton(String text, int textPos, Font font, Font selectedFont, Color color, Color selectedColor,GameHandler GH) {
+    public GameButtons(String text, int textPos, Font font, Font selectedFont, Color color, Color selectedColor,GameHandler GH) {
         this.GH = GH;
         this.text = text;
         this.textPos = textPos;

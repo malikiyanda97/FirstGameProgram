@@ -5,9 +5,13 @@
  */
 package Survivor;
 
+import static Survivor.Enums.pauseState;
 import Survivor.entitiesManager.EntityHandler;
+import Survivor.input.Keyboard;
 import Survivor.states.GameState;
 import Survivor.states.MenuState;
+import Survivor.states.PauseState;
+import Survivor.states.StateController;
 
 /**
  *
@@ -18,11 +22,13 @@ public class GameHandler {
     private Game game;
     private GameState gameState;
     private MenuState menuState;
+    private PauseState pauseState;
 
-    public GameHandler(Game game, GameState gameState, MenuState menuState){
+    public GameHandler(Game game, GameState gameState, MenuState menuState, PauseState pauseState){
         this.game = game;  
         this.gameState = gameState;
         this.menuState = menuState;
+        this.pauseState = pauseState;
     }
 
     
@@ -36,10 +42,24 @@ public class GameHandler {
         return game;
     }    
     
-    public MenuState getMenuState(){
-        return menuState;
+    public Keyboard getKeyboard(){
+        return game.keyboard;
     }
+    
+    public StateController getSC(){
+        return game.sc;
+    }
+    
+    public GameState getGameState(){
+        return game.gameState;
+    }
+    
+    public PauseState getPauseState(){
+        return game.pauseState;
+    }    
 
-
+    public MenuState getMenuState(){
+        return game.menuState;
+    }
     
 }

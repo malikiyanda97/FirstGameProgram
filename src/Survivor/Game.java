@@ -12,8 +12,8 @@ import Survivor.input.Keyboard;
 import Survivor.input.Mouse;
 import Survivor.states.GameState;
 import Survivor.states.MenuState;
+import Survivor.states.StateController;
 import Survivor.states.PauseState;
-import Survivor.states.StateManager;
 import java.awt.Canvas;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
@@ -32,39 +32,49 @@ public class Game extends Canvas implements Runnable {
     
    
     public int width, height;
-    private final String title;
+    private static String title;
+    
+    private static Game game;
     
     public Camera camera;
           
     //STATES
-    public  StateManager State;
-    public GameState gameState;
+    public StateController sc;
+    
     public MenuState menuState;
     public PauseState pauseState;
+    public GameState gameState;
 
     //INPUT
     public Keyboard keyboard;
     public Mouse mouse;
     private int key;
+    
+    
     //ENTITY HANDLER
     private EntityHandler EH;
         
     //GAME HANDLER 
-    private GameHandler GH;
+    private static GameHandler GH;
     
     //GAME ENUMS
     private Enums id;
     
     
-    public Game(String title, int width, int height){
-        this.title = title;
-        this.width = width;
-        this.height = height;
+    public Game(String title, int width, int height, GameHandler GH){
+        this.title = "Survivor";
+        this.width = 1400;
+        this.height = 1000;
+        this.GH = GH;
+        
+        
 
     }
+
     
     public void init(){
         window = new Window(title, width, height, this);
+       
         
         //MOUSE INPUT
         mouse = new Mouse(GH);
@@ -78,26 +88,21 @@ public class Game extends Canvas implements Runnable {
         EH = new EntityHandler();
         
         //GAME HANDLER
-        GH = new GameHandler(this, gameState, menuState);  
+        GH = new GameHandler(this, gameState, menuState, pauseState);  
         
         //KEYBOARD INPUT 
-        
-        this.addKeyListener(new Keyboard(key,menuState,EH,GH));
+        keyboard = new Keyboard(EH,GH);
+        this.addKeyListener(keyboard);
        
 
         
         //STATES
-        gameState = new GameState(Enums.gameState, GH,EH);
-        menuState = new MenuState(Enums.menuState, mouse,keyboard,GH);
-        pauseState = new PauseState(Enums.pauseState,GH);
-        StateManager.setState(menuState);        
-        
+        sc = new StateController(id);
+        sc.addState(new MenuState(Enums.menuState, mouse,keyboard,GH));
+        sc.addState(new GameState(Enums.gameState, GH,EH));
+        sc.addState(new PauseState(Enums.pauseState,mouse,keyboard,GH));       
+       
     }
-
-    public MenuState getMenuState() {
-        return menuState;
-    }
-
 
 
     @Override
@@ -107,12 +112,10 @@ public class Game extends Canvas implements Runnable {
     }
     
     public void update(){
-      
-     
-        if(StateManager.getState() != null){
-            StateManager.getState().update();
-        }
-         
+        
+       if(sc.getCurrentState() != null){
+           sc.update();
+       }        
     }
     
     public void render(){
@@ -126,8 +129,8 @@ public class Game extends Canvas implements Runnable {
         //g.clearRect(0, 0, 1200, 800);
         //////////////START DRAW AREA////////////////////////////
         
-       if(StateManager.getState() != null){
-           StateManager.getState().render(g);
+       if(sc.getCurrentState() != null){
+           sc.render(g);
        }
         
         ///////////////END DRAW AREA///////////////////////////
@@ -185,6 +188,12 @@ public class Game extends Canvas implements Runnable {
             }      
         }
         stop();
+       
+    }
+   public static void main(String args[]){
+       game = new Game(title, WIDTH, HEIGHT, GH);
+       game.start();
+   
    }
    
    //GETTERS AND SETTERS 
@@ -195,8 +204,21 @@ public class Game extends Canvas implements Runnable {
    public EntityHandler getEH() {
         return EH;
    }
+   
+//   public MenuState getMenuState() {
+//        return menuState;
+//   }
+//   
+//   public PauseState getPauseState() {
+//        return pauseState;
+//   }
+//
+//   public GameState getGameState() {
+//        return gameState;
+//   }
 
- 
-    
+   public StateController getSc() {
+        return sc;
+    }
 
 }

@@ -20,113 +20,104 @@ import java.awt.event.KeyEvent;
  *
  * @author miyan
  */
-public class MenuState extends StateManager {
+public class MenuState implements State {
 
     public Keyboard keyboard;
     public Mouse mouse;
-    public MenuButton[] options;
+    public GameButtons[] mOptions;
+    private GameHandler GH;
     private Enums id;
-    private int selection;
+    private int selection=0;
     private int RENDERING_GAP = 70;
     
     private boolean up=false, W=false, down=false, S=false, keyClick=false;
 
     
+    
     public MenuState(Enums id, Mouse mouse, Keyboard keybaord, GameHandler GH){
-        super(id,GH);
+        super();
+        this.GH = GH;
         this.id = Enums.gameState;
         this.mouse = mouse; 
         this.keyboard = keybaord;
         
-        
-        options = new MenuButton[3];
-           
-        //MENU OPTION
-        options[0] = new MenuButton("PLAY", 100, 
-                     new Font("Cambria", Font.PLAIN, 30), new Font("Cambria", Font.BOLD, 50), 
-                     Color.WHITE, Color.GRAY, GH);
-        options[1] = new MenuButton("OPTIONS", 100 + 1* RENDERING_GAP, 
-                     new Font("Cambria", Font.PLAIN, 30), new Font("Cambria", Font.BOLD, 50), 
-                     Color.WHITE, Color.GRAY, GH);        
-        options[2] = new MenuButton("EXIT", 100+ 2*RENDERING_GAP, 
-                     new Font("Cambria", Font.PLAIN, 30), new Font("Cambria", Font.BOLD, 50), 
-                     Color.WHITE, Color.GRAY, GH); 
+      
         
     }
    
     @Override
     public void init() {
+        mOptions = new GameButtons[5];
+           
+        //MENU OPTION
+        mOptions[0] = new GameButtons("NEW GAME", 100, 
+                     new Font("Cambria", Font.PLAIN, 30), new Font("Cambria", Font.BOLD, 50), 
+                     Color.WHITE, Color.GRAY, GH);
+        mOptions[1] = new GameButtons("LOAD GAME", 100+ 1* RENDERING_GAP,
+                     new Font("Cambria", Font.PLAIN, 30), new Font("Cambria", Font.BOLD, 50), 
+                     Color.WHITE, Color.GRAY, GH);   
+        mOptions[2] = new GameButtons("INSTRUCTIONS", 100+ 2* RENDERING_GAP,
+                     new Font("Cambria", Font.PLAIN, 30), new Font("Cambria", Font.BOLD, 50), 
+                     Color.WHITE, Color.GRAY, GH);          
+        mOptions[3] = new GameButtons("OPTIONS", 100 + 3* RENDERING_GAP, 
+                     new Font("Cambria", Font.PLAIN, 30), new Font("Cambria", Font.BOLD, 50), 
+                     Color.WHITE, Color.GRAY, GH);        
+        mOptions[4] = new GameButtons("EXIT", 100+ 4*RENDERING_GAP, 
+                     new Font("Cambria", Font.PLAIN, 30), new Font("Cambria", Font.BOLD, 50), 
+                     Color.WHITE, Color.GRAY, GH); 
        
     }    
 
     @Override
-    public void update() {
+    public void update(StateController sc) {
         System.out.println(mouse.getX() + "    " + mouse.getY());
         
+        
         boolean clicked = false;
-        
-        if((isUp()) || (isW())){
-            selection--;
-            if(selection<0) selection = options.length -1;
-        }
-        
-        if((isDown()) || (isS())){
-            selection++;
-            if(selection>= options.length) selection = 0;
-        }
-        
-        for (int i = 0; i < options.length; i++) {
-            if(options[i].intersects(new Rectangle(mouse.getX(), mouse.getY(), 2, 2))){
+        for (int i = 0; i < mOptions.length; i++) {
+            if(mOptions[i].intersects(new Rectangle(mouse.getX(), mouse.getY(), 2, 2))){
                 selection = i;
                 if(mouse.isLeftPressed())
                     clicked = true;
             }
         }
-                
+          
+        if(clicked || keyClick) 
+            chooseOption(sc);
         
-        
-        if(clicked || keyClick) chooseOption();
+
 
 //        if(mouse.isLeftPressed())
 //            StateManager.setState(GH.getGame().gameState); 
 
 
     }
-    public void chooseOption(){
-        while(selection < 3){
-            if(selection == 0){
-                System.out.println("PLAYING");
-                StateManager.setState(GH.getGame().gameState);
-                break;
-            }               
-            else if(selection == 1){
-                System.out.println("OPTIONS");
-                break;
+    public void chooseOption(StateController sc){
+        OUTER:
+        if (selection < mOptions.length) {
+            switch (selection) {
+                case 0:
+                    //System.out.println("PLAYING");
+                    sc.setState("game");
+                    break OUTER;
+                case 1:
+                    System.out.println("LOAD GAME");
+                    break OUTER;
+                case 2:
+                    System.out.println("INSTRUCTIONS");
+                    break OUTER;
+                case 3:
+                    System.out.println("OPTIONS");
+                    break OUTER;
+                case 4:
+                    System.out.println("EXITING");
+                    System.exit(0);
+                    break OUTER;
+                default:
+                    break;
             }
-            else if(selection == 2){
-                System.out.println("EXITTING");
-                System.exit(0);
-                break;
-            }
-            
-                
         }
     }
-//    
-//    public void select(){
-//        switch(selection){
-//            case 0:
-//                System.out.println("Play");
-//                break;
-//            case 1:
-//                System.out.println("Options");
-//                break;
-//            case 2:
-//                System.out.println("Exit");
-//               
-//                break;
-//        }
-//    }
 
     @Override
     public void render(Graphics g) {       
@@ -134,14 +125,14 @@ public class MenuState extends StateManager {
         //Fonts.drawString(g, new Font("Arial", Font.HANGING_BASELINE, 35), Color.WHITE, "Survivor", 100,400);
       
         //RENDERING OPTIONS       
-        for(int i = 0; i<options.length; i++){      
+        for(int i = 0; i<mOptions.length; i++){      
             if(i == selection){
-                 options[i].setSelected(true);
+                 mOptions[i].setSelected(true);
             }else{
-                options[i].setSelected(false);
+                mOptions[i].setSelected(false);
             }
             
-            options[i].render(g);
+            mOptions[i].render(g);
                 
         }
         
@@ -191,6 +182,27 @@ public class MenuState extends StateManager {
     public void setKeyClick(boolean keyClick) {
         this.keyClick = keyClick;
     }
+
+
+    @Override
+    public void enter() {
+    }
+
+    @Override
+    public void exit() {
+    }
+
+    @Override
+    public String getName() {
+        return "menu";
+    }
+
+    @Override
+    public Enums getId() {
+        return id;
+    }
+
+
     
     
     

@@ -10,8 +10,8 @@ import Survivor.entities.Bullet;
 import Survivor.entitiesManager.Entities;
 import Survivor.entitiesManager.EntityHandler;
 import Survivor.Enums;
-import Survivor.states.MenuState;
-import Survivor.states.StateManager;
+import Survivor.states.State;
+import Survivor.states.StateController;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 
@@ -27,33 +27,37 @@ public class Keyboard extends KeyAdapter{
     
     private GameHandler GH;
     private EntityHandler EH;
-    private MenuState menuState;
     
-    private int key;
+    
+//    private StateController sc
+    private State menuState;
+    private State pauseState;
+    private State gameState;
+    
     
 
-    public Keyboard(int key, MenuState menuState, EntityHandler EH, GameHandler GH){
-        this.menuState = menuState;
+    public Keyboard(EntityHandler EH, GameHandler GH){
         this.EH = EH;
         this.GH = GH;
-        this.key = key;
-        
-    }
+       
+    }    
     
     @Override
     public void keyPressed(KeyEvent e) {
-        key = e.getKeyCode();
+        int key = e.getKeyCode();
         
+        //ENTITIES ITERATOR
         for (int i = 0; i < EH.entities.size(); i++) {
             Entities tempEntity = EH.entities.get(i);
-     
+            
+            //PLAYER MOVEMENT
             if(tempEntity.getId() == Enums.Survivor){           
                 if(key == KeyEvent.VK_W) EH.setUp(true);
                 if(key == KeyEvent.VK_A) EH.setLeft(true);
                 if(key == KeyEvent.VK_S) EH.setDown(true);        
                 if(key == KeyEvent.VK_D) EH.setRight(true);
 
-                //bullets coming from player
+                //BULLETS 
                 int x = (int) ((int) tempEntity.getX()+ 18);
                 int y = (int) ((int) tempEntity.getY()+ 20);   
                 if(key == KeyEvent.VK_SPACE) 
@@ -61,75 +65,56 @@ public class Keyboard extends KeyAdapter{
             }
      
         }
+        //GAMESTATE KEYBOARD ACTIONS
+        if(GH.getSC().getCurrentState().getId() == Enums.gameState){
+            if(key == KeyEvent.VK_P) GH.getSC().setPause(true);
+        }        
         
-        if(StateManager.getState().getId() == Enums.menuState){
-            MenuState state = GH.getGame().getMenuState();
-            
-            if(key == KeyEvent.VK_W) state.setW(true);
-            if(key == KeyEvent.VK_UP) state.setUp(true);
-            if(key == KeyEvent.VK_DOWN) state.setDown(true);
-            if(key == KeyEvent.VK_S) state.setS(true);
-            
-            if(key == KeyEvent.VK_ENTER) state.setKeyClick(true);
-        }
-       
-
+        
     }
 
     @Override
     public void keyReleased(KeyEvent e) {
         int key = e.getKeyCode();
         
+        //ENTITIES ITERATOR 
         for (int i = 0; i < EH.entities.size(); i++) {
             Entities tempEntity = EH.entities.get(i);
             
+            //PLAYER MOVEMENT 
             if(tempEntity.getId() == Enums.Survivor){
                 if(key == KeyEvent.VK_W) EH.setUp(false);
                 if(key == KeyEvent.VK_A) EH.setLeft(false);
                 if(key == KeyEvent.VK_S) EH.setDown(false);        
                 if(key == KeyEvent.VK_D) EH.setRight(false);
             }
-     
         }
         
-        if(StateManager.getState().getId() == Enums.menuState){
-            MenuState state = GH.getGame().getMenuState();
-            
-            if(key == KeyEvent.VK_W) state.setW(false);
-            if(key == KeyEvent.VK_UP) state.setUp(false);
-            if(key == KeyEvent.VK_DOWN) state.setDown(false);
-            if(key == KeyEvent.VK_S) state.setS(false);
-            
-            if(key == KeyEvent.VK_ENTER) state.setKeyClick(false);
+
+        //GAMESTATE KEYBOARD ACTIONS
+        if(GH.getGameState() == GH.getSC().getCurrentState()){
+            if(key == KeyEvent.VK_P) GH.getSC().setPause(false);
         }
+            
         
+        
+        
+        
+        
+        //MENU OPTIONS INPUT 
+        
+//        MenuState state = GH.getGame().getMenuState();
+//        if(StateManager.getState().getId() == Enums.menuState){  
+//            if(key == KeyEvent.VK_W) menuState.setW(false);
+//            if(key == KeyEvent.VK_UP) menuState.setUp(false);
+//            if(key == KeyEvent.VK_DOWN) menuState.setDown(false);
+//            if(key == KeyEvent.VK_S) menuState.setS(false);
+//           
+//            if(key == KeyEvent.VK_ENTER) menuState.setKeyClick(false);
+//        }
+        
+   
     }
-    
 
     
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-//    public Keyboard(){
-//        keys = new boolean[256];
-//    }
-//    
-//    public void update(){
-//        up = keys[KeyEvent.VK_UP];
-//        down = keys[KeyEvent.VK_DOWN];
-//        right = keys[KeyEvent.VK_RIGHT];
-//        left = keys[KeyEvent.VK_LEFT];
-//        shoot = keys[KeyEvent.VK_SPACE];
-//        
-//    }

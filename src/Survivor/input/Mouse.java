@@ -6,7 +6,7 @@
 package Survivor.input;
 
 import Survivor.GameHandler;
-import Survivor.states.StateManager;
+//import Survivor.states.StateManager;
 import java.awt.Rectangle;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
@@ -43,11 +43,7 @@ public class Mouse implements MouseListener, MouseMotionListener{
         if(e.getButton() ==  MouseEvent.BUTTON1)
             leftPressed = true;
         else if(e.getButton() == MouseEvent.BUTTON3)
-            rightPressed = true;
-        
-        
- 
-        
+            rightPressed = true;    
     }
 
     @Override

@@ -6,7 +6,6 @@
 package Survivor.states;
 
 import Survivor.GameHandler;
-import Survivor.entities.Base;
 import Survivor.entities.Wall;
 import Survivor.entities.Drone;
 import Survivor.entities.Survivor;
@@ -15,31 +14,36 @@ import Survivor.entitiesManager.EntityHandler;
 import Survivor.Enums;
 import Survivor.images.Camera;
 import Survivor.images.Images;
+import Survivor.input.Keyboard;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.awt.event.KeyEvent;
 import java.awt.image.BufferedImage;
 
 /**
  *
  * @author miyan
  */
-public class GameState extends StateManager {
+public class GameState implements State {
     
     
     public Survivor player;
     public Camera camera;
-    private EntityHandler EH; //only for keyboard use 
-    private Enum id;
+    private EntityHandler EH;
+    private Enums id;
+    private GameHandler GH;
+    private State pauseState;
     
-    public GameState(Enum id, GameHandler GH, EntityHandler EH){
-        super(id,GH);
+    
+    
+    public GameState(Enums id, GameHandler GH, EntityHandler EH){
+        this.GH = GH;
         this.id = Enums.gameState;
         this.EH = EH;
-         
-
-        init();   
-       
-      
+        
+        
+        
+        
         
     }
  
@@ -51,8 +55,12 @@ public class GameState extends StateManager {
         
     }
     
+
     @Override
-    public void update() {
+    public void update(StateController sc) {
+        
+
+        //CAMERA FOLLOW PLAYER 
         for(int i = 0; i < GH.getGameEH().entities.size(); i++){
             Entities tempEntity = GH.getGameEH().entities.get(i);
             
@@ -60,8 +68,16 @@ public class GameState extends StateManager {
                 camera.update(GH.getGameEH().entities.get(i));
                 
             }
-           
         }
+        
+        //PAUSE-STATE SWITCHING
+        if(sc.isPause()){
+            System.out.println("PAUSE WAS PRESSED !");
+            sc.setState("pause");
+                      
+        }
+        
+      
 
         GH.getGameEH().update();
                
@@ -69,9 +85,6 @@ public class GameState extends StateManager {
 
     @Override
     public void render(Graphics g) {
-//        g.setColor(Color.LIGHT_GRAY);
-//        g.fillRect(0, 0, 1400, 1000);
-        
         Graphics2D g2d = (Graphics2D) g;
         
         g2d.translate(-camera.getX(), -camera.getY());
@@ -114,18 +127,39 @@ public class GameState extends StateManager {
                 if(green == 255 & blue == 0)
                     GH.getGameEH().addEntity(new Drone(Enums.Enemy, xx*32, yy*32,GH));
                                 
-                if(green == 255 & blue == 255)
-                    GH.getGameEH().addEntity(new Base((Enums.Base), xx*32, yy*32, GH));
+//                if(green == 255 & blue == 255)
+//                    GH.getGameEH().addEntity(new Base((Enums.Base), xx*32, yy*32, GH));
                                 
             }
            
         }
     }
     
-    //getters and setters 
+    @Override
+    public void enter() {
+    }
+
+    @Override
+    public void exit() {
+    }
+
+    @Override
+    public String getName() {
+        return "game";
+    }
     
+    
+    
+    //getters and setters     
     public Survivor player(){
         return player;  
     }
+
+    @Override
+    public Enums getId() {
+        return id;
+    }
+
+
     
 }
