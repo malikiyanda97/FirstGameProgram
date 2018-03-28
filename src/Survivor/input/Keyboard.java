@@ -58,8 +58,8 @@ public class Keyboard extends KeyAdapter{
                 if(key == KeyEvent.VK_D) EH.setRight(true);
 
                 //BULLETS 
-                int x = (int) ((int) tempEntity.getX()+ 18);
-                int y = (int) ((int) tempEntity.getY()+ 20);   
+                int x = (int) ((int) tempEntity.getX()+ 55);
+                int y = (int) ((int) tempEntity.getY()+ 25);   
                 if(key == KeyEvent.VK_SPACE) 
                     GH.getGameEH().addEntity(new Bullet(Enums.Bulllet, x, y, GH));
             }

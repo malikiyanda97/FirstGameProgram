@@ -21,6 +21,8 @@ public class Bullet extends Entities {
 
     private int bulletSpeed = 50;
     private int x, y;
+
+
     
     public Bullet(Enums id, int x, int y, GameHandler GH){
         super(id, x, y, GH);
@@ -65,7 +67,7 @@ public class Bullet extends Entities {
     @Override
     public void render(Graphics g) {
         g.setColor(Color.yellow);
-        g.fillOval(x, y, 8, 8);
+        g.fillOval(x, y, 5, 5);
         
         Graphics2D g2d = (Graphics2D)g;
         g.setColor(Color.red);
@@ -76,9 +78,10 @@ public class Bullet extends Entities {
 
     @Override
     public Rectangle getBounds() {
-        return new Rectangle(x,y,8,8);
+        return new Rectangle(x,y,5,5);
     }
 
+    //GETTERS AND SETTER
 
-    
+  
 }

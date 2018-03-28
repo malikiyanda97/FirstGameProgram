@@ -9,11 +9,14 @@ import Survivor.GameHandler;
 import Survivor.entitiesManager.Entities;
 import Survivor.entitiesManager.EntityHandler;
 import Survivor.Enums;
+import Survivor.images.Animation;
 import Survivor.images.Images;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Rectangle;
+import java.awt.event.KeyEvent;
+import java.awt.image.BufferedImage;
 
 /**
  *
@@ -27,6 +30,10 @@ public class Survivor extends Entities {
     public float x;
     public float y;
     
+    private Animation playerRight;
+    private Animation playerLeft;
+    private Animation playerUp;
+    private Animation playerDown;    
     
     public Survivor(Enums ID, int x, int y, GameHandler GH, EntityHandler EH) {
         super(ID, x, y, GH);
@@ -34,6 +41,11 @@ public class Survivor extends Entities {
         this.y = y;
         this.EH = EH;
         this.GH = GH;
+    
+        playerUp = new Animation(15, Images.tu1, Images.tu2, Images.tu3, Images.tu4, Images.tu5, Images.tu6, Images.tu7);
+        playerDown = new Animation(15, Images.td1, Images.td2, Images.td3, Images.td4, Images.td5, Images.td6, Images.td7);    
+        playerLeft = new Animation(15, Images.tl1, Images.tl2, Images.tl3, Images.tl4, Images.tl5, Images.tl6, Images.tl7);
+        playerRight = new Animation(15, Images.tr1, Images.tr2, Images.tr3, Images.tr4, Images.tr5, Images.tr6, Images.tr7);
         
     }
 
@@ -46,9 +58,77 @@ public class Survivor extends Entities {
         
         collision();
         
-        getInput();        
+        getInput();   
+        
+        playerRight.runAnimation(); 
+        playerLeft.runAnimation();         
+        playerUp.runAnimation(); 
+        playerDown.runAnimation();
         
     }
+   
+
+    @Override
+    public void render(Graphics g) {
+        
+        //g.drawImage(Images.tr7, (int)x, (int)y, null);
+        drawPlayerAnimations(g);
+        //HEALTH BAR
+        g.drawImage(Images.healthB,(int) x+10, (int) y-12, null);
+        g.drawImage(Images.healthPlayer,(int) x+10,(int) y-12, null);
+        g.drawImage(Images.healthBoarder, (int) x+10,(int) y-12, null);
+        System.out.println("player co-ords "+ x + " , " + y);
+        
+        
+        Graphics2D g2d = (Graphics2D) g;
+        g.setColor(Color.white);
+        g2d.draw(getBounds());
+       
+    }
+ 
+    @Override
+    public Rectangle getBounds() { // around the character
+        return new Rectangle((int)(x), (int)(y), 64, 64)  ;
+    }
+    
+//    public BufferedImage drawIdleImage(BufferedImage image){
+//       if(EH.isDown()){
+//            g.draw
+//        }
+//         if(EH.isUp()){
+//             //g.drawImage(TODO: UP IDLE);
+//            playerUp.drawAnimation(g, (int)x, (int)y);
+//        }        
+//         if(EH.isRight()){
+//             //g.drawImage(TODO: DOWN IDLE);
+//            playerRight.drawAnimation(g, (int)x, (int)y);
+//        }        
+//         if(EH.isLeft()){
+//             //g.drawImage(TODO: DOWN IDLE);
+//            playerLeft.drawAnimation(g, (int)x, (int)y);
+//                
+//    }
+    
+    public void drawPlayerAnimations(Graphics g){       
+        //DRAW ANIMATION
+         if(EH.isDown()){
+             //g.drawImage(TODO: DOWN IDLE);
+            playerDown.drawAnimation(g, (int)x, (int)y);
+        }
+         if(EH.isUp()){
+             //g.drawImage(TODO: UP IDLE);
+            playerUp.drawAnimation(g, (int)x, (int)y);
+        }        
+         if(EH.isRight()){
+             //g.drawImage(TODO: DOWN IDLE);
+            playerRight.drawAnimation(g, (int)x, (int)y);
+        }        
+         if(EH.isLeft()){
+             //g.drawImage(TODO: DOWN IDLE);
+            playerLeft.drawAnimation(g, (int)x, (int)y);
+        }        
+    }
+    
     
     @Override
     public void collision(){
@@ -72,40 +152,25 @@ public class Survivor extends Entities {
             }
          }   
     }
-
-    @Override
-    public void render(Graphics g) {
-        g.drawImage(Images.nakedPlayer, (int)x, (int)y, null);
-        g.drawImage(Images.healthB,(int) x+10, (int) y-12, null);
-        g.drawImage(Images.healthEnemy,(int) x+10,(int) y-12, null);
-        g.drawImage(Images.healthBoarder, (int) x+10,(int) y-12, null);
-        System.out.println("player co-ords "+ x + " , " + y);
-        
-        
-        Graphics2D g2d = (Graphics2D) g;
-        g.setColor(Color.white);
-        g2d.draw(getBounds());
-       
-    }
-
-    @Override
-    public Rectangle getBounds() { // around the character
-        return new Rectangle((int)(x+5), (int)(y+5), 25, 52)  ;
-    }
     
     private void getInput(){
+        //MOVE
+        if(EH.isDown() && EH.isRight()) EH.setRight(false);
+        if(EH.isDown() && EH.isLeft()) EH.setLeft(false);
         
-        //Movement Actions
-        if(EH.isDown()) velY = 5;
+        if(EH.isUp() && EH.isLeft()) EH.setLeft(false);
+        if(EH.isUp() && EH.isRight()) EH.setRight(false);
+        
+        if(EH.isDown()) velY = 3;
         else if(!EH.isUp()) velY = 0;
         
-        if(EH.isUp()) velY = -5;
+        if(EH.isUp()) velY = -3;
         else if(!EH.isDown()) velY = 0;
         
-        if(EH.isRight()) velX = 5;
+        if(EH.isRight()) velX = 3;
         else if(!EH.isLeft()) velX = 0;
         
-        if(EH.isLeft()) velX = -5;
+        if(EH.isLeft()) velX = -3;
         else if(!EH.isRight()) velX = 0;  
         
 
@@ -127,7 +192,22 @@ public class Survivor extends Entities {
     public void setY(float y) {
         this.y = y;
     }    
-    }
+    
+
+}
+
+
+        //DON'T DRAW ANIMATION
+//        if(EH.isDown() && EH.isRight()) 
+//            g.drawImage(Images.td1,(int)x, (int)y, null);
+//            //playerDown.drawAnimation(g, (int)x, (int)y);
+//        if(EH.isDown()&& EH.isLeft())
+//            playerDown.drawAnimation(g, (int)x, (int)y);
+//
+//        if(EH.isUp() && EH.isRight())
+//            playerUp.drawAnimation(g, (int)x, (int)y);          
+//        if(EH.isUp() && EH.isLeft())
+//            playerUp.drawAnimation(g, (int)x, (int)y); 
     
     
 

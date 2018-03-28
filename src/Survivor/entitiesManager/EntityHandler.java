@@ -15,7 +15,7 @@ import java.util.*;
 public class EntityHandler {
     
     private boolean up=false, down = false, right = false, left = false; 
-    private boolean isShooting=false;
+    private boolean space=false;
 
   
 
@@ -85,12 +85,12 @@ public class EntityHandler {
     }
     
     
-    public boolean isIsShooting() {
-        return isShooting;
+    public boolean isSpace() {
+        return space;
     }
 
-    public void setIsShooting(boolean isShooting) {
-        this.isShooting = isShooting;
+    public void setSpace(boolean space) {
+        this.space = space;
     }
 
     

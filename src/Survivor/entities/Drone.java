@@ -23,7 +23,7 @@ public class Drone extends Entities {
     
     private int startHealth;
     private int health;
-    private int speed = 2;
+    private int speed = 1;
     
     
     private float playerX;

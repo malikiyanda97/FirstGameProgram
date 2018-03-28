@@ -15,8 +15,53 @@ import javax.imageio.ImageIO;
  */
 public class Images {
     
+    //ENTITIES
     public static BufferedImage nakedPlayer;
     public static BufferedImage droneEnemy;
+    public static BufferedImage soliderTank;
+    
+    //ANIMATION
+    public static BufferedImage tankdown;
+    
+    public static BufferedImage td1;
+    public static BufferedImage td2;
+    public static BufferedImage td3;    
+    public static BufferedImage td4;
+    public static BufferedImage td5;
+    public static BufferedImage td6;
+    public static BufferedImage td7;
+    
+    public static BufferedImage tankup;
+    
+    public static BufferedImage tu1;
+    public static BufferedImage tu2;
+    public static BufferedImage tu3;    
+    public static BufferedImage tu4;
+    public static BufferedImage tu5;
+    public static BufferedImage tu6;
+    public static BufferedImage tu7;
+
+    public static BufferedImage tankright;
+    
+    public static BufferedImage tr1;
+    public static BufferedImage tr2;
+    public static BufferedImage tr3;    
+    public static BufferedImage tr4;
+    public static BufferedImage tr5;
+    public static BufferedImage tr6;
+    public static BufferedImage tr7;
+
+    public static BufferedImage tankleft;
+    
+    public static BufferedImage tl1;
+    public static BufferedImage tl2;
+    public static BufferedImage tl3;    
+    public static BufferedImage tl4;
+    public static BufferedImage tl5;
+    public static BufferedImage tl6;
+    public static BufferedImage tl7;
+    
+    //GAME
     public static BufferedImage levelOne;
     public static BufferedImage castleBase;
     public static BufferedImage Background;
@@ -25,6 +70,9 @@ public class Images {
     public static BufferedImage grass;  
     public static BufferedImage highGrass;
     public static BufferedImage walls;
+   
+    
+    //MENU
     public static BufferedImage menuWallpaper;
     public static BufferedImage menuSub;
     
@@ -35,14 +83,51 @@ public class Images {
     public static BufferedImage healthBoarder;
     
     public static void init(){
+                  
+        //TANK DOWN ANINIAMTION/IMAGES
+        Sheets tankdownsheet = new Sheets(Images.loadImage("/player_Images/tankAnimation/tankdown.png"));
+        td1 = tankdownsheet.cropImage(8, 15, 64,64);
+        td2 = tankdownsheet.cropImage(94, 15, 64,64);
+        td3 = tankdownsheet.cropImage(178, 15, 64,64);
+        td4 = tankdownsheet.cropImage(262, 15, 64,64);
+        td5= tankdownsheet.cropImage(345, 15, 64,64);
+        td6= tankdownsheet.cropImage(428, 15, 64,64);
+        td7 = tankdownsheet.cropImage(512, 15, 64,64); 
         
-        //player spritesheet
-        Sheets nakedPlaySheet = new Sheets(Images.loadImage("/player_Images/naked.png"));
-        nakedPlayer = nakedPlaySheet.cropImage(0, 60*3, 30, 60);
+        //TANK UP ANIMATION/IMAGES
+        Sheets tankupsheet = new Sheets(Images.loadImage("/player_Images/tankAnimation/tankup.png"));
+        tu1 = tankupsheet.cropImage(10, 15, 64, 64);
+        tu2 = tankupsheet.cropImage(94, 15, 64, 64);
+        tu3 = tankupsheet.cropImage(178, 15, 64, 64);
+        tu4 = tankupsheet.cropImage(262, 15, 64, 64);
+        tu5 = tankupsheet.cropImage(345, 15, 64, 64);
+        tu6 = tankupsheet.cropImage(430, 15, 64, 64);
+        tu7 = tankupsheet.cropImage(515, 15, 64, 64);
         
+        //TANK RIGHT ANIMATION/IMAGES
+        Sheets tankrightsheet = new Sheets(Images.loadImage("/player_Images/tankAnimation/tankright.png"));
+        tr1 = tankrightsheet.cropImage(14, 9, 64, 64);
+        tr2 = tankrightsheet.cropImage(14, 94, 64, 64);
+        tr3 = tankrightsheet.cropImage(14, 178, 64, 64);
+        tr4 = tankrightsheet.cropImage(14, 262, 64, 64);
+        tr5 = tankrightsheet.cropImage(14, 345, 64, 64);
+        tr6 = tankrightsheet.cropImage(14, 430, 64, 64);
+        tr7 = tankrightsheet.cropImage(14, 515, 64, 64);        
+
+        //TANK LEFT ANIMATION/IMAGES
+        Sheets tankleftsheet = new Sheets(Images.loadImage("/player_Images/tankAnimation/tankleft.png"));
+        tl1 = tankleftsheet.cropImage(14, 9, 64, 64);
+        tl2 = tankleftsheet.cropImage(14, 94, 64, 64);
+        tl3 = tankleftsheet.cropImage(14, 178, 64, 64);
+        tl4 = tankleftsheet.cropImage(14, 262, 64, 64);
+        tl5 = tankleftsheet.cropImage(14, 345, 64, 64);
+        tl6 = tankleftsheet.cropImage(14, 430, 64, 64);
+        tl7 = tankleftsheet.cropImage(14, 515, 64, 64); 
+
+
          //Enemy Drone Sprite Sheet 
         Sheets droneSheets = new Sheets(Images.loadImage("/player_Images/enemyDrone.png"));
-        droneEnemy = droneSheets.cropImage(0, 0, 55, 50);
+        droneEnemy = droneSheets.cropImage(0, 0, 50, 50);
 
         //Castle Base Sprite Sheet 
         Sheets baseSheet = new Sheets(Images.loadImage("/base_Images/cityBase.jpg"));
