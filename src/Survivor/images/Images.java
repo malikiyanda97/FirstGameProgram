@@ -15,51 +15,54 @@ import javax.imageio.ImageIO;
  */
 public class Images {
     
+    public static BufferedImage[] playerDown, playerUp, playerRight, playerLeft;
+    
     //ENTITIES
     public static BufferedImage nakedPlayer;
     public static BufferedImage droneEnemy;
     public static BufferedImage soliderTank;
     
     //ANIMATION
-    public static BufferedImage tankdown;
-    
-    public static BufferedImage td1;
-    public static BufferedImage td2;
-    public static BufferedImage td3;    
-    public static BufferedImage td4;
-    public static BufferedImage td5;
-    public static BufferedImage td6;
-    public static BufferedImage td7;
-    
-    public static BufferedImage tankup;
-    
-    public static BufferedImage tu1;
-    public static BufferedImage tu2;
-    public static BufferedImage tu3;    
-    public static BufferedImage tu4;
-    public static BufferedImage tu5;
-    public static BufferedImage tu6;
-    public static BufferedImage tu7;
-
-    public static BufferedImage tankright;
-    
-    public static BufferedImage tr1;
-    public static BufferedImage tr2;
-    public static BufferedImage tr3;    
-    public static BufferedImage tr4;
-    public static BufferedImage tr5;
-    public static BufferedImage tr6;
-    public static BufferedImage tr7;
-
-    public static BufferedImage tankleft;
-    
-    public static BufferedImage tl1;
-    public static BufferedImage tl2;
-    public static BufferedImage tl3;    
-    public static BufferedImage tl4;
-    public static BufferedImage tl5;
-    public static BufferedImage tl6;
-    public static BufferedImage tl7;
+//    
+//    public static BufferedImage tankdown;
+//    
+//    public static BufferedImage td1;
+//    public static BufferedImage td2;
+//    public static BufferedImage td3;    
+//    public static BufferedImage td4;
+//    public static BufferedImage td5;
+//    public static BufferedImage td6;
+//    public static BufferedImage td7;
+//    
+//    public static BufferedImage tankup;
+//    
+//    public static BufferedImage tu1;
+//    public static BufferedImage tu2;
+//    public static BufferedImage tu3;    
+//    public static BufferedImage tu4;
+//    public static BufferedImage tu5;
+//    public static BufferedImage tu6;
+//    public static BufferedImage tu7;
+//
+//    public static BufferedImage tankright;
+//    
+//    public static BufferedImage tr1;
+//    public static BufferedImage tr2;
+//    public static BufferedImage tr3;    
+//    public static BufferedImage tr4;
+//    public static BufferedImage tr5;
+//    public static BufferedImage tr6;
+//    public static BufferedImage tr7;
+//
+//    public static BufferedImage tankleft;
+//    
+//    public static BufferedImage tl1;
+//    public static BufferedImage tl2;
+//    public static BufferedImage tl3;    
+//    public static BufferedImage tl4;
+//    public static BufferedImage tl5;
+//    public static BufferedImage tl6;
+//    public static BufferedImage tl7;
     
     //GAME
     public static BufferedImage levelOne;
@@ -83,46 +86,55 @@ public class Images {
     public static BufferedImage healthBoarder;
     
     public static void init(){
+        
+        playerDown = new BufferedImage[7];
+        playerUp= new BufferedImage[7];
+        playerRight = new BufferedImage[7];
+        playerLeft = new BufferedImage[7];
+        
+        
                   
         //TANK DOWN ANINIAMTION/IMAGES
         Sheets tankdownsheet = new Sheets(Images.loadImage("/player_Images/tankAnimation/tankdown.png"));
-        td1 = tankdownsheet.cropImage(8, 15, 64,64);
-        td2 = tankdownsheet.cropImage(94, 15, 64,64);
-        td3 = tankdownsheet.cropImage(178, 15, 64,64);
-        td4 = tankdownsheet.cropImage(262, 15, 64,64);
-        td5= tankdownsheet.cropImage(345, 15, 64,64);
-        td6= tankdownsheet.cropImage(428, 15, 64,64);
-        td7 = tankdownsheet.cropImage(512, 15, 64,64); 
+        playerDown[0] = tankdownsheet.cropImage(8, 15, 64,64);
+        playerDown[1] = tankdownsheet.cropImage(94, 15, 64,64);
+        playerDown[2] = tankdownsheet.cropImage(178, 15, 64,64);
+        playerDown[3] = tankdownsheet.cropImage(262, 15, 64,64);
+        playerDown[4] = tankdownsheet.cropImage(345, 15, 64,64);
+        playerDown[5] = tankdownsheet.cropImage(428, 15, 64,64);
+        playerDown[6] = tankdownsheet.cropImage(512, 15, 64,64); 
         
+        soliderTank = tankdownsheet.cropImage(8, 15, 64, 64);
+                
         //TANK UP ANIMATION/IMAGES
         Sheets tankupsheet = new Sheets(Images.loadImage("/player_Images/tankAnimation/tankup.png"));
-        tu1 = tankupsheet.cropImage(10, 15, 64, 64);
-        tu2 = tankupsheet.cropImage(94, 15, 64, 64);
-        tu3 = tankupsheet.cropImage(178, 15, 64, 64);
-        tu4 = tankupsheet.cropImage(262, 15, 64, 64);
-        tu5 = tankupsheet.cropImage(345, 15, 64, 64);
-        tu6 = tankupsheet.cropImage(430, 15, 64, 64);
-        tu7 = tankupsheet.cropImage(515, 15, 64, 64);
+        playerUp[0] = tankupsheet.cropImage(10, 15, 64, 64);
+        playerUp[1] = tankupsheet.cropImage(94, 15, 64, 64);
+        playerUp[2] = tankupsheet.cropImage(178, 15, 64, 64);
+        playerUp[3] = tankupsheet.cropImage(262, 15, 64, 64);
+        playerUp[4] = tankupsheet.cropImage(345, 15, 64, 64);
+        playerUp[5] = tankupsheet.cropImage(430, 15, 64, 64);
+        playerUp[6] = tankupsheet.cropImage(515, 15, 64, 64);
         
         //TANK RIGHT ANIMATION/IMAGES
         Sheets tankrightsheet = new Sheets(Images.loadImage("/player_Images/tankAnimation/tankright.png"));
-        tr1 = tankrightsheet.cropImage(14, 9, 64, 64);
-        tr2 = tankrightsheet.cropImage(14, 94, 64, 64);
-        tr3 = tankrightsheet.cropImage(14, 178, 64, 64);
-        tr4 = tankrightsheet.cropImage(14, 262, 64, 64);
-        tr5 = tankrightsheet.cropImage(14, 345, 64, 64);
-        tr6 = tankrightsheet.cropImage(14, 430, 64, 64);
-        tr7 = tankrightsheet.cropImage(14, 515, 64, 64);        
+        playerRight[0] = tankrightsheet.cropImage(14, 9, 64, 64);
+        playerRight[1] = tankrightsheet.cropImage(14, 94, 64, 64);
+        playerRight[2] = tankrightsheet.cropImage(14, 178, 64, 64);
+        playerRight[3] = tankrightsheet.cropImage(14, 262, 64, 64);
+        playerRight[4] = tankrightsheet.cropImage(14, 345, 64, 64);
+        playerRight[5] = tankrightsheet.cropImage(14, 430, 64, 64);
+        playerRight[6] = tankrightsheet.cropImage(14, 515, 64, 64);        
 
         //TANK LEFT ANIMATION/IMAGES
         Sheets tankleftsheet = new Sheets(Images.loadImage("/player_Images/tankAnimation/tankleft.png"));
-        tl1 = tankleftsheet.cropImage(14, 9, 64, 64);
-        tl2 = tankleftsheet.cropImage(14, 94, 64, 64);
-        tl3 = tankleftsheet.cropImage(14, 178, 64, 64);
-        tl4 = tankleftsheet.cropImage(14, 262, 64, 64);
-        tl5 = tankleftsheet.cropImage(14, 345, 64, 64);
-        tl6 = tankleftsheet.cropImage(14, 430, 64, 64);
-        tl7 = tankleftsheet.cropImage(14, 515, 64, 64); 
+        playerLeft[0] = tankleftsheet.cropImage(14, 9, 64, 64);
+        playerLeft[1] = tankleftsheet.cropImage(14, 94, 64, 64);
+        playerLeft[2] = tankleftsheet.cropImage(14, 178, 64, 64);
+        playerLeft[3] = tankleftsheet.cropImage(14, 262, 64, 64);
+        playerLeft[4] = tankleftsheet.cropImage(14, 345, 64, 64);
+        playerLeft[5] = tankleftsheet.cropImage(14, 430, 64, 64);
+        playerLeft[6] = tankleftsheet.cropImage(14, 515, 64, 64); 
 
 
          //Enemy Drone Sprite Sheet 

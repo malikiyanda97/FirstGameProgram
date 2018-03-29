@@ -19,7 +19,7 @@ import java.awt.Rectangle;
  */
 public class Bullet extends Entities {
 
-    private int bulletSpeed = 50;
+    private int bulletSpeed = 20;
     private int x, y;
 
 
@@ -40,11 +40,30 @@ public class Bullet extends Entities {
   
     @Override
     public void update(){
-        x += velX;
-        
+        //updatePosition();
+        x+=velX;
+        //if(GH.getGameEH().)
         collision();
         
     }
+    
+//    public void updatePosition(){
+//            for (int i = 0; i < GH.getGameEH().entities.size(); i++) {
+//                Entities tempEntity = GH.getGameEH().entities.get(i);
+//                
+//                if(tempEntity.getId() == Enums.Bulllet){
+//                    if(GH.getGameEH().isLeft())
+//                        x -= tempEntity.getVelX();
+//                    if(GH.getGameEH().isRight())
+//                        x += tempEntity.getVelX();
+//                    if(GH.getGameEH().isDown())
+//                        y += tempEntity.getVelY();
+//                    if(GH.getGameEH().isUp())
+//                        y -= tempEntity.getVelY();
+//                }   
+//                
+//            }        
+//    }
   
     
     @Override
@@ -67,7 +86,7 @@ public class Bullet extends Entities {
     @Override
     public void render(Graphics g) {
         g.setColor(Color.yellow);
-        g.fillOval(x, y, 5, 5);
+        g.fillOval(x, y, 8, 8);
         
         Graphics2D g2d = (Graphics2D)g;
         g.setColor(Color.red);
@@ -78,10 +97,10 @@ public class Bullet extends Entities {
 
     @Override
     public Rectangle getBounds() {
-        return new Rectangle(x,y,5,5);
+        return new Rectangle(x,y,8,8);
     }
 
     //GETTERS AND SETTER
 
-  
+    
 }

@@ -5,7 +5,6 @@
  */
 package Survivor.images;
 
-import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 
 /**
@@ -14,61 +13,37 @@ import java.awt.image.BufferedImage;
  */
 public class Animation {
     
-    private int speed;
-    private int frames;
-    
-    private int index = 0;
-    private int count = 0;
-    
-    private BufferedImage[] images;
+    private int speed, index;
+    private long timer, lastTime;
+    private BufferedImage[] frames;
 
-    public BufferedImage getCurrentImage() {
-        return currentImage;
-    }
-
-    public void setCurrentImage(BufferedImage currentImage) {
-        this.currentImage = currentImage;
-    }
-    private BufferedImage currentImage;
-    
-
-    public Animation(int speed, BufferedImage... args) { //allows for unlimated arguments
+    public Animation(int speed, BufferedImage[] frames){ 
         this.speed = speed;
-        images = new BufferedImage[args.length];
-        for (int i = 0; i < args.length; i++) {
-            images[i] = args[i];
+        this.frames = frames;
+        
+        index = 0;
+        timer = 0;
+        lastTime = System.currentTimeMillis();
+       
+    }  
+    
+    public void update(){
+        timer += System.currentTimeMillis() - lastTime;
+        lastTime = System.currentTimeMillis();
+        
+        if(timer > speed){
+            index++;
+            timer=0;
+            if(index>= frames.length){
+                index = 0;
+            }
         }
-        frames = args.length;
+        
         
     }
     
-    public void runAnimation(){
-        index++;
-        if(index > speed){
-            index = 0;
-            nextFrame();
-        }
+    public BufferedImage getCurrentFrame(){
+        return frames[index];
     }
-    
-    private void nextFrame(){
-        for (int i = 0; i < frames ; i++) {
-            if(count == i)
-                currentImage = images[i];
-                
-        }
-        count++;
-        
-        
-        if(count>frames)
-            count = 0;
-    }
-    
-    public void drawAnimation(Graphics g, int x, int y){
-        g.drawImage(currentImage, x, y, null);
-    }
-
-    public void drawAnimation(Graphics g, int x, int y, int scaleX, int scaleY){
-        g.drawImage(currentImage, x, y, scaleX, scaleY, null);
-    }    
     
 }

@@ -30,10 +30,12 @@ public class Survivor extends Entities {
     public float x;
     public float y;
     
-    private Animation playerRight;
-    private Animation playerLeft;
-    private Animation playerUp;
-    private Animation playerDown;    
+    private Animation aminR;
+    private Animation aminL;
+    private Animation aminU;
+    private Animation aminD;   
+    
+    private BufferedImage lastImage = Images.playerDown[0];
     
     public Survivor(Enums ID, int x, int y, GameHandler GH, EntityHandler EH) {
         super(ID, x, y, GH);
@@ -42,14 +44,18 @@ public class Survivor extends Entities {
         this.EH = EH;
         this.GH = GH;
     
-        playerUp = new Animation(15, Images.tu1, Images.tu2, Images.tu3, Images.tu4, Images.tu5, Images.tu6, Images.tu7);
-        playerDown = new Animation(15, Images.td1, Images.td2, Images.td3, Images.td4, Images.td5, Images.td6, Images.td7);    
-        playerLeft = new Animation(15, Images.tl1, Images.tl2, Images.tl3, Images.tl4, Images.tl5, Images.tl6, Images.tl7);
-        playerRight = new Animation(15, Images.tr1, Images.tr2, Images.tr3, Images.tr4, Images.tr5, Images.tr6, Images.tr7);
-        
-    }
+//        playerUp = new Animation(15, Images.tu1, Images.tu2, Images.tu3, Images.tu4, Images.tu5, Images.tu6, Images.tu7);
+//        playerDown = new Animation(15, Images.td1, Images.td2, Images.td3, Images.td4, Images.td5, Images.td6, Images.td7);    
+//        playerLeft = new Animation(15, Images.tl1, Images.tl2, Images.tl3, Images.tl4, Images.tl5, Images.tl6, Images.tl7);
+//        playerRight = new Animation(15, Images.tr1, Images.tr2, Images.tr3, Images.tr4, Images.tr5, Images.tr6, Images.tr7);
+  
+        //ANIMATIONS
+        aminD = new Animation(300, Images.playerDown);
+        aminU = new Animation(300, Images.playerUp);
+        aminR = new Animation(300, Images.playerRight);
+        aminL = new Animation(300, Images.playerLeft);
 
-   
+    }
 
     @Override
     public void update() {
@@ -58,21 +64,19 @@ public class Survivor extends Entities {
         
         collision();
         
-        getInput();   
+        getInput();  
         
-        playerRight.runAnimation(); 
-        playerLeft.runAnimation();         
-        playerUp.runAnimation(); 
-        playerDown.runAnimation();
+        aminD.update();
+        aminU.update();
+        aminR.update();
+        aminL.update();
         
     }
-   
-
+    
     @Override
     public void render(Graphics g) {
-        
-        //g.drawImage(Images.tr7, (int)x, (int)y, null);
-        drawPlayerAnimations(g);
+        g.drawImage(getLiveAnim(), (int)x, (int)y, null);
+
         //HEALTH BAR
         g.drawImage(Images.healthB,(int) x+10, (int) y-12, null);
         g.drawImage(Images.healthPlayer,(int) x+10,(int) y-12, null);
@@ -85,50 +89,11 @@ public class Survivor extends Entities {
         g2d.draw(getBounds());
        
     }
- 
+     
     @Override
     public Rectangle getBounds() { // around the character
         return new Rectangle((int)(x), (int)(y), 64, 64)  ;
     }
-    
-//    public BufferedImage drawIdleImage(BufferedImage image){
-//       if(EH.isDown()){
-//            g.draw
-//        }
-//         if(EH.isUp()){
-//             //g.drawImage(TODO: UP IDLE);
-//            playerUp.drawAnimation(g, (int)x, (int)y);
-//        }        
-//         if(EH.isRight()){
-//             //g.drawImage(TODO: DOWN IDLE);
-//            playerRight.drawAnimation(g, (int)x, (int)y);
-//        }        
-//         if(EH.isLeft()){
-//             //g.drawImage(TODO: DOWN IDLE);
-//            playerLeft.drawAnimation(g, (int)x, (int)y);
-//                
-//    }
-    
-    public void drawPlayerAnimations(Graphics g){       
-        //DRAW ANIMATION
-         if(EH.isDown()){
-             //g.drawImage(TODO: DOWN IDLE);
-            playerDown.drawAnimation(g, (int)x, (int)y);
-        }
-         if(EH.isUp()){
-             //g.drawImage(TODO: UP IDLE);
-            playerUp.drawAnimation(g, (int)x, (int)y);
-        }        
-         if(EH.isRight()){
-             //g.drawImage(TODO: DOWN IDLE);
-            playerRight.drawAnimation(g, (int)x, (int)y);
-        }        
-         if(EH.isLeft()){
-             //g.drawImage(TODO: DOWN IDLE);
-            playerLeft.drawAnimation(g, (int)x, (int)y);
-        }        
-    }
-    
     
     @Override
     public void collision(){
@@ -152,6 +117,24 @@ public class Survivor extends Entities {
             }
          }   
     }
+    
+    private BufferedImage getLiveAnim(){
+        if(EH.isLeft()){  
+            lastImage = aminL.getCurrentFrame();
+            return aminL.getCurrentFrame();
+        }else if(EH.isRight()){
+            lastImage = aminR.getCurrentFrame();
+            return aminR.getCurrentFrame();
+        }else if(EH.isUp()){
+            lastImage = aminU.getCurrentFrame();
+            return aminU.getCurrentFrame();   
+        }else if(EH.isDown()){
+            lastImage = aminD.getCurrentFrame();
+            return aminD.getCurrentFrame();
+        }else{
+            return lastImage;
+        }
+    }    
     
     private void getInput(){
         //MOVE
