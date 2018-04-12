@@ -28,6 +28,7 @@ public class Survivor extends Entities {
     private GameHandler GH;
     
     public float x;
+
     public float y;
     
     private Animation aminR;
@@ -43,17 +44,13 @@ public class Survivor extends Entities {
         this.y = y;
         this.EH = EH;
         this.GH = GH;
-    
-//        playerUp = new Animation(15, Images.tu1, Images.tu2, Images.tu3, Images.tu4, Images.tu5, Images.tu6, Images.tu7);
-//        playerDown = new Animation(15, Images.td1, Images.td2, Images.td3, Images.td4, Images.td5, Images.td6, Images.td7);    
-//        playerLeft = new Animation(15, Images.tl1, Images.tl2, Images.tl3, Images.tl4, Images.tl5, Images.tl6, Images.tl7);
-//        playerRight = new Animation(15, Images.tr1, Images.tr2, Images.tr3, Images.tr4, Images.tr5, Images.tr6, Images.tr7);
   
         //ANIMATIONS
         aminD = new Animation(300, Images.playerDown);
         aminU = new Animation(300, Images.playerUp);
         aminR = new Animation(300, Images.playerRight);
         aminL = new Animation(300, Images.playerLeft);
+
 
     }
 
@@ -118,23 +115,32 @@ public class Survivor extends Entities {
          }   
     }
     
-    private BufferedImage getLiveAnim(){
-        if(EH.isLeft()){  
-            lastImage = aminL.getCurrentFrame();
-            return aminL.getCurrentFrame();
-        }else if(EH.isRight()){
-            lastImage = aminR.getCurrentFrame();
-            return aminR.getCurrentFrame();
-        }else if(EH.isUp()){
-            lastImage = aminU.getCurrentFrame();
-            return aminU.getCurrentFrame();   
-        }else if(EH.isDown()){
-            lastImage = aminD.getCurrentFrame();
-            return aminD.getCurrentFrame();
-        }else{
-            return lastImage;
+public BufferedImage getLiveAnim(){
+        if(EH.isMoving()){
+            switch (EH.getPlayerDirection()) {
+            case 4:
+                System.out.println("facing left = 4");
+                lastImage = aminL.getCurrentFrame();
+                return aminL.getCurrentFrame();
+            case 2:
+                System.out.println("facing right = 2");
+                lastImage = aminR.getCurrentFrame();
+                return aminR.getCurrentFrame();
+            case 1:
+                System.out.println("facing up = 1");
+                lastImage = aminU.getCurrentFrame();
+                return aminU.getCurrentFrame();
+            case 3:
+                System.out.println("facing down = 3");
+                lastImage = aminD.getCurrentFrame();
+                return aminD.getCurrentFrame();
+            default:
+                return lastImage;
         }
-    }    
+        }
+        return lastImage;
+
+}         
     
     private void getInput(){
         //MOVE
@@ -158,8 +164,8 @@ public class Survivor extends Entities {
         
 
         }
-//getters and setters
 
+    //GETTERS AND SETTERS 
     public float getX() {
         return x;
     }
@@ -174,24 +180,5 @@ public class Survivor extends Entities {
 
     public void setY(float y) {
         this.y = y;
-    }    
-    
-
+    }
 }
-
-
-        //DON'T DRAW ANIMATION
-//        if(EH.isDown() && EH.isRight()) 
-//            g.drawImage(Images.td1,(int)x, (int)y, null);
-//            //playerDown.drawAnimation(g, (int)x, (int)y);
-//        if(EH.isDown()&& EH.isLeft())
-//            playerDown.drawAnimation(g, (int)x, (int)y);
-//
-//        if(EH.isUp() && EH.isRight())
-//            playerUp.drawAnimation(g, (int)x, (int)y);          
-//        if(EH.isUp() && EH.isLeft())
-//            playerUp.drawAnimation(g, (int)x, (int)y); 
-    
-    
-
-

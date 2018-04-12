@@ -15,7 +15,9 @@ import java.util.*;
 public class EntityHandler {
     
     private boolean up=false, down = false, right = false, left = false; 
-    private boolean space=false;
+    private boolean space=false; private boolean moving = false;    
+
+    public int playerDirection = 1;
 
   
 
@@ -88,11 +90,26 @@ public class EntityHandler {
     public boolean isSpace() {
         return space;
     }
+    
+    public int getPlayerDirection() {
+        return playerDirection;
+    }
+
+    public void setPlayerDirection(int playerDirection) {
+        this.playerDirection = playerDirection;
+    }    
 
     public void setSpace(boolean space) {
         this.space = space;
     }
 
+    public boolean isMoving() {
+        return moving;
+    }
+
+    public void setMoving(boolean moving) {
+        this.moving = moving;
+    }
     
     
     

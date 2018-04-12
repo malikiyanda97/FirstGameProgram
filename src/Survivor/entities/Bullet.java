@@ -21,6 +21,7 @@ public class Bullet extends Entities {
 
     private int bulletSpeed = 20;
     private int x, y;
+    private int FACING;
 
 
     
@@ -32,37 +33,53 @@ public class Bullet extends Entities {
         
         velX = x /bulletSpeed;
         velY = y /bulletSpeed;
-        
-        
-
+   
+        if(GH.getGameEH().getPlayerDirection() == 1)
+            FACING = 1;
+        if(GH.getGameEH().getPlayerDirection() == 2)
+            FACING = 2;
+        if(GH.getGameEH().getPlayerDirection() == 3)
+            FACING = 3;
+        if(GH.getGameEH().getPlayerDirection() == 4)
+            FACING = 4;
     }   
     
   
     @Override
     public void update(){
-        //updatePosition();
-        x+=velX;
-        //if(GH.getGameEH().)
+        if(FACING == 1){
+            y-=10;
+        }
+        if(FACING == 2){
+            x+=10;
+        }     
+        if(FACING == 3){
+            y+=10;
+        }   
+        if(FACING == 4){
+            x-=10;
+        }        
+        
         collision();
         
     }
-    
+//    
 //    public void updatePosition(){
-//            for (int i = 0; i < GH.getGameEH().entities.size(); i++) {
-//                Entities tempEntity = GH.getGameEH().entities.get(i);
-//                
-//                if(tempEntity.getId() == Enums.Bulllet){
-//                    if(GH.getGameEH().isLeft())
-//                        x -= tempEntity.getVelX();
-//                    if(GH.getGameEH().isRight())
-//                        x += tempEntity.getVelX();
-//                    if(GH.getGameEH().isDown())
-//                        y += tempEntity.getVelY();
-//                    if(GH.getGameEH().isUp())
-//                        y -= tempEntity.getVelY();
-//                }   
-//                
-//            }        
+//        
+//        switch (FACING){
+//            case 1:
+//                y += velX;
+//                break;
+//            case 2:
+//                y -= velX;
+//                break;
+//            case 3:
+//                x += velX;
+//                break;
+//            case 4:
+//                x -= velX;
+//                break;
+//       }        
 //    }
   
     
@@ -100,7 +117,7 @@ public class Bullet extends Entities {
         return new Rectangle(x,y,8,8);
     }
 
-    //GETTERS AND SETTER
+    //GETTERS AND SETTERS
 
     
 }

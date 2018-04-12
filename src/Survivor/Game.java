@@ -204,18 +204,7 @@ public class Game extends Canvas implements Runnable {
    public EntityHandler getEH() {
         return EH;
    }
-   
-//   public MenuState getMenuState() {
-//        return menuState;
-//   }
-//   
-//   public PauseState getPauseState() {
-//        return pauseState;
-//   }
-//
-//   public GameState getGameState() {
-//        return gameState;
-//   }
+ 
 
    public StateController getSc() {
         return sc;

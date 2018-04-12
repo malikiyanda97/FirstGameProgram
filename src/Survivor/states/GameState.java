@@ -13,6 +13,7 @@ import Survivor.entitiesManager.Entities;
 import Survivor.entitiesManager.EntityHandler;
 import Survivor.Enums;
 import Survivor.entities.Bullet;
+import Survivor.entities.BulletController;
 import Survivor.images.Camera;
 import Survivor.images.Images;
 import java.awt.Graphics;
@@ -33,6 +34,8 @@ public class GameState implements State {
     private GameHandler GH;
     private State pauseState;
     
+    BulletController BC;
+    
     
     
     public GameState(Enums id, GameHandler GH, EntityHandler EH){
@@ -49,6 +52,7 @@ public class GameState implements State {
    
     @Override
     public void init(){
+        BC = new BulletController(GH);
         camera = new Camera(0,0);
         loadLevelOne(Images.levelOne);
         
@@ -77,23 +81,8 @@ public class GameState implements State {
                       
         }
         
-//        if(EH.isSpace()){
-//            for (int i = 0; i < GH.getGameEH().entities.size(); i++) {
-//                Entities tempEntity = GH.getGameEH().entities.get(i);
-//            
-//                if(tempEntity.getId() == Enums.Survivor){
-//                    //BULLETS 
-//                    int x = (int) ((int) tempEntity.getX()+ 55);
-//                    int y = (int) ((int) tempEntity.getY()+ 25);   
-//                    if(GH.getGameEH().isSpace()) 
-//                        GH.getGameEH().addEntity(new Bullet(Enums.Bulllet, x, y, GH));
-//                }
-//            
-//            }        
-//        } 
-  
         GH.getGameEH().update();
-               
+        BC.update();    
     }
 
     @Override
@@ -110,6 +99,7 @@ public class GameState implements State {
        }
         
         GH.getGameEH().render(g);
+        BC.render(g);
         
         g2d.translate(camera.getX(), camera.getY());
         

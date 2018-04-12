@@ -10,6 +10,8 @@ import Survivor.entities.Bullet;
 import Survivor.entitiesManager.Entities;
 import Survivor.entitiesManager.EntityHandler;
 import Survivor.Enums;
+import static Survivor.Enums.Survivor;
+import Survivor.entities.Survivor;
 import Survivor.states.State;
 import Survivor.states.StateController;
 import java.awt.event.KeyAdapter;
@@ -27,7 +29,9 @@ public class Keyboard extends KeyAdapter{
     
     private GameHandler GH;
     private EntityHandler EH;
+    private Survivor S;
     
+    private int x, y;
     
 //    private StateController sc
     private State menuState;
@@ -39,6 +43,7 @@ public class Keyboard extends KeyAdapter{
     public Keyboard(EntityHandler EH, GameHandler GH){
         this.EH = EH;
         this.GH = GH;
+        
        
     }    
     
@@ -52,16 +57,61 @@ public class Keyboard extends KeyAdapter{
             
             //PLAYER MOVEMENT
             if(tempEntity.getId() == Enums.Survivor){           
-                if(key == KeyEvent.VK_W) EH.setUp(true);
-                if(key == KeyEvent.VK_A) EH.setLeft(true);
-                if(key == KeyEvent.VK_S) EH.setDown(true);        
-                if(key == KeyEvent.VK_D) EH.setRight(true);
+                if(key == KeyEvent.VK_W){
+                    EH.setMoving(true);
+                    EH.setPlayerDirection(1);
+                    EH.setUp(true);
+                }
+                if(key == KeyEvent.VK_A){
+                 EH.setMoving(true);
+                    EH.setPlayerDirection(4);
+                    EH.setLeft(true);
+                }
+                if(key == KeyEvent.VK_S){
+                    EH.setMoving(true);
+                    EH.setPlayerDirection(3);
+                    EH.setDown(true);
+                }        
+                if(key == KeyEvent.VK_D){
+                    EH.setMoving(true);
+                    EH.setPlayerDirection(2);
+                    EH.setRight(true);
+                }
 
                 //BULLETS 
-                int x = (int) ((int) tempEntity.getX()+ 55);
-                int y = (int) ((int) tempEntity.getY()+ 25);   
-                if(key == KeyEvent.VK_SPACE) 
-                    GH.getGameEH().addEntity(new Bullet(Enums.Bulllet, x, y, GH));
+            switch (EH.playerDirection){
+            case 1:
+                x = (int) ((int) tempEntity.getX()+25);
+                y = (int) ((int) tempEntity.getY()); 
+                break;
+            case 2:
+                x = (int) ((int) tempEntity.getX()+55);
+                y = (int) ((int) tempEntity.getY()+25);
+                break;
+            case 3:
+                x = (int) ((int) tempEntity.getX()+25);
+                y = (int) ((int) tempEntity.getY()+55);
+                break;
+            case 4:
+                x = (int) ((int) tempEntity.getX()+25);
+                y = (int) ((int) tempEntity.getY()+25);
+                break;
+       }
+                
+                if(EH.getPlayerDirection() == 4 && key == KeyEvent.VK_SPACE){ 
+                    GH.getGameEH().addEntity(new Bullet(Enums.Bulllet, x, y, GH));                
+                }
+                
+                if(EH.getPlayerDirection() == 1 && key == KeyEvent.VK_SPACE){
+                    GH.getGameEH().addEntity(new Bullet(Enums.Bulllet, x, y, GH));                
+                }
+                if(EH.getPlayerDirection() == 2 && key == KeyEvent.VK_SPACE){
+                    GH.getGameEH().addEntity(new Bullet(Enums.Bulllet, x, y, GH));                
+                }
+                if(EH.getPlayerDirection() == 3 && key == KeyEvent.VK_SPACE){
+                    GH.getGameEH().addEntity(new Bullet(Enums.Bulllet, x, y, GH));                
+                }                
+                
             }
      
         }
@@ -83,10 +133,25 @@ public class Keyboard extends KeyAdapter{
             
             //PLAYER MOVEMENT 
             if(tempEntity.getId() == Enums.Survivor){
-                if(key == KeyEvent.VK_W) EH.setUp(false);
-                if(key == KeyEvent.VK_A) EH.setLeft(false);
-                if(key == KeyEvent.VK_S) EH.setDown(false);        
-                if(key == KeyEvent.VK_D) EH.setRight(false);
+                if(key == KeyEvent.VK_W){
+                    EH.setMoving(false);
+                    EH.setUp(false);
+                }
+                if(key == KeyEvent.VK_A){
+                    EH.setMoving(false);
+                    EH.setLeft(false);
+                }
+                if(key == KeyEvent.VK_S){
+                    EH.setMoving(false);
+                    EH.setDown(false);
+                }        
+                if(key == KeyEvent.VK_D){
+                    EH.setMoving(false);
+                    EH.setRight(false);
+                }
+                if(key == KeyEvent.VK_SPACE){
+                    
+                }
             }
         }
         
@@ -97,23 +162,7 @@ public class Keyboard extends KeyAdapter{
         }
             
         
-        
-        
-        
-        
-        //MENU OPTIONS INPUT 
-        
-//        MenuState state = GH.getGame().getMenuState();
-//        if(StateManager.getState().getId() == Enums.menuState){  
-//            if(key == KeyEvent.VK_W) menuState.setW(false);
-//            if(key == KeyEvent.VK_UP) menuState.setUp(false);
-//            if(key == KeyEvent.VK_DOWN) menuState.setDown(false);
-//            if(key == KeyEvent.VK_S) menuState.setS(false);
-//           
-//            if(key == KeyEvent.VK_ENTER) menuState.setKeyClick(false);
-//        }
-        
-   
+       
     }
 
     
