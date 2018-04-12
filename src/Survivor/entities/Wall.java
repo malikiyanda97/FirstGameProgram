@@ -30,15 +30,12 @@ public class Wall extends Entities {
 
     @Override
     public void render(Graphics g) {
-//        g.setColor(Color.black);
-//        g.fillRect(x, y, 32, 32);
+
         g.drawImage(Images.walls, x, y, null);
         
         Graphics2D g2d = (Graphics2D) g;
         g.setColor(Color.red);
-        
-        
-//        g2d.draw(getBounds());
+
     }
 
     @Override

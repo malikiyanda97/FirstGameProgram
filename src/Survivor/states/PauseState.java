@@ -107,8 +107,7 @@ public class PauseState implements State {
     @Override
     public void render(Graphics g) {
         g.drawImage(Images.menuWallpaper, 0, 0, null);
-        //Fonts.drawString(g, new Font("Arial", Font.HANGING_BASELINE, 35), Color.WHITE, "Survivor", 100,400);
-      
+        
         //RENDERING OPTIONS       
         for(int i = 0; i<options.length; i++){      
             if(i == selection){
@@ -120,9 +119,6 @@ public class PauseState implements State {
             options[i].render(g);
                 
         }
-        
-//        g.setColor(Color.WHITE);
-//        g.fillRect(mouse.getX(), mouse.getY(), 4, 4);    
         
     }
 

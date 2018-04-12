@@ -32,8 +32,7 @@ public class GameHandler {
     }
 
     
-    //Getters and Setters 
-    
+    //GETTERS AND SETTERS 
     public EntityHandler getGameEH(){
         return game.getEH();
     }

@@ -63,26 +63,7 @@ public class Bullet extends Entities {
         collision();
         
     }
-//    
-//    public void updatePosition(){
-//        
-//        switch (FACING){
-//            case 1:
-//                y += velX;
-//                break;
-//            case 2:
-//                y -= velX;
-//                break;
-//            case 3:
-//                x += velX;
-//                break;
-//            case 4:
-//                x -= velX;
-//                break;
-//       }        
-//    }
-  
-    
+
     @Override
     public void collision() {
         for (int i = 0; i < GH.getGameEH().entities.size(); i++) {
@@ -116,8 +97,5 @@ public class Bullet extends Entities {
     public Rectangle getBounds() {
         return new Rectangle(x,y,8,8);
     }
-
-    //GETTERS AND SETTERS
-
     
 }

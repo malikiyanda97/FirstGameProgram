@@ -10,10 +10,8 @@ import Survivor.entities.Bullet;
 import Survivor.entitiesManager.Entities;
 import Survivor.entitiesManager.EntityHandler;
 import Survivor.Enums;
-import static Survivor.Enums.Survivor;
 import Survivor.entities.Survivor;
 import Survivor.states.State;
-import Survivor.states.StateController;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 
@@ -33,7 +31,6 @@ public class Keyboard extends KeyAdapter{
     
     private int x, y;
     
-//    private StateController sc
     private State menuState;
     private State pauseState;
     private State gameState;

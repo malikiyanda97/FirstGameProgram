@@ -40,7 +40,7 @@ public class Drone extends Entities {
         this.x = x;
         this.y = y;
     }
-//        System.out.println("player "+ playerX + " , " + playerY);
+
     @Override
     public void update() {
 

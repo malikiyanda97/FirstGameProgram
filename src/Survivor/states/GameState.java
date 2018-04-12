@@ -12,7 +12,6 @@ import Survivor.entities.Survivor;
 import Survivor.entitiesManager.Entities;
 import Survivor.entitiesManager.EntityHandler;
 import Survivor.Enums;
-import Survivor.entities.Bullet;
 import Survivor.entities.BulletController;
 import Survivor.images.Camera;
 import Survivor.images.Images;

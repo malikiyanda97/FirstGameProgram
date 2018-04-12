@@ -48,8 +48,6 @@ public class Game extends Canvas implements Runnable {
     //INPUT
     public Keyboard keyboard;
     public Mouse mouse;
-    private int key;
-    
     
     //ENTITY HANDLER
     private EntityHandler EH;
@@ -73,8 +71,9 @@ public class Game extends Canvas implements Runnable {
 
     
     public void init(){
+       //FRAME 
         window = new Window(title, width, height, this);
-       
+
         
         //MOUSE INPUT
         mouse = new Mouse(GH);
@@ -93,8 +92,6 @@ public class Game extends Canvas implements Runnable {
         //KEYBOARD INPUT 
         keyboard = new Keyboard(EH,GH);
         this.addKeyListener(keyboard);
-       
-
         
         //STATES
         sc = new StateController(id);
@@ -108,11 +105,10 @@ public class Game extends Canvas implements Runnable {
     @Override
     public void run(){
         gameLoop();
-        stop(); //Stops the thread.
+        stop();
     }
     
     public void update(){
-        
        if(sc.getCurrentState() != null){
            sc.update();
        }        
@@ -126,7 +122,6 @@ public class Game extends Canvas implements Runnable {
         }
         Graphics g = bs.getDrawGraphics();
         Graphics2D g2d = (Graphics2D) g;
-        //g.clearRect(0, 0, 1200, 800);
         //////////////START DRAW AREA////////////////////////////
         
        if(sc.getCurrentState() != null){
@@ -204,7 +199,6 @@ public class Game extends Canvas implements Runnable {
    public EntityHandler getEH() {
         return EH;
    }
- 
 
    public StateController getSc() {
         return sc;
