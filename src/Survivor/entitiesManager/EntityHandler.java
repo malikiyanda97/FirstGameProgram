@@ -15,7 +15,9 @@ import java.util.*;
 public class EntityHandler {
     
     private boolean up=false, down = false, right = false, left = false; 
-    private boolean space=false; private boolean moving = false;    
+    private boolean space=false; private boolean moving = false;  
+    
+    
 
     public int playerDirection = 1;
 

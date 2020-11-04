@@ -46,7 +46,7 @@ public class Bullet extends Entities {
     
   
     @Override
-    public void update(){
+    public void update(){   
         if(FACING == 1){
             y-=10;
         }
@@ -71,7 +71,7 @@ public class Bullet extends Entities {
            
             if(tempEntity.getId() == ID.Wall){
                 if(getBounds().intersects(tempEntity.getBounds())){
-                    System.out.println("wall in the way of bullet");
+                    //System.out.println("wall in the way of bullet");
                     GH.getGameEH().removeEntity(this);
                 }
                     

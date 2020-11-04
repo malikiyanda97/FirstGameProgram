@@ -14,6 +14,7 @@ import Survivor.states.GameState;
 import Survivor.states.MenuState;
 import Survivor.states.StateController;
 import Survivor.states.PauseState;
+import Survivor.states.gameOverState;
 import java.awt.Canvas;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
@@ -61,8 +62,8 @@ public class Game extends Canvas implements Runnable {
     
     public Game(String title, int width, int height, GameHandler GH){
         this.title = "Survivor";
-        this.width = 1400;
-        this.height = 1000;
+        this.width = 1000;
+        this.height = 600;
         this.GH = GH;
         
         
@@ -95,9 +96,10 @@ public class Game extends Canvas implements Runnable {
         
         //STATES
         sc = new StateController(id);
-        sc.addState(new GameState(Enums.gameState, GH,EH));
         sc.addState(new MenuState(Enums.menuState, mouse,keyboard,GH));
-        sc.addState(new PauseState(Enums.pauseState,mouse,keyboard,GH));       
+        sc.addState(new GameState(Enums.gameState, GH,EH));
+        sc.addState(new PauseState(Enums.pauseState,mouse,keyboard,GH)); 
+        sc.addState(new gameOverState(Enums.gameOver, GH));
        
     }
 

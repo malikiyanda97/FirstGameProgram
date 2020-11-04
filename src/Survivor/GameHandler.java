@@ -19,7 +19,7 @@ import Survivor.states.StateController;
  */
 public class GameHandler {
     
-    private Game game;
+    public Game game;
     private GameState gameState;
     private MenuState menuState;
     private PauseState pauseState;

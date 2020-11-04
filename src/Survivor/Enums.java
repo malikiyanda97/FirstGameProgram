@@ -17,9 +17,12 @@ public enum Enums {
     Enemy(),
     Base,
     Bulllet(),
+    Ammo(),
+    gameOver(),
     
     gameState(),
     menuState(),
     pauseState();
+    
     
 }

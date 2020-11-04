@@ -18,6 +18,9 @@ public abstract class Entities {
    
     protected int x, y;
     protected int velX = 0, velY = 0;
+    protected boolean alive;
+    protected boolean dead;
+    
     protected Enums ID;
     protected GameHandler GH;
 
@@ -78,6 +81,22 @@ public abstract class Entities {
 
     public void setId(Enums id) {
         this.ID = id;
+    }
+    
+    public boolean isAlive() {
+        return alive;
+    }
+
+    public void setAlive(boolean alive) {
+        this.alive = alive;
+    }
+
+    public boolean isDead() {
+        return dead;
+    }
+
+    public void setDead(boolean dead) {
+        this.dead = dead;
     }
     
     

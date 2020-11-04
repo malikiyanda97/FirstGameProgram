@@ -28,8 +28,10 @@ public class Survivor extends Entities {
     private GameHandler GH;
     
     public float x;
-
     public float y;
+    
+    private int health;
+    private boolean alive;
     
     private Animation aminR;
     private Animation aminL;
@@ -45,6 +47,10 @@ public class Survivor extends Entities {
         this.EH = EH;
         this.GH = GH;
   
+         
+        health = 100;
+        alive = true;
+        
         //ANIMATIONS
         aminD = new Animation(300, Images.playerDown);
         aminU = new Animation(300, Images.playerUp);
@@ -68,6 +74,14 @@ public class Survivor extends Entities {
         aminR.update();
         aminL.update();
         
+        if(!alive){
+             GH.getGame().sc.setState("gameOver");
+             System.out.println("game-over");
+            //GH.getGameEH().removeEntity(this);
+           
+
+        }
+        
     }
     
     @Override
@@ -78,7 +92,7 @@ public class Survivor extends Entities {
         g.drawImage(Images.healthB,(int) x+10, (int) y-12, null);
         g.drawImage(Images.healthPlayer,(int) x+10,(int) y-12, null);
         g.drawImage(Images.healthBoarder, (int) x+10,(int) y-12, null);
-        System.out.println("player co-ords "+ x + " , " + y);
+        //System.out.println("player co-ords "+ x + " , " + y);
         
         
         Graphics2D g2d = (Graphics2D) g;
@@ -107,9 +121,10 @@ public class Survivor extends Entities {
             }
             
             
-            if(tempEntity.getId() == ID.Wall){
+            if(tempEntity.getId() == ID.Enemy){
                 if(getBounds().intersects(tempEntity.getBounds())){
                     System.out.println("Enemy in the way");
+                    damage(1);
                 }
             }
          }   
@@ -119,19 +134,19 @@ public BufferedImage getLiveAnim(){
         if(EH.isMoving()){
             switch (EH.getPlayerDirection()) {
             case 4:
-                System.out.println("facing left = 4");
+                //System.out.println("facing left = 4");
                 lastImage = aminL.getCurrentFrame();
                 return aminL.getCurrentFrame();
             case 2:
-                System.out.println("facing right = 2");
+                //System.out.println("facing right = 2");
                 lastImage = aminR.getCurrentFrame();
                 return aminR.getCurrentFrame();
             case 1:
-                System.out.println("facing up = 1");
+                //System.out.println("facing up = 1");
                 lastImage = aminU.getCurrentFrame();
                 return aminU.getCurrentFrame();
             case 3:
-                System.out.println("facing down = 3");
+                //System.out.println("facing down = 3");
                 lastImage = aminD.getCurrentFrame();
                 return aminD.getCurrentFrame();
             default:
@@ -164,6 +179,19 @@ public BufferedImage getLiveAnim(){
         
 
         }
+    
+    
+    public void die(){
+        alive = false;
+    }
+
+    private void damage(int amount) {
+        health -= amount;
+        if(health<0){
+            setDead(true);
+            die();
+        }
+    }
 
     //GETTERS AND SETTERS 
     public float getX() {

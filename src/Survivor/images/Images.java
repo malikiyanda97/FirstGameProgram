@@ -22,48 +22,6 @@ public class Images {
     public static BufferedImage droneEnemy;
     public static BufferedImage soliderTank;
     
-    //ANIMATION
-//    
-//    public static BufferedImage tankdown;
-//    
-//    public static BufferedImage td1;
-//    public static BufferedImage td2;
-//    public static BufferedImage td3;    
-//    public static BufferedImage td4;
-//    public static BufferedImage td5;
-//    public static BufferedImage td6;
-//    public static BufferedImage td7;
-//    
-//    public static BufferedImage tankup;
-//    
-//    public static BufferedImage tu1;
-//    public static BufferedImage tu2;
-//    public static BufferedImage tu3;    
-//    public static BufferedImage tu4;
-//    public static BufferedImage tu5;
-//    public static BufferedImage tu6;
-//    public static BufferedImage tu7;
-//
-//    public static BufferedImage tankright;
-//    
-//    public static BufferedImage tr1;
-//    public static BufferedImage tr2;
-//    public static BufferedImage tr3;    
-//    public static BufferedImage tr4;
-//    public static BufferedImage tr5;
-//    public static BufferedImage tr6;
-//    public static BufferedImage tr7;
-//
-//    public static BufferedImage tankleft;
-//    
-//    public static BufferedImage tl1;
-//    public static BufferedImage tl2;
-//    public static BufferedImage tl3;    
-//    public static BufferedImage tl4;
-//    public static BufferedImage tl5;
-//    public static BufferedImage tl6;
-//    public static BufferedImage tl7;
-    
     //GAME
     public static BufferedImage levelOne;
     public static BufferedImage castleBase;
@@ -173,9 +131,7 @@ public class Images {
         
         
     }
- 
-    
-    
+
     
     //IMAGE LOADER 
     public static BufferedImage loadImage(String path){

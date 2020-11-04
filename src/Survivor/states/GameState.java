@@ -12,7 +12,6 @@ import Survivor.entities.Survivor;
 import Survivor.entitiesManager.Entities;
 import Survivor.entitiesManager.EntityHandler;
 import Survivor.Enums;
-import Survivor.entities.BulletController;
 import Survivor.images.Camera;
 import Survivor.images.Images;
 import java.awt.Graphics;
@@ -32,26 +31,20 @@ public class GameState implements State {
     private Enums id;
     private GameHandler GH;
     private State pauseState;
-    
-    BulletController BC;
-    
-    
-    
+    public boolean gameOver = false;
+  
+ 
+      
     public GameState(Enums id, GameHandler GH, EntityHandler EH){
         this.GH = GH;
         this.id = Enums.gameState;
         this.EH = EH;
-        
-        
-        
-        
-        
+       
     }
  
    
     @Override
     public void init(){
-        BC = new BulletController(GH);
         camera = new Camera(0,0);
         loadLevelOne(Images.levelOne);
         
@@ -81,7 +74,12 @@ public class GameState implements State {
         }
         
         GH.getGameEH().update();
-        BC.update();    
+        
+        if(gameOver){
+            System.out.println("Game is Over You Lost");
+            sc.setState("menu");
+        }
+          
     }
 
     @Override
@@ -98,7 +96,7 @@ public class GameState implements State {
        }
         
         GH.getGameEH().render(g);
-        BC.render(g);
+      
         
         g2d.translate(camera.getX(), camera.getY());
         
@@ -137,6 +135,7 @@ public class GameState implements State {
         }
     }
     
+    
     @Override
     public void enter() {
     }
@@ -151,7 +150,6 @@ public class GameState implements State {
     }
     
     
-    
     //getters and setters     
     public Survivor player(){
         return player;  
@@ -160,6 +158,14 @@ public class GameState implements State {
     @Override
     public Enums getId() {
         return id;
+    }
+
+    public boolean isGameOver() {
+        return gameOver;
+    }
+
+    public void setGameOver(boolean gameOver) {
+        this.gameOver = gameOver;
     }
 
 

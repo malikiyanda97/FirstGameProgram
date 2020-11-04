@@ -7,6 +7,7 @@ package Survivor.states;
 
 import Survivor.Enums;
 import Survivor.GameHandler;
+import Survivor.entitiesManager.EntityHandler;
 import Survivor.images.Images;
 import Survivor.input.Keyboard;
 import Survivor.input.Mouse;
@@ -22,6 +23,7 @@ import java.awt.Rectangle;
 public class MenuState implements State {
 
     public Keyboard keyboard;
+    private EntityHandler EH;
     public Mouse mouse;
     public GameButtons[] mOptions;
     private GameHandler GH;
@@ -58,7 +60,7 @@ public class MenuState implements State {
         mOptions[2] = new GameButtons("INSTRUCTIONS", 100+ 2* RENDERING_GAP,
                      new Font("Cambria", Font.PLAIN, 30), new Font("Cambria", Font.BOLD, 50), 
                      Color.WHITE, Color.GRAY, GH);          
-        mOptions[3] = new GameButtons("OPTIONS", 100 + 3* RENDERING_GAP, 
+        mOptions[3] = new GameButtons("LEADERBOARD", 100 + 3* RENDERING_GAP, 
                      new Font("Cambria", Font.PLAIN, 30), new Font("Cambria", Font.BOLD, 50), 
                      Color.WHITE, Color.GRAY, GH);        
         mOptions[4] = new GameButtons("EXIT", 100+ 4*RENDERING_GAP, 
@@ -96,6 +98,7 @@ public class MenuState implements State {
             switch (selection) {
                 case 0:
                     //System.out.println("PLAYING");
+//                    sc.addState(new GameState(id, GH, EH));
                     sc.setState("game");
                     break OUTER;
                 case 1:
@@ -105,7 +108,7 @@ public class MenuState implements State {
                     System.out.println("INSTRUCTIONS");
                     break OUTER;
                 case 3:
-                    System.out.println("OPTIONS");
+                    System.out.println("LEADERBOARD");
                     break OUTER;
                 case 4:
                     System.out.println("EXITING");

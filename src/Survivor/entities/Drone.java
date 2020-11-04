@@ -31,6 +31,8 @@ public class Drone extends Entities {
     
     private int x, y; 
     private boolean alive;
+    private boolean dead;
+
     
     public Drone(Enums id, int x, int y, int health, GameHandler GH) {
         super(id, x, y, GH);
@@ -39,6 +41,9 @@ public class Drone extends Entities {
         this.startHealth = health;  
         this.x = x;
         this.y = y;
+        
+        alive = true;
+        dead = false;
     }
 
     @Override
@@ -60,14 +65,21 @@ public class Drone extends Entities {
                     y += speed*(dirY/hypotenuse);
                     x += speed*(dirX/hypotenuse);
                 }
+                 
+                if(x == tempEnttity.getX()){
+                    
+                }
             }
             
         }
 
         collision();
+        
+        
   
             
-        if(health <= 0){
+        if(!alive){
+            System.out.println("enemy dead");
             GH.getGameEH().removeEntity(this);
         }
  }
@@ -83,6 +95,14 @@ public class Drone extends Entities {
         g.setColor(Color.red);
         Graphics2D g2d = (Graphics2D) g;
         g2d.draw(getBounds());
+    }
+
+    public boolean isDead() {
+        return dead;
+    }
+
+    public void setDead(boolean dead) {
+        this.dead = dead;
     }
 
     @Override
@@ -121,7 +141,15 @@ public class Drone extends Entities {
     private void damage(int amount) {
         health -= amount;
         if(health<0){
+            setDead(true);
             die();
         }
+    }
+    public boolean isAlive() {
+        return alive;
+    }
+
+    public void setAlive(boolean alive) {
+        this.alive = alive;
     }
 }  
